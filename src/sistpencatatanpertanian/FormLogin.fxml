@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="sistpencatatanpertanian.FormLoginController">
+   <children>
+      <Button layoutX="32.0" layoutY="34.0" mnemonicParsing="false" onAction="#pindah" text="Button" />
+   </children>
+</AnchorPane>
