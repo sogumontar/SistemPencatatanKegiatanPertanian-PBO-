@@ -36,5 +36,8 @@ public class FormLoginController implements Initializable {
         AnchorPane root=FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
     }
+    public void login(){
+        
+    }
     
 }
