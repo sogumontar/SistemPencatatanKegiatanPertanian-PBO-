@@ -5,13 +5,23 @@
  */
 package sistpencatatanpertanian;
 
+import db.Util.HibernateUtil;
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  * FXML Controller class
@@ -22,6 +32,12 @@ public class FormLoginController implements Initializable {
 
     @FXML
     private AnchorPane layout;
+    @FXML
+    private TextField username;
+    @FXML
+    private TextField password;
+    @FXML
+    private Label notif;
 
     /**
      * Initializes the controller class.
@@ -31,13 +47,30 @@ public class FormLoginController implements Initializable {
         // TODO
     }    
 
-    @FXML
     private void pindah(ActionEvent event)throws Exception {
         AnchorPane root=FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
     }
-    public void login(){
-        
+    @FXML
+    public void login() throws IOException{
+        Session ses = HibernateUtil.getSessionFactory().openSession();
+        ses.beginTransaction();
+        Query q = ses.createQuery("from Akun where username = '" + username.getText() + "' AND password='" + password.getText() + "' ");
+        List list = q.list();
+//        q.setParameter("username", username.getText());
+//        q.setParameter("password", password.getText());
+//        q.executeUpdate();
+        ses.getTransaction().commit();
+        ses.close();
+
+        if (list.size() > 0) {
+           
+
+             AnchorPane root=FXMLLoader.load(getClass().getResource("Pembibitan/pembibitan.fxml"));
+        layout.getChildren().setAll(root);
+        } else {
+            notif.setText("Username Atau Password Salah");
+        }
     }
     
 }
