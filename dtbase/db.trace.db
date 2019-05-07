@@ -1,0 +1,46 @@
+2019-05-03 20:40:04 jdbc[10]: java.lang.Exception: Open Stack Trace
+	at org.h2.util.CloseWatcher.register(CloseWatcher.java:100)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:183)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.netbeans.modules.db.explorer.DbDriverManager.getConnection(DbDriverManager.java:131)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.doConnect(DatabaseConnection.java:923)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.access$200(DatabaseConnection.java:103)
+	at org.netbeans.modules.db.explorer.DatabaseConnection$3.run(DatabaseConnection.java:988)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1443)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:68)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:303)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2058)
+
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-199]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:242)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:182)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.netbeans.modules.db.explorer.DbDriverManager.getConnection(DbDriverManager.java:131)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.doConnect(DatabaseConnection.java:923)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.access$200(DatabaseConnection.java:103)
+	at org.netbeans.modules.db.explorer.DatabaseConnection$3.run(DatabaseConnection.java:988)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1443)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:68)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:303)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2058)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:617)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	... 15 more
+2019-05-03 20:40:47 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE TRANSAKSI (ID INT AUTO_INCREMENT PRIMARY_KEY[*], CREATED_AT DATE, ID_AKUN INT(11), ID_TANAMAN INT(11), HARGA INT(11)) "; expected "(, NOT, NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table transaksi (id int AUTO_INCREMENT PRIMARY_KEY, created_at date, id_akun int(11), id_tanaman int(11), harga int(11)) [42001-199]
+2019-05-03 20:41:35 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BANTUAN" already exists; SQL statement:
+create table bantuan (id int AUTO_INCREMENT PRIMARY KEY, id_akun int(11),jenis_bantuan varchar(25),deskripsi tinytext, jenis_tanaman varchar(25)) [42101-199]
+2019-05-03 20:41:44 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE PASCA_PANEN (ID INT AUTO_INCREMENT PRIMARY KEY, CREATED_AT DATE, UKURAN_LAHAN DOUBLE,JENIS_TANAMAN VARCHAR(25), TANGGAL_PASCA_PANEN DATE, TARGET_TANGGAL_PANEN DATE, DESKRIPSI_TANAMAN TINYTEXT, LOKASI VARCHAR(25), BANYAK_HASIL_PANEN VARCHAR(25), HARGA INT(11), STATUS VARCHAR(25), BOOKED_STATUS VARCHAR(25))ARA_PANEN[*] VARCHAR(25), HARGA INT(11), QUANTITY DOUBLE, STATUS VARCHAR(20), BOOKED_STATUS VARCHAR(20)) "; SQL statement:
+create table pasca_panen (id int AUTO_INCREMENT PRIMARY KEY, created_at date, ukuran_lahan double,jenis_tanaman varchar(25), tanggal_pasca_panen date, target_tanggal_panen date, deskripsi_tanaman tinytext, lokasi varchar(25), banyak_hasil_panen varchar(25), harga int(11), status varchar(25), booked_status varchar(25))ara_panen varchar(25), harga int(11), quantity double, status varchar(20), booked_status varchar(20)) [42000-199]
+2019-05-03 20:54:24 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "FROM AKUN [*]"; expected "., (, USE, AS, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
+from AKUN [42001-199]

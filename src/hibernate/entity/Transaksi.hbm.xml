@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 3, 2019 9:07:02 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hibernate.entity.Transaksi" table="TRANSAKSI" schema="PUBLIC" catalog="DB" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="createdAt" type="date">
+            <column name="CREATED_AT" length="10" />
+        </property>
+        <property name="idAkun" type="java.lang.Integer">
+            <column name="ID_AKUN" />
+        </property>
+        <property name="idTanaman" type="java.lang.Integer">
+            <column name="ID_TANAMAN" />
+        </property>
+        <property name="harga" type="java.lang.Integer">
+            <column name="HARGA" />
+        </property>
+    </class>
+</hibernate-mapping>

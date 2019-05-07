@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.Pembibitan.*;
 
 /**
  * FXML Controller class
@@ -45,14 +46,15 @@ public class FormLoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
-    private void pindah(ActionEvent event)throws Exception {
-        AnchorPane root=FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+    private void pindah(ActionEvent event) throws Exception {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
     }
+
     @FXML
-    public void login() throws IOException{
+    public void login() throws IOException {
         Session ses = HibernateUtil.getSessionFactory().openSession();
         ses.beginTransaction();
         Query q = ses.createQuery("from Akun where username = '" + username.getText() + "' AND password='" + password.getText() + "' ");
@@ -64,13 +66,13 @@ public class FormLoginController implements Initializable {
         ses.close();
 
         if (list.size() > 0) {
-           
 
-             AnchorPane root=FXMLLoader.load(getClass().getResource("Pembibitan/pembibitan.fxml"));
-        layout.getChildren().setAll(root);
+            notif.setText("Sukses");
+            AnchorPane root = FXMLLoader.load(getClass().getResource("Pembibitan/pembibitan.fxml"));
+            layout.getChildren().setAll(root);
         } else {
             notif.setText("Username Atau Password Salah");
         }
     }
-    
+
 }
