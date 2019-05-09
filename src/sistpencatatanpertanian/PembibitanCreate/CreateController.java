@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistpencatatanpertanian.pembibitan.create;
+package sistpencatatanpertanian.PembibitanCreate;
 
 import db.Util.HibernateUtil;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -50,21 +51,14 @@ public class CreateController implements Initializable {
     @FXML
     private DatePicker tgl_selesai;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
-    public void insert() {
+    @FXML
+    void insert(ActionEvent event) {
+        System.out.println("kenlap");
         Session ses = HibernateUtil.getSessionFactory().openSession();
         ses.beginTransaction();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        
-        
+
         Query q = ses.createSQLQuery("INSERT INTO penanaman (created_at,ukuran_lahan,jenis_tanaman,tanggal_penanaman,target_selesai_penanaman,deskrispsi_tanaman,lokasi,cara_pembibitan,status,booked_status) " + "VALUES (:created_at, :ukuran ,:jenis, :tanggal_tanam, :target_selesai, :deskripsi, :lokasi, :metode, :status, :booked)");
         q.setParameter("created_at", dtf.format(now));
         q.setParameter("ukuran", ukuran.getText().toString());
@@ -79,6 +73,17 @@ public class CreateController implements Initializable {
         q.executeUpdate();
         ses.getTransaction().commit();
         ses.close();
+        System.out.println("testtest");
+    }
+
+    @FXML
+    public void test() {
+        System.out.println("binatang");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

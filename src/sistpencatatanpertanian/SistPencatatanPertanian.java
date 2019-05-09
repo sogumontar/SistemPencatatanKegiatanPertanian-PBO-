@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import sistpencatatanpertanian.Pembibitan.*;
+
 /**
  *
  * @author DedekManisTasBiru
@@ -19,7 +21,8 @@ public class SistPencatatanPertanian extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FormLogin.fxml"));
+        System.out.println("asda");
+        Parent root = FXMLLoader.load(getClass().getResource("PembibitanCreate/create.fxml"));
         
         Scene scene = new Scene(root);
         

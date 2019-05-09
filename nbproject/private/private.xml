@@ -2,30 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/Pembibitan/PembibitanController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/SistPencatatanPertanian.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/Pembibitan/pembibitan.fxml</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/Pembibitan/PembibitanController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/hibernate.reveng.xml</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/homepage/homepage.css</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/Pembibitan/create/CreateController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/test/test.css</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/homepage/homepage.fxml</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/Pembibitan/create/create.fxml</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/test/TestController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/hibernate/entity/Akun.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/test/test.fxml</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/homepage/HomepageController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/Pembibitan/pembibitan.css</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/db/Util/HibernateUtil.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/FormLoginController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/hibernate/entity/Akun.hbm.xml</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/Pembibitan/create/create.css</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/sistpencatatanpertanian/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/hibernate/entity/Bantuan.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/SistPencatatanPertanian/SistemPencatatanKegiatanPertanian-PBO-/src/Pembibitan/Create/CreateController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
