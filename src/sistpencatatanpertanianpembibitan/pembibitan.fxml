@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpembibitan.PembibitanController">
+    <stylesheets>
+        <URL value="@pembibitan.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="butt" layoutX="489.0" layoutY="360.0" mnemonicParsing="false" onAction="#create" text="Tambah" />
+      <TableView fx:id="table" layoutX="11.0" layoutY="57.0" prefHeight="297.0" prefWidth="577.0">
+        <columns>
+          <TableColumn fx:id="no" prefWidth="32.66665554046631" text="no" />
+          <TableColumn fx:id="jenis" prefWidth="66.66669082641602" text="Jenis" />
+            <TableColumn fx:id="tanggalmulai" prefWidth="94.00005340576172" text="Tanggal Mulai" />
+            <TableColumn fx:id="tanggalselesai" prefWidth="86.00001525878906" text="Tanggal Selesai" />
+            <TableColumn fx:id="lokasi" prefWidth="55.3333740234375" text="Lokasi" />
+            <TableColumn fx:id="metode" prefWidth="74.666748046875" text="Metode" />
+            <TableColumn fx:id="status" prefWidth="74.6666259765625" text="Status" />
+            <TableColumn fx:id="ukuran" prefWidth="119.33328247070312" text="Ukuran" />
+        </columns>
+      </TableView>
+      <Label layoutX="22.0" layoutY="40.0" text="Informasi Pembibitan" />
+      <MenuBar layoutY="1.0">
+        <menus>
+          <Menu mnemonicParsing="false" onAction="#home" text="Home" />
+          <Menu mnemonicParsing="false" text="Pertanian">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#pembibitan" text="Pembibitan" />
+                  <MenuItem mnemonicParsing="false" text="Penanaman" />
+                  <MenuItem mnemonicParsing="false" text="Pemupukan" />
+                  <MenuItem mnemonicParsing="false" text="Pasca Panen" />
+                  <MenuItem mnemonicParsing="false" text="Panen" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" onAction="#logout" text="Logout" />
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

@@ -5,7 +5,9 @@
  */
 package sistpencatatanpertanian;
 
-import db.Util.HibernateUtil;
+import db.util.NewHibernateUtil;
+import entity.Akun;
+import entity.Panen;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -22,7 +24,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import sistpencatatanpertanian.Pembibitan.*;
 
 /**
  * FXML Controller class
@@ -31,6 +32,7 @@ import sistpencatatanpertanian.Pembibitan.*;
  */
 public class FormLoginController implements Initializable {
     public static boolean login=false;
+    public static String role="";
     @FXML
     private AnchorPane layout;
     @FXML
@@ -55,7 +57,7 @@ public class FormLoginController implements Initializable {
 
     @FXML
     public void login() throws IOException {
-        Session ses = HibernateUtil.getSessionFactory().openSession();
+        Session ses = NewHibernateUtil.getSessionFactory().openSession();
         ses.beginTransaction();
         Query q = ses.createQuery("from Akun where username = '" + username.getText() + "' AND password='" + password.getText() + "' ");
         List list = q.list();
@@ -66,6 +68,13 @@ public class FormLoginController implements Initializable {
         ses.close();
 
         if (list.size() > 0) {
+             for (Object obj : list) {
+            Akun akun = (Akun) obj;
+            String roles=akun.getGambar();
+            FormLoginController.role=roles;
+            
+
+        }
             FormLoginController.login=true;
             notif.setText("Sukses");
             AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -74,5 +83,6 @@ public class FormLoginController implements Initializable {
             notif.setText("Username Atau Password Salah");
         }
     }
+    
 
 }

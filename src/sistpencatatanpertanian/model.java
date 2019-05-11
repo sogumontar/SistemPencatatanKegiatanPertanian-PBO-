@@ -16,10 +16,10 @@ public class model {
     private Double ukuran;
     private String lokasi;
     private String metode;
-    private Double Quantity;
+    private Integer Quantity;
     private Integer Harga;
 
-    public model(int no, String jenis, Double ukuran, String lokasi, String metode, Double Quantity, Integer Harga) {
+    public model(int no, String jenis, Double ukuran, String lokasi, String metode, Integer Quantity, Integer Harga) {
         this.no = no;
         this.jenis = jenis;
         this.ukuran = ukuran;
@@ -53,7 +53,7 @@ public class model {
         return metode;
     }
 
-    public Double getQuantity() {
+    public Integer getQuantity() {
         return Quantity;
     }
 
@@ -77,7 +77,7 @@ public class model {
         this.metode = metode;
     }
 
-    public void setQuantity(Double Quantity) {
+    public void setQuantity(Integer Quantity) {
         this.Quantity = Quantity;
     }
 

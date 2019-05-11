@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2019 8:29:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Penanaman" table="PENANAMAN" schema="PUBLIC" catalog="DB" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="createdAt" type="string">
+            <column name="CREATED_AT" length="25" />
+        </property>
+        <property name="ukuranLahan" type="java.lang.Double">
+            <column name="UKURAN_LAHAN" precision="17" scale="0" />
+        </property>
+        <property name="jenisTanaman" type="string">
+            <column name="JENIS_TANAMAN" length="25" />
+        </property>
+        <property name="jenisBibit" type="string">
+            <column name="JENIS_BIBIT" length="25" />
+        </property>
+        <property name="tanggalMulaiPemupukan" type="string">
+            <column name="TANGGAL_MULAI_PEMUPUKAN" length="25" />
+        </property>
+        <property name="tanggalSelesaiPemupukan" type="string">
+            <column name="TANGGAL_SELESAI_PEMUPUKAN" length="25" />
+        </property>
+        <property name="deskripsiTanaman" type="string">
+            <column name="DESKRIPSI_TANAMAN" length="25" />
+        </property>
+        <property name="lokasi" type="string">
+            <column name="LOKASI" length="25" />
+        </property>
+        <property name="caraPenanaman" type="string">
+            <column name="CARA_PENANAMAN" length="25" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="25" />
+        </property>
+        <property name="bookedStatus" type="string">
+            <column name="BOOKED_STATUS" length="25" />
+        </property>
+    </class>
+</hibernate-mapping>

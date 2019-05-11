@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 11, 2019 8:29:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Akun" table="AKUN" schema="PUBLIC" catalog="DB" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="USERNAME" length="25" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="25" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="25" />
+        </property>
+        <property name="nama" type="string">
+            <column name="NAMA" length="25" />
+        </property>
+        <property name="noTelp" type="string">
+            <column name="NO_TELP" length="25" />
+        </property>
+        <property name="gambar" type="string">
+            <column name="GAMBAR" length="100" />
+        </property>
+        <property name="alamat" type="string">
+            <column name="ALAMAT" length="25" />
+        </property>
+    </class>
+</hibernate-mapping>

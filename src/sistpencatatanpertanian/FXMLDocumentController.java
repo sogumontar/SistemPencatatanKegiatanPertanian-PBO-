@@ -6,8 +6,8 @@
 package sistpencatatanpertanian;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
-import db.Util.HibernateUtil;
-import hibernate.entity.Panen;
+import db.util.NewHibernateUtil;
+import entity.Panen;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -66,7 +66,7 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Session ss = db.Util.HibernateUtil.getSessionFactory().openSession();
+        Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
         oo = FXCollections.observableArrayList();
         Query query = ss.createQuery("FROM Panen ");
@@ -77,12 +77,11 @@ public class FXMLDocumentController implements Initializable {
         for (Object obj : list) {
             Panen panen = (Panen) obj;
             String jenis = panen.getJenisTanaman();
-            Double ukuran = panen.getUkuranLahan();
+            Double ukuran = panen.getUkuranLalhan();
             String lokasi = panen.getLokasi();
-            Double quantity = panen.getQuantity();
+            Integer quantity = panen.getQuantity();
             Integer harga = panen.getHarga();
             String caraPanen = panen.getCaraPanen();
-            System.out.println(jenis+ukuran+lokasi+quantity+harga+carapanen);
             oo.add(new model(i, jenis, ukuran, lokasi, caraPanen, quantity, harga));
 
             i++;
@@ -118,7 +117,7 @@ public class FXMLDocumentController implements Initializable {
         layout.getChildren().setAll(root);
     }
     public void pembibitan() throws IOException{
-        AnchorPane root=FXMLLoader.load(getClass().getResource("sistpencatatanpertanian/Pembibitan/pembibitan.fxml"));
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpembibitan/pembibitan.fxml"));
         layout.getChildren().setAll(root);
     }
 }
