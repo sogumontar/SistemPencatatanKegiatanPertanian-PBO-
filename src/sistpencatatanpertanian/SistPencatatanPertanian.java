@@ -22,7 +22,7 @@ public class SistPencatatanPertanian extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         System.out.println("asda");
-        Parent root = FXMLLoader.load(getClass().getResource("PembibitanCreate/create.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FormLogin.fxml"));
         
         Scene scene = new Scene(root);
         

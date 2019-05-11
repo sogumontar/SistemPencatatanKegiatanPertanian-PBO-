@@ -30,7 +30,7 @@ import sistpencatatanpertanian.Pembibitan.*;
  * @author DedekManisTasBiru
  */
 public class FormLoginController implements Initializable {
-
+    public static boolean login=false;
     @FXML
     private AnchorPane layout;
     @FXML
@@ -66,9 +66,9 @@ public class FormLoginController implements Initializable {
         ses.close();
 
         if (list.size() > 0) {
-
+            FormLoginController.login=true;
             notif.setText("Sukses");
-            AnchorPane root = FXMLLoader.load(getClass().getResource("Pembibitan/pembibitan.fxml"));
+            AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
             layout.getChildren().setAll(root);
         } else {
             notif.setText("Username Atau Password Salah");

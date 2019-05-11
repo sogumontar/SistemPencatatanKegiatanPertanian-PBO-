@@ -44,3 +44,9 @@ create table pasca_panen (id int AUTO_INCREMENT PRIMARY KEY, created_at date, uk
 2019-05-03 20:54:24 jdbc[10]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "FROM AKUN [*]"; expected "., (, USE, AS, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
 from AKUN [42001-199]
+2019-05-11 11:04:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "null"; SQL statement:
+select panen0_.ID as ID1_2_, panen0_.CREATED_AT as CREATED_2_2_, panen0_.UKURAN_LAHAN as UKURAN_L3_2_, panen0_.JENIS_TANAMAN as JENIS_TA4_2_, panen0_.TANGGAL_MULAI_PANEN as TANGGAL_5_2_, panen0_.TARGET_SELESAI_PANEN as TARGET_S6_2_, panen0_.DESKRIPSI_TANAMAN as DESKRIPS7_2_, panen0_.LOKASI as LOKASI8_2_, panen0_.CARA_PANEN as CARA_PAN9_2_, panen0_.HARGA as HARGA10_2_, panen0_.QUANTITY as QUANTIT11_2_, panen0_.STATUS as STATUS12_2_, panen0_.BOOKED_STATUS as BOOKED_13_2_ from DB.PUBLIC.PANEN panen0_ where BOOKED_STATUS<>1 [22018-199]
+2019-05-11 11:05:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "null"; SQL statement:
+select panen0_.ID as ID1_2_, panen0_.CREATED_AT as CREATED_2_2_, panen0_.UKURAN_LAHAN as UKURAN_L3_2_, panen0_.JENIS_TANAMAN as JENIS_TA4_2_, panen0_.TANGGAL_MULAI_PANEN as TANGGAL_5_2_, panen0_.TARGET_SELESAI_PANEN as TARGET_S6_2_, panen0_.DESKRIPSI_TANAMAN as DESKRIPS7_2_, panen0_.LOKASI as LOKASI8_2_, panen0_.CARA_PANEN as CARA_PAN9_2_, panen0_.HARGA as HARGA10_2_, panen0_.QUANTITY as QUANTIT11_2_, panen0_.STATUS as STATUS12_2_, panen0_.BOOKED_STATUS as BOOKED_13_2_ from DB.PUBLIC.PANEN panen0_ where BOOKED_STATUS<>1 [22018-199]
