@@ -118,15 +118,20 @@ public class PembibitanController implements Initializable {
     }
 
     @FXML
-    private void home(ActionEvent event) {
+    public void home(ActionEvent event) {
     }
 
     @FXML
-    private void pembibitan(ActionEvent event) {
+    public void pembibitan(ActionEvent event) {
     }
 
     @FXML
-    private void logout(ActionEvent event) {
+    public void logout(ActionEvent event) {
     }
+    public void pemupukan(ActionEvent event) throws IOException{
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
+        layout.getChildren().setAll(root);
+    }
+    
 
 }

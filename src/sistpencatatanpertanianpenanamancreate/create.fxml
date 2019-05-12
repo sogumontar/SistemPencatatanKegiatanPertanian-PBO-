@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="sistpencatatanpertanianpenanamancreate.CreateController">
+    <stylesheets>
+        <URL value="@create.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="26.0" layoutY="49.0" text="Ukuran" />
+      <Label layoutX="25.0" layoutY="71.0" text="Jenis Tanaman" />
+      <Label layoutX="26.0" layoutY="96.0" text="Jenis Bibit" />
+      <Label layoutX="24.0" layoutY="129.0" text="Tanggal Mulai Penanaman" />
+      <Label layoutX="24.0" layoutY="155.0" text="TArget Selesai Penanaman" />
+      <Label layoutX="21.0" layoutY="257.0" text="Deskripsi" />
+      <Label layoutX="23.0" layoutY="182.0" text="Lokasi" />
+      <Label layoutX="24.0" layoutY="212.0" text="Metode" />
+      <TextArea fx:id="deskripsi" layoutX="178.0" layoutY="257.0" prefHeight="98.0" prefWidth="211.0" />
+      <TextField fx:id="metode" layoutX="178.0" layoutY="214.0" />
+      <TextField fx:id="lokasi" layoutX="178.0" layoutY="183.0" />
+      <TextField fx:id="bibit" layoutX="178.0" layoutY="101.0" />
+      <TextField fx:id="jenis" layoutX="178.0" layoutY="67.0" />
+      <TextField fx:id="ukuran" layoutX="178.0" layoutY="37.0" />
+      <DatePicker fx:id="tanggalMulai" layoutX="179.0" layoutY="129.0" />
+      <DatePicker fx:id="tanggalSelesai" layoutX="179.0" layoutY="156.0" />
+      <Button layoutX="416.0" layoutY="361.0" mnemonicParsing="false" onAction="#create" text="Button" />
+      <Button fx:id="choose" layoutX="179.0" layoutY="361.0" mnemonicParsing="false" onAction="#choose" text="Choose" />
+      <Label layoutX="26.0" layoutY="365.0" text="Gambar" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpemupukan.PemupukanController">
+    <stylesheets>
+        <URL value="@pemupukan.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="table" layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="514.0">
+        <columns>
+          <TableColumn fx:id="no" minWidth="5.333343505859375" prefWidth="26.00003433227539" text="no" />
+          <TableColumn fx:id="ukuran" prefWidth="42.6666259765625" text="ukuran" />
+            <TableColumn fx:id="jenis" prefWidth="36.66661834716797" text="Jenis" />
+            <TableColumn fx:id="mulai" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="tanggalMulai" />
+            <TableColumn fx:id="selesai" prefWidth="63.33332824707031" text="Target Selesai" />
+            <TableColumn fx:id="deskripsi" prefWidth="66.6666259765625" text="Deskripsi" />
+            <TableColumn fx:id="lokasi" prefWidth="64.0" text="Lokasi" />
+            <TableColumn fx:id="metode" prefWidth="60.0" text="Metode" />
+            <TableColumn fx:id="jenisPupuk" prefWidth="31.33331298828125" text="Jenis Pupuk" />
+            <TableColumn fx:id="banyakPupuk" prefWidth="62.0" text="Banyak Pupuk" />
+        </columns>
+      </TableView>
+      <Button layoutX="476.0" layoutY="298.0" mnemonicParsing="false" onAction="#create" text="Button" />
+   </children>
+</AnchorPane>

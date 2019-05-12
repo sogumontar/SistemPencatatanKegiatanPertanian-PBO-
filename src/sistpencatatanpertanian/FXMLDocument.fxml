@@ -29,8 +29,8 @@
           <Menu mnemonicParsing="false" text="Pertanian">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#pembibitan" text="Pembibitan" />
-                  <MenuItem mnemonicParsing="false" text="Penanaman" />
-                  <MenuItem mnemonicParsing="false" text="Pemupukan" />
+                  <MenuItem mnemonicParsing="false" onAction="#penanaman" text="Penanaman" />
+                  <MenuItem mnemonicParsing="false" onAction="#pemupukan" text="Pemupukan" />
                   <MenuItem mnemonicParsing="false" text="Pasca Panen" />
                   <MenuItem mnemonicParsing="false" text="Panen" />
             </items>

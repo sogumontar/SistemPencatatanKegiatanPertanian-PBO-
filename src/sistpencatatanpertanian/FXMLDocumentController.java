@@ -120,4 +120,12 @@ public class FXMLDocumentController implements Initializable {
         AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpembibitan/pembibitan.fxml"));
         layout.getChildren().setAll(root);
     }
+     public void pemupukan() throws IOException{
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
+        layout.getChildren().setAll(root);
+    }
+     public void penanaman() throws IOException{
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
+        layout.getChildren().setAll(root);
+    }
 }
