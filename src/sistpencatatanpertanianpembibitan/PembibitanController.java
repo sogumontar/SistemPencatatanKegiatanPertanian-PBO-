@@ -19,8 +19,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -34,6 +36,7 @@ import org.hibernate.Session;
  */
 public class PembibitanController implements Initializable {
 
+    int id = 0;
     ObservableList ov;
     List list;
     @FXML
@@ -58,12 +61,29 @@ public class PembibitanController implements Initializable {
     private TableColumn<model, String> status;
     @FXML
     private TableColumn<model, Double> ukuran;
+    @FXML
+    private Button deletes;
+    @FXML
+    private TextField update_jenis;
+    @FXML
+    private TextField update_lokasi;
+    @FXML
+    private TextField update_metode;
+    @FXML
+    private TextField update_tanggalMulai;
+    @FXML
+    private TextField update_tanggalSelesai;
+    @FXML
+    private TextField update_ukuran;
+    @FXML
+    private Button update;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        deletes.setVisible(false);
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         ov = FXCollections.observableArrayList();
@@ -74,19 +94,20 @@ public class PembibitanController implements Initializable {
         int indikator = 1;
         for (Object i : list) {
             Pembibitan objek = (Pembibitan) i;
-            String jenis=objek.getJenisTanaman();
-            String now=objek.getCreatedAt();
-            String tanggalMulai=objek.getTanggalMulaiPembibitan();
-            String tanggalSelesai=objek.getTanggalSelesaiPembibitan();
-            String lokasi=objek.getLokasi();
-            String metode=objek.getCaraPembibitan();
-            String status=objek.getBookedStatus();
-            Double ukuran=objek.getUkuranLahan();
-            String deskripsi=objek.getDeskripsiTanaman();
-            String bookedStatus=objek.getBookedStatus();
+            String jenis = objek.getJenisTanaman();
+            String now = objek.getCreatedAt();
+            String tanggalMulai = objek.getTanggalMulaiPembibitan();
+            String tanggalSelesai = objek.getTanggalSelesaiPembibitan();
+            String lokasi = objek.getLokasi();
+            String metode = objek.getCaraPembibitan();
+            String status = objek.getBookedStatus();
+            Double ukuran = objek.getUkuranLahan();
+            String deskripsi = objek.getDeskripsiTanaman();
+            String bookedStatus = objek.getBookedStatus();
+            int id = objek.getId();
             indikator++;
-            
-            ov.add(new model(indikator,jenis,tanggalMulai,tanggalSelesai,lokasi,metode,status,ukuran));
+
+            ov.add(new model(id, indikator, jenis, tanggalMulai, tanggalSelesai, lokasi, metode, status, ukuran));
         }
         no.setCellValueFactory(new PropertyValueFactory<>("no"));
         jenis.setCellValueFactory(new PropertyValueFactory<>("jenis"));
@@ -99,21 +120,24 @@ public class PembibitanController implements Initializable {
         table.setItems(ov);
         table.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             model model;
+
             @Override
             public void handle(MouseEvent event) {
-               if(table.getSelectionModel().getSelectedItem() !=null){
-                   model=table.getSelectionModel().getSelectedItem();
-                   System.out.println(model.getJenis());
-               }
+
+                if (table.getSelectionModel().getSelectedItem() != null) {
+                    model = table.getSelectionModel().getSelectedItem();
+                    id = model.getId();
+                    System.out.println(model.getId());
+                }
+                check();
             }
-        } );
-        
-    
+        });
+
     }
 
     @FXML
     private void create(ActionEvent event) throws IOException {
-        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianPembibitanCreate/create.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianPembibitanCreate/create.fxml"));
         layout.getChildren().setAll(root);
     }
 
@@ -128,10 +152,41 @@ public class PembibitanController implements Initializable {
     @FXML
     public void logout(ActionEvent event) {
     }
-    public void pemupukan(ActionEvent event) throws IOException{
-        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
+
+    @FXML
+    public void pemupukan(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
         layout.getChildren().setAll(root);
     }
-    
+
+    public void check() {
+        if (id != 0) {
+            deletes.setVisible(true);
+        }
+    }
+
+    @FXML
+    private void delete(ActionEvent event) {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        ov = FXCollections.observableArrayList();
+        Query query = session.createSQLQuery("Delete Pembibitan where id =" + id + "");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+    }
+
+    @FXML
+    private void penanaman(ActionEvent event) {
+    }
+
+    @FXML
+    private void panen(ActionEvent event) {
+    }
+
+    @FXML
+    private void pascaPanen(ActionEvent event) {
+    }
 
 }

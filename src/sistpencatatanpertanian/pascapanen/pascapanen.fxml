@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanian.pascapanen.PascapanenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="sistpencatatanpertanian.pascapanen.PascapanenController">
     <stylesheets>
-        <URL value="@pascapanen.css"/>
+        <URL value="@pascapanen.css" />
     </stylesheets>
+   <children>
+      <Button layoutX="104.0" layoutY="220.0" mnemonicParsing="false" text="Button" textFill="WHITE" />
+   </children>
 </AnchorPane>

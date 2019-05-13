@@ -329,3 +329,6 @@ insert into panen(created_at,ukuran_lalhan,jenis_tanaman,tanggal_mulai_panen,tan
 	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:68)
 	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:303)
 	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2058)
+2019-05-13 00:22:51 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLTimeoutException: Timeout trying to lock table {0}; SQL statement:
+Delete Pembibitan where id = '3' [50200-199]

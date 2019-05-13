@@ -1,6 +1,0 @@
-#FileLock
-#Sun May 12 23:00:41 ICT 2019
-hostName=DPC_POWER
-id=16aacc65750bd2420101d44a9978ae572b3a60d9b1c
-method=file
-server=192.168.111.1\:54662

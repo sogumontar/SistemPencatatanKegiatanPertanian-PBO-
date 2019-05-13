@@ -20,8 +20,10 @@ public class model {
     private String Status;
     private Double ukuran;
     int no;
+    int id;
 
-    public model(int no,String jenis, String tanggalMulai, String tanggalSelesai, String lokasi, String metode, String Status, Double ukuran) {
+    public model(int id,int no,String jenis, String tanggalMulai, String tanggalSelesai, String lokasi, String metode, String Status, Double ukuran) {
+        this.id=id;
         this.no=no;
         this.jenis = jenis;
         this.tanggalMulai = tanggalMulai;
@@ -30,6 +32,22 @@ public class model {
         this.metode = metode;
         this.Status = Status;
         this.ukuran = ukuran;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNo() {
+        return no;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getJenis() {
