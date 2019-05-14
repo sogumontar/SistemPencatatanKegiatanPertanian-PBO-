@@ -10,18 +10,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
+import javafx.collections.FXCollections;  
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -115,6 +119,84 @@ public class PenanamanController implements Initializable {
     private void tambah(ActionEvent event) throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanamancreate/create.fxml"));
         layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    private void pembibitan(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpembibitan/pembibitan.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void penanaman(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void pemupukan(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void panen(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian.panen/panen.fxml"));
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void pascaPanen(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian.pascapanen/pascapanen.fxml"));
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void home(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianhomepage/homepage.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FormLogin.fxml"));
+
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

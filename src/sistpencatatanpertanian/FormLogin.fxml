@@ -15,7 +15,7 @@
             <Image url="@background.png" />
          </image>
       </ImageView>
-      <Button layoutX="271.0" layoutY="354.0" mnemonicParsing="false" onAction="#login" style="-fx-border-color: #fff; -fx-background-color: #E67E22;" text="Sign In" textFill="WHITE">
+      <Button layoutX="261.0" layoutY="369.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="78.0" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-background-radius: 30;" text="Sign In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

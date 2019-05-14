@@ -2,13 +2,67 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="sistpencatatanpertanian.pascapanen.PascapanenController">
+<AnchorPane id="AnchorPane" prefHeight="488.0" prefWidth="755.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanian.pascapanen.PascapanenController">
     <stylesheets>
         <URL value="@pascapanen.css" />
     </stylesheets>
    <children>
-      <Button layoutX="104.0" layoutY="220.0" mnemonicParsing="false" text="Button" textFill="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="39.0" layoutX="10.0" layoutY="9.0" stroke="#c0392b" strokeType="INSIDE" width="737.0" />
+      <Label layoutX="309.0" layoutY="15.0" text="RECORD LAHAN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="306.0" layoutY="61.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="380.0" layoutY="61.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="178.0" layoutY="118.0" stroke="#f1c40f" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
+      <Label layoutX="333.0" layoutY="109.0" text="PASCA PANEN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Pane layoutX="27.0" layoutY="419.0" prefHeight="63.0" prefWidth="702.0">
+         <children>
+            <Button layoutX="25.0" layoutY="23.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="157.0" layoutY="23.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="289.0" layoutY="23.0" mnemonicParsing="false" onAction="#pemupukan" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #E67E22; -fx-background-radius: 30;" text="PEMUPUKAN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="422.0" layoutY="23.0" mnemonicParsing="false" onAction="#panen" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #F39C12; -fx-background-radius: 30;" text="PANEN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="554.0" layoutY="23.0" mnemonicParsing="false" onAction="#pascaPanen" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #F1C40F; -fx-background-radius: 30;" text="PASCA PANEN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
