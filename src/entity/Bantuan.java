@@ -13,13 +13,13 @@ public class Bantuan  implements java.io.Serializable {
      private Integer id;
      private Integer idAkun;
      private String jenisBantuan;
-     private Clob deskripsi;
+     private String deskripsi;
      private String jenisTanaman;
 
     public Bantuan() {
     }
 
-    public Bantuan(Integer idAkun, String jenisBantuan, Clob deskripsi, String jenisTanaman) {
+    public Bantuan(Integer idAkun, String jenisBantuan, String deskripsi, String jenisTanaman) {
        this.idAkun = idAkun;
        this.jenisBantuan = jenisBantuan;
        this.deskripsi = deskripsi;
@@ -47,11 +47,11 @@ public class Bantuan  implements java.io.Serializable {
     public void setJenisBantuan(String jenisBantuan) {
         this.jenisBantuan = jenisBantuan;
     }
-    public Clob getDeskripsi() {
+    public String getDeskripsi() {
         return this.deskripsi;
     }
     
-    public void setDeskripsi(Clob deskripsi) {
+    public void setDeskripsi(String deskripsi) {
         this.deskripsi = deskripsi;
     }
     public String getJenisTanaman() {

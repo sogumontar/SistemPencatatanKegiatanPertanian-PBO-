@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpanen.PanenController">
+    <stylesheets>
+        <URL value="@panen.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutY="455.0" prefHeight="74.0" prefWidth="900.0">
+         <children>
+            <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="190.0" layoutY="23.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="29.0" prefWidth="157.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="365.0" layoutY="23.0" mnemonicParsing="false" onAction="#pemupukan" prefHeight="29.0" prefWidth="157.0" style="-fx-background-color: #E67E22; -fx-background-radius: 30;" text="PEMUPUKAN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="540.0" layoutY="22.0" mnemonicParsing="false" onAction="#panen" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #F39C12; -fx-background-radius: 30;" text="PANEN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="719.0" layoutY="22.0" mnemonicParsing="false" onAction="#pascaPanen" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #F1C40F; -fx-background-radius: 30;" text="PASCA PANEN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="40.0" layoutX="10.0" layoutY="8.0" stroke="#c0392b" strokeType="INSIDE" width="881.0" />
+      <Label layoutX="352.0" layoutY="14.0" text="RECORD LAHAN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="728.0" layoutY="62.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="800.0" layoutY="62.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="185.0" layoutY="127.0" stroke="#f39c12" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
+      <Label layoutX="363.0" layoutY="118.0" text="PANEN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="89.0" layoutY="164.0" prefHeight="200.0" prefWidth="591.0">
+        <columns>
+            <TableColumn fx:id="no" prefWidth="75.0" text="No" />
+          <TableColumn fx:id="jenis" prefWidth="75.0" text="jenis" />
+          <TableColumn fx:id="ukuran" prefWidth="75.0" text="ukuran" />
+            <TableColumn fx:id="lokasi" prefWidth="75.0" text="Lokasi" />
+            <TableColumn fx:id="quantity" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="harga" prefWidth="75.0" text="Harga" />
+            <TableColumn fx:id="carapanen" prefWidth="75.0" text="Metode" />
+        </columns>
+      </TableView>
+      <Button layoutX="747.0" layoutY="174.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Create" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="detail" layoutX="747.0" layoutY="239.0" mnemonicParsing="false" onAction="#detail" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Detail" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

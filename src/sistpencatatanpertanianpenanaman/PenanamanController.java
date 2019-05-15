@@ -158,7 +158,7 @@ public class PenanamanController implements Initializable {
     private void panen(ActionEvent event) throws IOException{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian.panen/panen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -170,7 +170,7 @@ public class PenanamanController implements Initializable {
     private void pascaPanen(ActionEvent event) throws IOException{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian.pascapanen/pascapanen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -181,7 +181,7 @@ public class PenanamanController implements Initializable {
     @FXML
     private void home(ActionEvent event) throws IOException{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianhomepage/homepage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

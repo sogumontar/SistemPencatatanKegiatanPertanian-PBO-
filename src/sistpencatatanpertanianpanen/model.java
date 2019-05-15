@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistpencatatanpertanian;
+package sistpencatatanpertanianpanen;
 
 /**
  *
@@ -12,17 +12,17 @@ package sistpencatatanpertanian;
 public class model {
 
     private int no;
+    private int id;
     private String jenis;
     private Double ukuran;
     private String lokasi;
     private String metode;
     private Integer Quantity;
     private Integer Harga;
-    int id;
 
     public model(int no,int id, String jenis, Double ukuran, String lokasi, String metode, Integer Quantity, Integer Harga) {
-        this.no = no;
         this.id=id;
+        this.no = no;
         this.jenis = jenis;
         this.ukuran = ukuran;
         this.lokasi = lokasi;
@@ -31,14 +31,13 @@ public class model {
         this.Harga = Harga;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    public int getId() {
+        return id;
+    }
 
     public void setNo(int no) {
         this.no = no;
@@ -95,5 +94,4 @@ public class model {
     public void setHarga(Integer Harga) {
         this.Harga = Harga;
     }
-
 }

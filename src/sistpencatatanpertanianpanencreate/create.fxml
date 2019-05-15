@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpanencreate.CreateController">
+    <stylesheets>
+        <URL value="@create.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="layout1" layoutY="9.0" prefHeight="596.0" prefWidth="924.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@../sistpencatatanpertanianpenanamancreate/create.css" />
+         </stylesheets>
+         <children>
+            <Label layoutX="191.0" layoutY="58.0" text="Ukuran" />
+            <Label layoutX="190.0" layoutY="88.0" text="Jenis Tanaman" />
+            <Label layoutX="191.0" layoutY="121.0" text="Banyak Hasil" />
+            <Label layoutX="189.0" layoutY="146.0" text="Tanggal Mulai Penanaman" />
+            <Label layoutX="188.0" layoutY="177.0" text="Target Selesai Penanaman" />
+            <Label layoutX="186.0" layoutY="342.0" text="Deskripsi" />
+            <Label layoutX="188.0" layoutY="204.0" text="Lokasi" />
+            <Label layoutX="189.0" layoutY="235.0" text="Metode" />
+            <TextArea fx:id="deskripsi" layoutX="337.0" layoutY="315.0" prefHeight="92.0" prefWidth="207.0" />
+            <TextField fx:id="metode" layoutX="343.0" layoutY="231.0" />
+            <TextField fx:id="lokasi" layoutX="343.0" layoutY="200.0" />
+            <TextField fx:id="banyak" layoutX="343.0" layoutY="118.0" />
+            <TextField fx:id="jenis" layoutX="343.0" layoutY="84.0" />
+            <TextField fx:id="ukuran" layoutX="343.0" layoutY="54.0" />
+            <DatePicker fx:id="tanggalMulai" layoutX="344.0" layoutY="146.0" />
+            <DatePicker fx:id="tanggalSelesai" layoutX="344.0" layoutY="173.0" />
+            <Button layoutX="490.0" layoutY="430.0" mnemonicParsing="false" onAction="#create" text="Simpan" />
+            <Button fx:id="choose" layoutX="337.0" layoutY="430.0" mnemonicParsing="false" onAction="#choose" text="Choose" />
+            <Label layoutX="189.0" layoutY="434.0" text="Gambar" />
+            <Pane layoutX="1.0" layoutY="491.0" prefHeight="73.0" prefWidth="924.0">
+               <children>
+                  <Button layoutX="19.0" layoutY="22.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="29.0" prefWidth="141.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="191.0" layoutY="21.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="29.0" prefWidth="149.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="369.0" layoutY="21.0" mnemonicParsing="false" onAction="#pemupukan" prefHeight="29.0" prefWidth="160.0" style="-fx-background-color: #E67E22; -fx-background-radius: 30;" text="PEMUPUKAN" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="557.0" layoutY="21.0" mnemonicParsing="false" onAction="#panen" prefHeight="29.0" prefWidth="160.0" style="-fx-background-color: #F39C12; -fx-background-radius: 30;" text="PANEN" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="740.0" layoutY="21.0" mnemonicParsing="false" onAction="#pascaPanen" prefHeight="29.0" prefWidth="160.0" style="-fx-background-color: #F1C40F; -fx-background-radius: 30;" text="PASCA PANEN" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="10.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Button layoutX="730.0" layoutY="9.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button layoutX="813.0" layoutY="9.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label layoutX="421.0" layoutY="14.0" text="Panen">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <TextField fx:id="harga" layoutX="343.0" layoutY="275.0" />
+            <Label layoutX="189.0" layoutY="279.0" text="Harga" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

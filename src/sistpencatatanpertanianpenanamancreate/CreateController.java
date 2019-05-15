@@ -135,5 +135,46 @@ public class CreateController implements Initializable {
         AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
         layout.getChildren().setAll(root);
     }
+    
+    @FXML
+    public void home() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    public void pembibitan() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpembibitan/pembibitan.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    public void pemupukan() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    public void penanaman() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
+        layout.getChildren().setAll(root);
+    }
+    @FXML
+    public void panen() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        layout.getChildren().setAll(root);
+    }
+    public void pascapanen() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    private void pascaPanen(ActionEvent event) {
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+    }
 
 }

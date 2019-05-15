@@ -110,7 +110,7 @@ public class PembibitanController implements Initializable {
             String bookedStatus = objek.getBookedStatus();
             int id = objek.getId();
             indikator++;
-
+            System.out.println(tanggalMulai);
             ov.add(new model(id, indikator, jenis, tanggalMulai, tanggalSelesai, lokasi, metode, status, ukuran));
         }
         no.setCellValueFactory(new PropertyValueFactory<>("no"));
@@ -148,7 +148,7 @@ public class PembibitanController implements Initializable {
     @FXML
     public void home(ActionEvent event) throws IOException{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianhomepage/homepage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -220,7 +220,7 @@ public class PembibitanController implements Initializable {
     private void panen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian.panen/panen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -232,7 +232,7 @@ public class PembibitanController implements Initializable {
     private void pascaPanen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian.pascapanen/pascapanen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
 
         Scene scene = new Scene(root);
 

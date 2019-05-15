@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpanen.DetailController">
+    <stylesheets>
+        <URL value="@detail.css" />
+    </stylesheets>
+   <children>
+      <Text fx:id="ukuran" layoutX="522.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ukuran Lahan" />
+      <Text fx:id="jenis" layoutX="519.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jenis Tanaman" />
+      <Text fx:id="tglMulai" layoutX="522.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal Mulai Panen" />
+      <Text fx:id="tglSelesai" layoutX="519.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal Selesai Panen" />
+      <Text fx:id="deskripsi" layoutX="522.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deskripsi" />
+      <Text fx:id="lokasi" layoutX="522.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lokasi" />
+      <Text fx:id="metode" layoutX="525.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Metode" />
+      <Text fx:id="harga" layoutX="522.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harga" />
+      <Label layoutX="339.0" layoutY="146.0" text="UKuran" />
+      <Label layoutX="301.0" layoutY="183.0" text="Jenis Tanaman" />
+      <Label layoutX="267.0" layoutY="217.0" text="Tanggal Mulai Panen" />
+      <Label layoutX="264.0" layoutY="247.0" text="Tanggal Selesai Panen" />
+      <Label layoutX="335.0" layoutY="280.0" text="Deskripsi" />
+      <Label layoutX="342.0" layoutY="316.0" text="Lokasi" />
+      <Label layoutX="338.0" layoutY="348.0" text="Metode" />
+      <Label layoutX="351.0" layoutY="384.0" text="Harga" />
+      <Button layoutX="416.0" layoutY="466.0" mnemonicParsing="false" style="-fx-background-color: #c0392b;" text="Pre Order" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistpencatatanpertanianpemupukancreate;
+package sistpencatatanpertanianpanencreate;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +17,6 @@ import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,59 +24,58 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.FormLoginController;
 
 /**
  * FXML Controller class
  *
  * @author DedekManisTasBiru
  */
-public class PemupukanController implements Initializable {
+public class CreateController implements Initializable {
 
-    private Path copy;
+    @FXML
+    private AnchorPane layout;
+    @FXML
+    private AnchorPane layout1;
+    @FXML
+    private TextField ukuran;
+    @FXML
+    private TextField jenis;
+    @FXML
+    private TextField lokasi;
+    @FXML
+    private TextArea deskripsi;
+    @FXML
+    private TextField metode;
+    @FXML
+    private TextField harga;
+    @FXML
+    private TextField banyak;
+    @FXML
+    private DatePicker tanggalMulai;
+    @FXML
+    private DatePicker tanggalSelesai;
+   private Path copy;
     private Path files;
     @FXML
     private Button choose;
     private FileChooser fileChooser;
     private File file;
     private String gambar;
-    @FXML
-    private TextField ukuran;
-    @FXML
-    private TextField jenis;
-    @FXML
-    private DatePicker mulai;
-    @FXML
-    private DatePicker selesai;
-    @FXML
-    private TextField lokasi;
-    @FXML
-    private TextArea deskripsi;
-    @FXML
-    private Label metode;
-    @FXML
-    private AnchorPane layout;
-    @FXML
-    private TextField jenisPupuk;
-    @FXML
-    private TextField banyakPupuk;
-
     /**
      * Initializes the controller class.
      */
-    @Override
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*jpeg", "*.bmp")
@@ -103,41 +99,38 @@ public class PemupukanController implements Initializable {
     }
 
     @FXML
-    private void save() throws IOException {
-        
-        
-        
+    public void create(ActionEvent event) throws IOException {
+
         if (gambar != null) {
-                File dir = new File(System.getProperty("user.dir"));
-                copy = Paths.get(dir + "\\src\\images\\" + gambar);
-                CopyOption[] options = new CopyOption[]{
-                    StandardCopyOption.REPLACE_EXISTING,
-                    StandardCopyOption.COPY_ATTRIBUTES
-                };
-                Files.copy(files, copy,options);
-            
+            File dir = new File(System.getProperty("user.dir"));
+            copy = Paths.get(dir + "\\src\\sistpencatatanpertanianpanencreate\\images\\" + gambar);
+            CopyOption[] options = new CopyOption[]{
+                StandardCopyOption.REPLACE_EXISTING,
+                StandardCopyOption.COPY_ATTRIBUTES
+            };
+            Files.copy(files, copy, options);
+
         }
-        
+
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Date date=new Date();
+        Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
         System.out.println(formatter.format(date));
-        String created=formatter.format(date).toString();
-        String banyak=banyakPupuk.getText().toString();
-        int bany=Integer.parseInt(banyak);
-        Query query = session.createSQLQuery("INSERT INTO pemupukan (created_at,ukuran_lahan,jenis_tanaman,tanggal_mulai_pemupukan,tanggal_selesai_pemupukan,deskripsi_tanaman,lokasi,cara_pemupukan,pupuk,banyak_pupuk,status,booked_status,gambar)VALUES(:created, :ukuran, :jenis, :tanggalM, :tanggalS, :deskripsi, :lokasi, :cara, :pupuk, :banyak, :status, :booked, :gambar)");
+        String created = formatter.format(date).toString();
+        int banyaks= Integer.parseInt(banyak.getText());
+        int hrg=Integer.parseInt(harga.getText());
+        Query query = session.createSQLQuery("INSERT INTO panen (created_at,ukuran_lalhan,jenis_tanaman,tanggal_mulai_panen,tanggal_selesai_panen,deskripsi_tanaman,lokasi,cara_panen,harga,quantity,status,booked_status,gambar)VALUES(:created, :ukuran, :jenis, :tanggalM, :tanggalS, :deskripsi, :lokasi, :cara, :harga, :quantity, :status, :booked, :gambar)");
         query.setParameter("created", created);
         query.setParameter("ukuran", ukuran.getText().toString());
         query.setParameter("jenis", jenis.getText().toString());
-        query.setParameter("tanggalM", mulai.getValue().toString());
-        query.setParameter("tanggalS", selesai.getValue().toString());
-//        query.setParameter("deskripsi", deskripsi.getText().toString());
+        query.setParameter("tanggalM", tanggalMulai.getValue().toString());
+        query.setParameter("tanggalS", tanggalSelesai.getValue().toString());
         query.setParameter("lokasi", lokasi.getText().toString());
         query.setParameter("deskripsi", deskripsi.getText().toString());
         query.setParameter("cara", metode.getText().toString());
-        query.setParameter("pupuk", jenisPupuk.getText().toString());
-        query.setParameter("banyak", bany);
+        query.setParameter("harga", hrg);
+        query.setParameter("quantity", banyaks);
         query.setParameter("status", "normal");
         query.setParameter("booked", "normal");
         query.setParameter("gambar", gambar);
@@ -145,9 +138,9 @@ public class PemupukanController implements Initializable {
         session.getTransaction().commit();
         session.close();
         System.out.println("Sukses");
-        
+        panen();
     }
-    
+
     @FXML
     public void home() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -171,22 +164,26 @@ public class PemupukanController implements Initializable {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
         layout.getChildren().setAll(root);
     }
+
     @FXML
     public void panen() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
         layout.getChildren().setAll(root);
     }
-    public void pascapanen() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+
+    @FXML
+    public void pascaPanen() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
         layout.getChildren().setAll(root);
     }
 
-    @FXML
-    private void pascaPanen(ActionEvent event) {
-    }
 
     @FXML
-    private void logout(ActionEvent event) {
+    private void logout(ActionEvent event) throws IOException {
+        FormLoginController.login=false;
+         AnchorPane root = FXMLLoader.load(getClass().getResource("FormLogin .fxml"));
+        layout.getChildren().setAll(root);
     }
 
+    
 }
