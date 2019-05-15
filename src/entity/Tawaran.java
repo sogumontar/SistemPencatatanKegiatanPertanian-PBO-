@@ -1,5 +1,5 @@
 package entity;
-// Generated May 11, 2019 8:29:17 PM by Hibernate Tools 4.3.1
+// Generated May 15, 2019 9:13:58 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,7 +10,7 @@ public class Tawaran  implements java.io.Serializable {
 
 
      private Integer id;
-     private Integer idAkun;
+     private Akun akun;
      private Integer hargaTawaran;
      private Integer tanamanId;
      private String createdAt;
@@ -18,8 +18,8 @@ public class Tawaran  implements java.io.Serializable {
     public Tawaran() {
     }
 
-    public Tawaran(Integer idAkun, Integer hargaTawaran, Integer tanamanId, String createdAt) {
-       this.idAkun = idAkun;
+    public Tawaran(Akun akun, Integer hargaTawaran, Integer tanamanId, String createdAt) {
+       this.akun = akun;
        this.hargaTawaran = hargaTawaran;
        this.tanamanId = tanamanId;
        this.createdAt = createdAt;
@@ -32,12 +32,12 @@ public class Tawaran  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getIdAkun() {
-        return this.idAkun;
+    public Akun getAkun() {
+        return this.akun;
     }
     
-    public void setIdAkun(Integer idAkun) {
-        this.idAkun = idAkun;
+    public void setAkun(Akun akun) {
+        this.akun = akun;
     }
     public Integer getHargaTawaran() {
         return this.hargaTawaran;

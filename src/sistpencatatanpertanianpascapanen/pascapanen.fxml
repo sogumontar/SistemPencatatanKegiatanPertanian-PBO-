@@ -15,73 +15,73 @@
         <URL value="@pascapanen.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="42.0" layoutX="-6.0" stroke="#c0392b" strokeType="INSIDE" width="907.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="53.0" layoutX="-6.0" stroke="#c0392b" strokeType="INSIDE" width="907.0" />
       <Label layoutX="309.0" layoutY="15.0" text="RECORD LAHAN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="725.0" layoutY="53.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+      <Button layoutX="708.0" layoutY="12.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="812.0" layoutY="53.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+      <Button layoutX="795.0" layoutY="12.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="178.0" layoutY="118.0" stroke="#f1c40f" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
-      <Label layoutX="333.0" layoutY="109.0" text="PASCA PANEN" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="186.0" layoutY="83.0" stroke="#f1c40f" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
+      <Label layoutX="342.0" layoutY="74.0" text="PASCA PANEN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <Pane layoutY="485.0" prefHeight="78.0" prefWidth="900.0">
          <children>
-            <Button layoutX="18.0" layoutY="21.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="29.0" prefWidth="163.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
+            <Button fx:id="btn_pembibitan" layoutX="18.0" layoutY="21.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="29.0" prefWidth="163.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
-            <Button layoutX="202.0" layoutY="20.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="29.0" prefWidth="163.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
+            <Button fx:id="btn_penanaman" layoutX="202.0" layoutY="20.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="29.0" prefWidth="163.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
-            <Button layoutX="381.0" layoutY="20.0" mnemonicParsing="false" onAction="#pemupukan" prefHeight="29.0" prefWidth="152.0" style="-fx-background-color: #E67E22; -fx-background-radius: 30;" text="PEMUPUKAN" textFill="WHITE">
+            <Button fx:id="btn_pemupukan" layoutX="381.0" layoutY="20.0" mnemonicParsing="false" onAction="#pemupukan" prefHeight="29.0" prefWidth="152.0" style="-fx-background-color: #E67E22; -fx-background-radius: 30;" text="PEMUPUKAN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
-            <Button layoutX="558.0" layoutY="20.0" mnemonicParsing="false" onAction="#panen" prefHeight="29.0" prefWidth="152.0" style="-fx-background-color: #F39C12; -fx-background-radius: 30;" text="PANEN" textFill="WHITE">
+            <Button fx:id="btn_panen" layoutX="558.0" layoutY="20.0" mnemonicParsing="false" onAction="#panen" prefHeight="29.0" prefWidth="152.0" style="-fx-background-color: #F39C12; -fx-background-radius: 30;" text="PANEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
-            <Button layoutX="734.0" layoutY="20.0" mnemonicParsing="false" onAction="#pascaPanen" prefHeight="29.0" prefWidth="152.0" style="-fx-background-color: #F1C40F; -fx-background-radius: 30;" text="PASCA PANEN" textFill="WHITE">
+            <Button fx:id="btn_pascaPanen" layoutX="734.0" layoutY="20.0" mnemonicParsing="false" onAction="#pascaPanen" prefHeight="29.0" prefWidth="152.0" style="-fx-background-color: #F1C40F; -fx-background-radius: 30;" text="PASCA PANEN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <TableView fx:id="table" layoutX="83.0" layoutY="166.0" prefHeight="200.0" prefWidth="729.0">
+      <TableView fx:id="table" layoutX="14.0" layoutY="165.0" prefHeight="200.0" prefWidth="649.0">
         <columns>
             <TableColumn fx:id="no" prefWidth="30.000001907348633" text="No" />
           <TableColumn fx:id="ukuran" prefWidth="47.33333969116211" text="Ukuran" />
-          <TableColumn fx:id="jenis" prefWidth="64.66663360595703" text="Jenis" />
-            <TableColumn fx:id="selesai" prefWidth="99.33331298828125" text="Tanggal Selesai" />
-            <TableColumn fx:id="deskripsi" prefWidth="72.66673278808594" text="Deskripsi" />
-            <TableColumn fx:id="banyak" prefWidth="70.6666259765625" text="Jumlah" />
-            <TableColumn fx:id="lokasi" prefWidth="54.66668701171875" text="Lokasi" />
-            <TableColumn fx:id="carapanen" prefWidth="74.66671752929688" text="Metode" />
-            <TableColumn fx:id="harga" prefWidth="60.00006103515625" text="Harga" />
-            <TableColumn fx:id="quantity" prefWidth="62.66668701171875" text="Quantity" />
-            <TableColumn fx:id="status" prefWidth="86.0" text="Status" />
+          <TableColumn fx:id="jenis" prefWidth="53.0" text="Jenis" />
+            <TableColumn fx:id="selesai" prefWidth="107.0" text="Tanggal Selesai" />
+            <TableColumn fx:id="deskripsi" prefWidth="64.0" text="Deskripsi" />
+            <TableColumn fx:id="banyak" prefWidth="55.0" text="Jumlah" />
+            <TableColumn fx:id="lokasi" prefWidth="66.0" text="Lokasi" />
+            <TableColumn fx:id="carapanen" prefWidth="53.0" text="Metode" />
+            <TableColumn fx:id="harga" prefWidth="54.0" text="Harga" />
+            <TableColumn fx:id="quantity" prefWidth="55.0" text="Quantity" />
+            <TableColumn fx:id="status" prefWidth="62.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="688.0" layoutY="390.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="Create" textFill="WHITE">
+      <Button fx:id="btn_create" layoutX="531.0" layoutY="385.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="Create" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

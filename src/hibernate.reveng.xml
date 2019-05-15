@@ -41,15 +41,16 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="DB" match-schema="PUBLIC"/>
-  <table-filter match-name="PREORDER"/>
-  <table-filter match-name="PEMUPUKAN"/>
-  <table-filter match-name="REQUESTREGISTER"/>
   <table-filter match-name="PANEN"/>
+  <table-filter match-name="BANTUAN"/>
+  <table-filter match-name="PRODUK"/>
   <table-filter match-name="TAWARAN"/>
   <table-filter match-name="AKUN"/>
-  <table-filter match-name="PASCA_PANEN"/>
-  <table-filter match-name="PEMBIBITAN"/>
   <table-filter match-name="TRANSAKSI"/>
+  <table-filter match-name="PREORDER"/>
+  <table-filter match-name="PASCA_PANEN"/>
+  <table-filter match-name="PEMUPUKAN"/>
   <table-filter match-name="PENANAMAN"/>
-  <table-filter match-name="BANTUAN"/>
+  <table-filter match-name="REQUESTREGISTER"/>
+  <table-filter match-name="PEMBIBITAN"/>
 </hibernate-reverse-engineering>

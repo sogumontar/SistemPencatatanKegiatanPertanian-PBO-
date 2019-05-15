@@ -6,6 +6,7 @@
 package sistpencatatanpertanianpemupukan;
 
 import entity.Pemupukan;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -23,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -62,12 +64,15 @@ public class PemupukanController implements Initializable {
     private TableColumn<model, String> mulai;
     @FXML
     private TableColumn<model, String> selesai;
+    @FXML
+    private ImageView img_pemupukan;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        img_pemupukan.setVisible(false);
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         obv = FXCollections.observableArrayList();
@@ -111,7 +116,11 @@ public class PemupukanController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
+                    
                     model = table.getSelectionModel().getSelectedItem();
+                    img_pemupukan.setVisible(true);
+                    img_pemupukan=new ImageView();
+                   
                     System.out.println(model.getJenis());
                 }
             }

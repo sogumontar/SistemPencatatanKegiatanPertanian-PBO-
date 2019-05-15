@@ -46,16 +46,17 @@ Contributor(s):
     <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="entity/Preorder.hbm.xml"/>
+    <mapping resource="entity/Penanaman.hbm.xml"/>
+    <mapping resource="entity/Pemupukan.hbm.xml"/>
     <mapping resource="entity/Requestregister.hbm.xml"/>
     <mapping resource="entity/Akun.hbm.xml"/>
-    <mapping resource="entity/Preorder.hbm.xml"/>
     <mapping resource="entity/Pembibitan.hbm.xml"/>
     <mapping resource="entity/PascaPanen.hbm.xml"/>
-    <mapping resource="entity/Penanaman.hbm.xml"/>
+    <mapping resource="entity/Produk.hbm.xml"/>
     <mapping resource="entity/Transaksi.hbm.xml"/>
     <mapping resource="entity/Panen.hbm.xml"/>
     <mapping resource="entity/Bantuan.hbm.xml"/>
-    <mapping resource="entity/Pemupukan.hbm.xml"/>
     <mapping resource="entity/Tawaran.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

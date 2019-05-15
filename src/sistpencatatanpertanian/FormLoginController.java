@@ -33,6 +33,7 @@ import org.hibernate.Session;
  */
 public class FormLoginController implements Initializable {
     public static boolean login=false;
+    public static int id_akun=0;
     public static String role="";
     @FXML
     private AnchorPane layout;
@@ -73,6 +74,7 @@ public class FormLoginController implements Initializable {
             Akun akun = (Akun) obj;
             String roles=akun.getGambar();
             FormLoginController.role=roles;
+            FormLoginController.id_akun=akun.getId();
             
 
         }

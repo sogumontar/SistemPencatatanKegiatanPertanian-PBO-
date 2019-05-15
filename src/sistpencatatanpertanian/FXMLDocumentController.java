@@ -143,11 +143,13 @@ public class FXMLDocumentController implements Initializable {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
         layout.getChildren().setAll(root);
     }
+    @FXML
     public void pascaPanen() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
         layout.getChildren().setAll(root);
     }
 
+    @FXML
     public void bantuan() throws IOException{
          AnchorPane root = FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
         layout.getChildren().setAll(root);

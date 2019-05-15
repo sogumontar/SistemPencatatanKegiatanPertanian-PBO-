@@ -1,5 +1,5 @@
 package entity;
-// Generated May 11, 2019 8:29:17 PM by Hibernate Tools 4.3.1
+// Generated May 15, 2019 9:13:58 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,6 +10,7 @@ public class PascaPanen  implements java.io.Serializable {
 
 
      private Integer id;
+     private Akun akun;
      private String createdAt;
      private Double ukuranLalhan;
      private String jenisTanaman;
@@ -23,11 +24,13 @@ public class PascaPanen  implements java.io.Serializable {
      private Integer quantity;
      private String status;
      private String bookedStatus;
+     private String gambar;
 
     public PascaPanen() {
     }
 
-    public PascaPanen(String createdAt, Double ukuranLalhan, String jenisTanaman, String tanggalMulaiPanen, String tanggalSelesaiPanen, String deskripsiTanaman, Integer banyakHasilPanen, String lokasi, String caraPanen, Integer harga, Integer quantity, String status, String bookedStatus) {
+    public PascaPanen(Akun akun, String createdAt, Double ukuranLalhan, String jenisTanaman, String tanggalMulaiPanen, String tanggalSelesaiPanen, String deskripsiTanaman, Integer banyakHasilPanen, String lokasi, String caraPanen, Integer harga, Integer quantity, String status, String bookedStatus, String gambar) {
+       this.akun = akun;
        this.createdAt = createdAt;
        this.ukuranLalhan = ukuranLalhan;
        this.jenisTanaman = jenisTanaman;
@@ -41,6 +44,7 @@ public class PascaPanen  implements java.io.Serializable {
        this.quantity = quantity;
        this.status = status;
        this.bookedStatus = bookedStatus;
+       this.gambar = gambar;
     }
    
     public Integer getId() {
@@ -49,6 +53,13 @@ public class PascaPanen  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Akun getAkun() {
+        return this.akun;
+    }
+    
+    public void setAkun(Akun akun) {
+        this.akun = akun;
     }
     public String getCreatedAt() {
         return this.createdAt;
@@ -140,6 +151,13 @@ public class PascaPanen  implements java.io.Serializable {
     
     public void setBookedStatus(String bookedStatus) {
         this.bookedStatus = bookedStatus;
+    }
+    public String getGambar() {
+        return this.gambar;
+    }
+    
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
     }
 
 

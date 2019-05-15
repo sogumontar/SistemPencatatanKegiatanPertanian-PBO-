@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistpencatatanpertanianpanen;
+package jualproduk;
 
 import entity.Panen;
+import entity.Produk;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -29,35 +30,31 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanianpanen.DetailController;
 
 /**
  * FXML Controller class
  *
  * @author DedekManisTasBiru
  */
-public class PanenController implements Initializable {
-    ObservableList oo;
-    List list;
-    model mod;
+public class ProdukController implements Initializable {
+
     @FXML
     private AnchorPane layout;
     @FXML
-    private TableColumn<model, Integer> no;
+    private TableView<?> table;
     @FXML
-    private TableColumn<model, String> jenis;
+    private TableColumn<?, ?> no;
     @FXML
-    private TableColumn<model, Double> ukuran;
+    private TableColumn<?, ?> nama;
     @FXML
-    private TableColumn<model, String> lokasi;
+    private TableColumn<?, ?> jumlah;
     @FXML
-    private TableColumn<model, Integer> quantity;
+    private TableColumn<?, ?> harga;
     @FXML
-    private TableColumn<model, Integer> harga;
+    private TableColumn<?, ?> deskripsi;
     @FXML
-    private TableColumn<model, String> carapanen;
-    @FXML
-    private TableView<model> table;
-    private Button detail;
+    private TableColumn<?, ?> status;
     @FXML
     private Button btn_create;
     @FXML
@@ -65,58 +62,60 @@ public class PanenController implements Initializable {
     @FXML
     private Button btn_delete;
     @FXML
-    private TextField update_jenis;
+    private TextField update_nama;
     @FXML
-    private TextField update_ukuran;
-    @FXML
-    private TextField update_lokasi;
-    @FXML
-    private TextField update_quantity;
+    private TextField update_jumlah;
     @FXML
     private TextField update_harga;
     @FXML
-    private TextField update_metode;
-
+    private TextField update_deskripsi;
+    ObservableList oo;
+    model mod;
+    @FXML
+    private Button btn_create1;
+    @FXML
+    private TextField harga_tawaran;
     /**
      * Initializes the controller class.
      */
+    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        harga_tawaran.setVisible(false);
         Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
         oo = FXCollections.observableArrayList();
-        Query query = ss.createQuery("FROM Panen ");
+        Query query = ss.createQuery("FROM Produk ");
         List list = query.list();
         ss.getTransaction().commit();
         ss.close();
         int i = 1;
         for (Object obj : list) {
-            Panen panen = (Panen) obj;
-            String jenis = panen.getJenisTanaman();
-            Double ukuran = panen.getUkuranLalhan();
-            String lokasi = panen.getLokasi();
-            Integer quantity = panen.getQuantity();
-            Integer harga = panen.getHarga();
-            String caraPanen = panen.getCaraPanen();
-            oo.add(new sistpencatatanpertanian.model(i,panen.getId(), jenis, ukuran, lokasi, caraPanen, quantity, harga));
+            Produk prod = (Produk) obj;
+            String nama = prod.getNamaProduk();
+            int jumlah = prod.getJumlah();
+            int harga=prod.getHarga();
+            String deskripsi=prod.getDeskripsi();
+            String status = prod.getStatus();
+            
+            oo.add(new jualproduk.model(i,nama, jumlah, harga, deskripsi, status));
 
             i++;
         }
         no.setCellValueFactory(new PropertyValueFactory<>("No"));
-        jenis.setCellValueFactory(new PropertyValueFactory<>("Jenis"));
-        ukuran.setCellValueFactory(new PropertyValueFactory<>("Ukuran"));
-        lokasi.setCellValueFactory(new PropertyValueFactory<>("Lokasi"));
-        quantity.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
-        harga.setCellValueFactory(new PropertyValueFactory<>("Harga"));
-        carapanen.setCellValueFactory(new PropertyValueFactory<>("Metode"));
+        nama.setCellValueFactory(new PropertyValueFactory<>("Nama"));
+        jumlah.setCellValueFactory(new PropertyValueFactory<>("Jumlah"));
+        harga.setCellValueFactory(new PropertyValueFactory<>("harga"));
+        deskripsi.setCellValueFactory(new PropertyValueFactory<>("Deskripsi"));
+        status.setCellValueFactory(new PropertyValueFactory<>("Status"));
         table.setItems(oo);
         table.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
-                    DetailController.id=mod.getId();
-                    mod = table.getSelectionModel().getSelectedItem();
-                    System.out.println(mod.getId());
+                  
+                    mod = (model) table.getSelectionModel().getSelectedItem();
                 }
             }
         });
@@ -202,7 +201,7 @@ public class PanenController implements Initializable {
 
     @FXML
     private void create(ActionEvent event) throws IOException {
-        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanencreate/create.fxml"));
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/jualprodukcreate/create.fxml"));
         layout.getChildren().setAll(root);
     }
 
@@ -217,6 +216,12 @@ public class PanenController implements Initializable {
 
     @FXML
     private void delete(ActionEvent event) {
+    }
+    private void tawar(ActionEvent event){
+        harga_tawaran.setVisible(true);
+    }
+    private void menawar(ActionEvent event){
+        System.out.println("tawar");
     }
     
 }

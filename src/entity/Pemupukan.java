@@ -1,5 +1,5 @@
 package entity;
-// Generated May 11, 2019 8:29:17 PM by Hibernate Tools 4.3.1
+// Generated May 15, 2019 9:13:58 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,6 +10,7 @@ public class Pemupukan  implements java.io.Serializable {
 
 
      private Integer id;
+     private Akun akun;
      private String createdAt;
      private Double ukuranLahan;
      private String jenisTanaman;
@@ -22,11 +23,13 @@ public class Pemupukan  implements java.io.Serializable {
      private Integer banyakPupuk;
      private String status;
      private String bookedStatus;
+     private String gambar;
 
     public Pemupukan() {
     }
 
-    public Pemupukan(String createdAt, Double ukuranLahan, String jenisTanaman, String tanggalMulaiPemupukan, String tanggalSelesaiPemupukan, String deskripsiTanaman, String lokasi, String caraPemupukan, String pupuk, Integer banyakPupuk, String status, String bookedStatus) {
+    public Pemupukan(Akun akun, String createdAt, Double ukuranLahan, String jenisTanaman, String tanggalMulaiPemupukan, String tanggalSelesaiPemupukan, String deskripsiTanaman, String lokasi, String caraPemupukan, String pupuk, Integer banyakPupuk, String status, String bookedStatus, String gambar) {
+       this.akun = akun;
        this.createdAt = createdAt;
        this.ukuranLahan = ukuranLahan;
        this.jenisTanaman = jenisTanaman;
@@ -39,6 +42,7 @@ public class Pemupukan  implements java.io.Serializable {
        this.banyakPupuk = banyakPupuk;
        this.status = status;
        this.bookedStatus = bookedStatus;
+       this.gambar = gambar;
     }
    
     public Integer getId() {
@@ -47,6 +51,13 @@ public class Pemupukan  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Akun getAkun() {
+        return this.akun;
+    }
+    
+    public void setAkun(Akun akun) {
+        this.akun = akun;
     }
     public String getCreatedAt() {
         return this.createdAt;
@@ -131,6 +142,13 @@ public class Pemupukan  implements java.io.Serializable {
     
     public void setBookedStatus(String bookedStatus) {
         this.bookedStatus = bookedStatus;
+    }
+    public String getGambar() {
+        return this.gambar;
+    }
+    
+    public void setGambar(String gambar) {
+        this.gambar = gambar;
     }
 
 

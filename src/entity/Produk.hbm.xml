@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 15, 2019 9:13:59 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Produk" table="PRODUK" schema="PUBLIC" catalog="DB" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="namaProduk" type="string">
+            <column name="NAMA_PRODUK" length="25" />
+        </property>
+        <property name="jumlah" type="java.lang.Integer">
+            <column name="JUMLAH" />
+        </property>
+        <property name="harga" type="java.lang.Integer">
+            <column name="HARGA" />
+        </property>
+        <property name="idAkun" type="java.lang.Integer">
+            <column name="ID_AKUN" />
+        </property>
+        <property name="deskripsi" type="string">
+            <column name="DESKRIPSI" length="250" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="25" />
+        </property>
+        <property name="gambar" type="string">
+            <column name="GAMBAR" length="25" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,5 +1,5 @@
 package entity;
-// Generated May 11, 2019 8:29:17 PM by Hibernate Tools 4.3.1
+// Generated May 15, 2019 9:13:58 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,6 +10,7 @@ public class Pembibitan  implements java.io.Serializable {
 
 
      private Integer id;
+     private Akun akun;
      private String createdAt;
      private Double ukuranLahan;
      private String jenisTanaman;
@@ -20,13 +21,13 @@ public class Pembibitan  implements java.io.Serializable {
      private String caraPembibitan;
      private String status;
      private String bookedStatus;
-     int no;
+
     public Pembibitan() {
     }
 
-    public Pembibitan(int no,String createdAt, Double ukuranLahan, String jenisTanaman, String tanggalMulaiPembibitan, String tanggalSelesaiPembibitan, String deskripsiTanaman, String lokasi, String caraPembibitan, String status, String bookedStatus) {
-       this.no=no;
-        this.createdAt = createdAt;
+    public Pembibitan(Akun akun, String createdAt, Double ukuranLahan, String jenisTanaman, String tanggalMulaiPembibitan, String tanggalSelesaiPembibitan, String deskripsiTanaman, String lokasi, String caraPembibitan, String status, String bookedStatus) {
+       this.akun = akun;
+       this.createdAt = createdAt;
        this.ukuranLahan = ukuranLahan;
        this.jenisTanaman = jenisTanaman;
        this.tanggalMulaiPembibitan = tanggalMulaiPembibitan;
@@ -44,6 +45,13 @@ public class Pembibitan  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Akun getAkun() {
+        return this.akun;
+    }
+    
+    public void setAkun(Akun akun) {
+        this.akun = akun;
     }
     public String getCreatedAt() {
         return this.createdAt;

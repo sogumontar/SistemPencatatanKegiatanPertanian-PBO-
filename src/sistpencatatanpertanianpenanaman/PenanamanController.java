@@ -198,5 +198,9 @@ public class PenanamanController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    public void bantuan(ActionEvent event) throws IOException{
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
+       layout.getChildren().setAll(root);
+    }
 
 }

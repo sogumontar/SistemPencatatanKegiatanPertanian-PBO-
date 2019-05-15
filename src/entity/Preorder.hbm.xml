@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 11, 2019 8:29:18 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 15, 2019 9:13:59 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entity.Preorder" table="PREORDER" schema="PUBLIC" catalog="DB" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <property name="idAkun" type="java.lang.Integer">
+        <many-to-one name="akun" class="entity.Akun" fetch="select">
             <column name="ID_AKUN" />
-        </property>
+        </many-to-one>
         <property name="idTanaman" type="java.lang.Integer">
             <column name="ID_TANAMAN" />
         </property>

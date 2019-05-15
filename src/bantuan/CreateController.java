@@ -18,6 +18,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,12 +48,17 @@ public class CreateController implements Initializable {
     private TableColumn<model, String> deskripsi;
     ObservableList oo;
     model mod;
-    
+    @FXML
+    private Button btn_create;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if (FormLoginController.role == "admin") {
+            btn_create.setVisible(false);
+        }
         Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
         oo = FXCollections.observableArrayList();
@@ -63,14 +69,15 @@ public class CreateController implements Initializable {
         int i = 1;
         for (Object obj : list) {
             Bantuan ban = (Bantuan) obj;
-            String jenisBantuan = ban.getJenisBantuan();
-            String jenisTanaman = ban.getJenisTanaman();
+            String jenisBantuan = ban.getJenisBantuan().toString();
+            String jenisTanaman = ban.getJenisTanaman().toString();
             String deskripsi = ban.getDeskripsi();
             oo.add(new bantuan.model(i, jenisBantuan, jenisTanaman, deskripsi));
 
             i++;
         }
-        no.setCellValueFactory(new PropertyValueFactory<>("No"));
+
+        no.setCellValueFactory(new PropertyValueFactory<>("no"));
         jenisBantuan.setCellValueFactory(new PropertyValueFactory<>("Jenis Bantuan"));
         jenisTanaman.setCellValueFactory(new PropertyValueFactory<>("Jenis Tanaman"));
         deskripsi.setCellValueFactory(new PropertyValueFactory<>("Deskripsi"));
@@ -85,7 +92,8 @@ public class CreateController implements Initializable {
                 }
             }
         });
-    }    
+    }
+
     public void home() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
@@ -121,15 +129,16 @@ public class CreateController implements Initializable {
         layout.getChildren().setAll(root);
     }
 
-
     private void logout(ActionEvent event) throws IOException {
-        FormLoginController.login=false;
-         AnchorPane root = FXMLLoader.load(getClass().getResource("FormLogin .fxml"));
+        FormLoginController.login = false;
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FormLogin .fxml"));
         layout.getChildren().setAll(root);
     }
 
     @FXML
-    private void create(ActionEvent event) {
+    private void create(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/bantuancreate/bantuan.fxml"));
+        layout.getChildren().setAll(root);
     }
 
 }

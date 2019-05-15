@@ -27,6 +27,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -46,8 +47,6 @@ public class PembibitanController implements Initializable {
     @FXML
     private AnchorPane layout;
     @FXML
-    private Button butt;
-    @FXML
     private TableView<model> table;
     @FXML
     private TableColumn<model, Integer> no;
@@ -65,7 +64,6 @@ public class PembibitanController implements Initializable {
     private TableColumn<model, String> status;
     @FXML
     private TableColumn<model, Double> ukuran;
-    @FXML
     private Button deletes;
     @FXML
     private TextField update_jenis;
@@ -80,14 +78,21 @@ public class PembibitanController implements Initializable {
     @FXML
     private TextField update_ukuran;
     @FXML
-    private Button update;
+    private Button btn_update;
+    @FXML
+    private Button btn_tambah;
+    @FXML
+    private Button btn_delete;
+    @FXML
+    private ImageView img_pembibitan;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        deletes.setVisible(false);
+        btn_delete.setVisible(false);
+        btn_update.setVisible(false);
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         ov = FXCollections.observableArrayList();
@@ -129,11 +134,12 @@ public class PembibitanController implements Initializable {
             public void handle(MouseEvent event) {
 
                 if (table.getSelectionModel().getSelectedItem() != null) {
+                    btn_delete.setVisible(true);
+                    btn_update.setVisible(true);
                     model = table.getSelectionModel().getSelectedItem();
                     id = model.getId();
                     System.out.println(model.getId());
                 }
-                check();
             }
         });
 
@@ -186,14 +192,11 @@ public class PembibitanController implements Initializable {
         stage.show();
     }
 
-    public void check() {
-        if (id != 0) {
-            deletes.setVisible(true);
-        }
-    }
+
 
     @FXML
-    private void delete(ActionEvent event) {
+    private void delete(ActionEvent event) throws IOException {
+        
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         ov = FXCollections.observableArrayList();
@@ -201,6 +204,9 @@ public class PembibitanController implements Initializable {
         query.executeUpdate();
         session.getTransaction().commit();
         session.close();
+        
+      AnchorPane root = FXMLLoader.load(getClass().getResource("pembibitan.fxml"));
+        layout.getChildren().setAll(root);
 
     }
 

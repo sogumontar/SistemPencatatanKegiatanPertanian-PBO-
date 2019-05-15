@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 11, 2019 8:29:18 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 15, 2019 9:13:59 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entity.Akun" table="AKUN" schema="PUBLIC" catalog="DB" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -29,5 +29,83 @@
         <property name="alamat" type="string">
             <column name="ALAMAT" length="25" />
         </property>
+        <set name="pembibitans" table="PEMBIBITAN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Pembibitan" />
+        </set>
+        <set name="bantuans" table="BANTUAN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Bantuan" />
+        </set>
+        <set name="tawarans" table="TAWARAN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Tawaran" />
+        </set>
+        <set name="panens" table="PANEN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Panen" />
+        </set>
+        <set name="panens_1" table="PANEN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Panen" />
+        </set>
+        <set name="panens_2" table="PANEN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Panen" />
+        </set>
+        <set name="panens_3" table="PANEN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Panen" />
+        </set>
+        <set name="panens_4" table="PANEN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Panen" />
+        </set>
+        <set name="pemupukans" table="PEMUPUKAN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Pemupukan" />
+        </set>
+        <set name="transaksis" table="TRANSAKSI" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Transaksi" />
+        </set>
+        <set name="preorders" table="PREORDER" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Preorder" />
+        </set>
+        <set name="penanamans" table="PENANAMAN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.Penanaman" />
+        </set>
+        <set name="pascaPanens" table="PASCA_PANEN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AKUN" />
+            </key>
+            <one-to-many class="entity.PascaPanen" />
+        </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package entity;
-// Generated May 11, 2019 8:29:17 PM by Hibernate Tools 4.3.1
+// Generated May 15, 2019 9:13:58 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,7 +10,7 @@ public class Preorder  implements java.io.Serializable {
 
 
      private Integer id;
-     private Integer idAkun;
+     private Akun akun;
      private Integer idTanaman;
      private String status;
      private String bookedStatus;
@@ -18,8 +18,8 @@ public class Preorder  implements java.io.Serializable {
     public Preorder() {
     }
 
-    public Preorder(Integer idAkun, Integer idTanaman, String status, String bookedStatus) {
-       this.idAkun = idAkun;
+    public Preorder(Akun akun, Integer idTanaman, String status, String bookedStatus) {
+       this.akun = akun;
        this.idTanaman = idTanaman;
        this.status = status;
        this.bookedStatus = bookedStatus;
@@ -32,12 +32,12 @@ public class Preorder  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Integer getIdAkun() {
-        return this.idAkun;
+    public Akun getAkun() {
+        return this.akun;
     }
     
-    public void setIdAkun(Integer idAkun) {
-        this.idAkun = idAkun;
+    public void setAkun(Akun akun) {
+        this.akun = akun;
     }
     public Integer getIdTanaman() {
         return this.idTanaman;
