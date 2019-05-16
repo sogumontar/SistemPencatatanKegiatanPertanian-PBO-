@@ -33,6 +33,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.FormLoginController;
 
 /**
  * FXML Controller class
@@ -85,14 +86,32 @@ public class PembibitanController implements Initializable {
     private Button btn_delete;
     @FXML
     private ImageView img_pembibitan;
+    @FXML
+    private Button log;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         btn_update.setVisible(false);
         btn_delete.setVisible(false);
-        btn_update.setVisible(false);
+        btn_tambah.setVisible(false);
+        update_jenis.setVisible(false);
+        update_ukuran.setVisible(false);
+        update_lokasi.setVisible(false);
+        update_metode.setVisible(false);
+        update_ukuran.setVisible(false);
+        if (FormLoginController.login == false) {
+            log.setText("LOGIN");
+        } else {
+            if (FormLoginController.role != "admin") {
+                btn_tambah.setVisible(true);
+            } else {
+                btn_tambah.setVisible(false);
+            }
+            log.setText("LOGOUT");
+        }
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         ov = FXCollections.observableArrayList();
@@ -134,10 +153,27 @@ public class PembibitanController implements Initializable {
             public void handle(MouseEvent event) {
 
                 if (table.getSelectionModel().getSelectedItem() != null) {
-                    btn_delete.setVisible(true);
-                    btn_update.setVisible(true);
+                    
                     model = table.getSelectionModel().getSelectedItem();
                     id = model.getId();
+                    if (FormLoginController.login == true) {
+//                        String one = "src/images/test.PNG";
+//                        ImageView img=Toolkit.getDefaultToolkit().getImage(one);
+//                        Image img = Toolkit.getDefaultToolkit().getImage(one);
+                        btn_delete.setVisible(true);
+                        btn_update.setVisible(true);
+
+                    }
+                    update_jenis.setVisible(true);
+                    update_ukuran.setVisible(true);
+                    update_lokasi.setVisible(true);
+                    update_metode.setVisible(true);
+
+                    update_jenis.setText(model.getJenis().toString());
+                    update_ukuran.setText(model.getUkuran().toString());
+                    update_lokasi.setText(model.getLokasi().toString());
+                    update_metode.setText(model.getMetode().toString());
+
                     System.out.println(model.getId());
                 }
             }

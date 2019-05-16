@@ -11,12 +11,12 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bantuan.CreateController">
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bantuan.CreateController">
     <stylesheets>
         <URL value="@create.css" />
     </stylesheets>
    <children>
-      <Pane layoutY="450.0" prefHeight="73.0" prefWidth="900.0">
+      <Pane layoutY="526.0" prefHeight="73.0" prefWidth="900.0">
          <children>
             <Button fx:id="btn_pembibitan" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="32.0" prefWidth="144.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
                <font>
@@ -45,17 +45,17 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="btn_create" layoutX="526.0" layoutY="161.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="Create" textFill="WHITE">
+      <Button fx:id="btn_create" layoutX="388.0" layoutY="397.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="Create" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <TableView fx:id="table" layoutX="129.0" layoutY="122.0" prefHeight="197.0" prefWidth="360.0">
+      <TableView fx:id="table" layoutX="270.0" layoutY="179.0" prefHeight="197.0" prefWidth="360.0">
         <columns>
           <TableColumn fx:id="no" prefWidth="62.0" text="No" />
             <TableColumn fx:id="jenisTanaman" prefWidth="105.0" text="Jenis Tanaman" />
-          <TableColumn fx:id="jenisBantuan" prefWidth="100.0" text="Jenis Bantuan" />
             <TableColumn fx:id="deskripsi" prefWidth="92.0" text="Deskripsi" />
+          <TableColumn fx:id="jenisBantuan" prefWidth="100.0" text="Jenis Bantuan" />
         </columns>
       </TableView>
       <Button alignment="CENTER" layoutX="726.0" layoutY="12.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#f2eaea">
@@ -74,13 +74,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="62.0" stroke="BLACK" strokeType="INSIDE" width="900.0" />
-      <Label layoutX="409.0" layoutY="8.0" prefHeight="46.0" prefWidth="124.0" text="Bantuan" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="62.0" stroke="#c0392b" strokeType="INSIDE" width="900.0" />
+      <Label layoutX="411.0" layoutY="84.0" prefHeight="32.0" prefWidth="77.0" text="Bantuan" textFill="#c0392b">
          <font>
-            <Font name="Arial Unicode MS" size="24.0" />
+            <Font name="Arial Unicode MS" size="20.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" layoutX="741.0" layoutY="22.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#f2eaea">
+      <Button alignment="CENTER" layoutX="710.0" layoutY="16.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#f2eaea">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -88,7 +88,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button alignment="CENTER" layoutX="817.0" layoutY="22.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#f2eaea">
+      <Button alignment="CENTER" layoutX="786.0" layoutY="16.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#f2eaea">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -96,5 +96,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label layoutX="37.0" layoutY="16.0" text="RECORD LAHAN" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

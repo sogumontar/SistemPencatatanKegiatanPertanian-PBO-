@@ -38,25 +38,25 @@ import org.hibernate.Session;
 public class PanenController implements Initializable {
     ObservableList oo;
     List list;
-    model mod;
+    entity.Panen mod;
     @FXML
     private AnchorPane layout;
     @FXML
-    private TableColumn<model, Integer> no;
+    private TableColumn<entity.Panen, Integer> no;
     @FXML
-    private TableColumn<model, String> jenis;
+    private TableColumn<entity.Panen, String> jenis;
     @FXML
-    private TableColumn<model, Double> ukuran;
+    private TableColumn<entity.Panen, Double> ukuran;
     @FXML
-    private TableColumn<model, String> lokasi;
+    private TableColumn<entity.Panen, String> lokasi;
     @FXML
-    private TableColumn<model, Integer> quantity;
+    private TableColumn<entity.Panen, Integer> quantity;
     @FXML
-    private TableColumn<model, Integer> harga;
+    private TableColumn<entity.Panen, Integer> harga;
     @FXML
-    private TableColumn<model, String> carapanen;
+    private TableColumn<entity.Panen, String> carapanen;
     @FXML
-    private TableView<model> table;
+    private TableView<entity.Panen> table;
     private Button detail;
     @FXML
     private Button btn_create;
@@ -91,14 +91,14 @@ public class PanenController implements Initializable {
         ss.close();
         int i = 1;
         for (Object obj : list) {
-            Panen panen = (Panen) obj;
+            entity.Panen panen = (entity.Panen) obj;
             String jenis = panen.getJenisTanaman();
             Double ukuran = panen.getUkuranLalhan();
             String lokasi = panen.getLokasi();
             Integer quantity = panen.getQuantity();
             Integer harga = panen.getHarga();
             String caraPanen = panen.getCaraPanen();
-            oo.add(new sistpencatatanpertanian.model(i,panen.getId(), jenis, ukuran, lokasi, caraPanen, quantity, harga));
+            oo.add(new entity.Panen(i,ukuran, jenis,panen.getDeskripsiTanaman(), lokasi, caraPanen,harga, quantity, panen.getBookedStatus(),panen.getGambar()));
 
             i++;
         }

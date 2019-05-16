@@ -26,6 +26,9 @@
         <property name="gambar" type="string">
             <column name="GAMBAR" length="100" />
         </property>
+          <property name="status" type="integer">
+            <column name="status" length="100" />
+        </property>
         <property name="alamat" type="string">
             <column name="ALAMAT" length="25" />
         </property>

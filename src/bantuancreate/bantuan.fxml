@@ -17,19 +17,19 @@
         <URL value="@bantuan.css" />
     </stylesheets>
    <children>
-      <AnchorPane id="AnchorPane" fx:id="layout" layoutX="5.0" layoutY="7.0" prefHeight="610.0" prefWidth="901.0" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" fx:id="layout" layoutX="5.0" layoutY="7.0" prefHeight="610.0" prefWidth="901.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass">
          <stylesheets>
             <URL value="@../sistpencatatanpertanianPembibitanCreate/create.css" />
          </stylesheets>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="62.0" layoutX="-10.0" layoutY="-9.0" stroke="#c0392b" strokeType="INSIDE" width="911.0" />
-            <Label layoutX="381.0" layoutY="12.0" text="RECORD LAHAN" textFill="WHITE">
+            <Label layoutX="36.0" layoutY="12.0" text="RECORD LAHAN" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="jenisTanaman" layoutX="291.0" layoutY="157.0" prefHeight="25.0" prefWidth="354.0" />
-            <Button fx:id="btn_submit" alignment="CENTER" layoutX="554.0" layoutY="395.0" mnemonicParsing="false" onAction="#insert" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #c0392b#D35400; -fx-background-radius: 5;" text="Submit" textFill="WHITE">
+            <TextField fx:id="jenisTanaman" layoutX="331.0" layoutY="205.0" prefHeight="25.0" prefWidth="354.0" />
+            <Button fx:id="btn_submit" alignment="CENTER" layoutX="594.0" layoutY="443.0" mnemonicParsing="false" onAction="#insert" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #c0392b#D35400; -fx-background-radius: 5;" text="Submit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -37,17 +37,17 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <TextField fx:id="jenisBantuan" layoutX="291.0" layoutY="216.0" prefHeight="25.0" prefWidth="354.0" />
-            <Label layoutX="178.0" layoutY="161.0" text="Ukuran Lahan" />
-            <Label layoutX="176.0" layoutY="219.0" text="Jenis Tanaman" />
-            <Label layoutX="176.0" layoutY="273.0" text="Deskripsi Tanaman" />
+            <TextField fx:id="jenisBantuan" layoutX="331.0" layoutY="264.0" prefHeight="25.0" prefWidth="354.0" />
+            <Label layoutX="242.0" layoutY="209.0" text="Ukuran Lahan" />
+            <Label layoutX="239.0" layoutY="268.0" text="Jenis Tanaman" />
+            <Label layoutX="216.0" layoutY="321.0" text="Deskripsi Tanaman" />
             <StackPane layoutX="224.0" layoutY="313.0" />
-            <TextArea fx:id="deskripsi" layoutX="291.0" layoutY="273.0" prefHeight="81.0" prefWidth="354.0">
+            <TextArea fx:id="deskripsi" layoutX="331.0" layoutY="321.0" prefHeight="81.0" prefWidth="354.0">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextArea>
-            <Pane layoutY="526.0" prefHeight="73.0" prefWidth="900.0">
+            <Pane layoutX="1.0" layoutY="536.0" prefHeight="73.0" prefWidth="900.0">
                <children>
                   <Button fx:id="btn_pembibitan" alignment="CENTER" layoutX="27.0" layoutY="21.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="29.0" prefWidth="155.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
                      <font>
@@ -91,7 +91,7 @@
                   </Button>
                </children>
             </Pane>
-            <Button alignment="CENTER" layoutX="712.0" layoutY="11.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE">
+            <Button alignment="CENTER" layoutX="717.0" layoutY="11.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -99,7 +99,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="CENTER" layoutX="788.0" layoutY="11.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="WHITE">
+            <Button alignment="CENTER" layoutX="793.0" layoutY="11.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -107,9 +107,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="402.0" layoutY="74.0" text="Bantuan" textFill="#280805">
+            <Label layoutX="446.0" layoutY="95.0" text="Bantuan" textFill="#c0392b">
                <font>
-                  <Font size="18.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>

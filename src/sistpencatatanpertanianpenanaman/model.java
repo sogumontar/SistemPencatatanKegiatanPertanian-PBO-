@@ -12,6 +12,7 @@ package sistpencatatanpertanianpenanaman;
 public class model {
 
     private Integer no;
+    private Integer id;
     private Double ukuranLahan;
     private String jenisTanaman;
     private String jenisBibit;
@@ -22,8 +23,9 @@ public class model {
     private String caraPenanaman;
     private String bookedStatus;
 
-    public model(Integer no, Double ukuranLahan, String jenisTanaman, String jenisBibit, String tanggalMulaiPemupukan, String tanggalSelesaiPemupukan, String deskripsiTanaman, String lokasi, String caraPenanaman, String bookedStatus) {
+    public model(Integer id,Integer no, Double ukuranLahan, String jenisTanaman, String jenisBibit, String tanggalMulaiPemupukan, String tanggalSelesaiPemupukan, String deskripsiTanaman, String lokasi, String caraPenanaman, String bookedStatus) {
         this.no = no;
+        this.id=id;
         this.ukuranLahan = ukuranLahan;
         this.jenisTanaman = jenisTanaman;
         this.jenisBibit = jenisBibit;
@@ -33,6 +35,14 @@ public class model {
         this.lokasi = lokasi;
         this.caraPenanaman = caraPenanaman;
         this.bookedStatus = bookedStatus;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public Integer getNo() {

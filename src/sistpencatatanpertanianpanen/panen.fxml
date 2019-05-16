@@ -17,7 +17,7 @@
         <URL value="@panen.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="1.0" layoutY="505.0" prefHeight="74.0" prefWidth="900.0">
+      <Pane layoutX="1.0" layoutY="526.0" prefHeight="74.0" prefWidth="900.0">
          <children>
             <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
                <font>
@@ -47,59 +47,89 @@
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="47.0" stroke="#c0392b" strokeType="INSIDE" width="901.0" />
-      <Label layoutX="352.0" layoutY="14.0" text="RECORD LAHAN" textFill="WHITE">
+      <Label layoutX="14.0" layoutY="10.0" text="RECORD LAHAN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="718.0" layoutY="12.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+      <Button layoutX="715.0" layoutY="8.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="787.0" layoutY="12.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+      <Button layoutX="787.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="200.0" layoutY="91.0" stroke="#f39c12" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
-      <Label layoutX="352.0" layoutY="82.0" text="PANEN" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="251.0" layoutY="79.0" stroke="#f39c12" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
+      <Label layoutX="429.0" layoutY="69.0" text="PANEN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="50.0" layoutY="138.0" prefHeight="200.0" prefWidth="441.0">
+      <TableView fx:id="table" layoutX="63.0" layoutY="149.0" prefHeight="315.0" prefWidth="518.0">
         <columns>
             <TableColumn fx:id="no" prefWidth="41.0" text="No" />
           <TableColumn fx:id="jenis" prefWidth="64.0" text="jenis" />
           <TableColumn fx:id="ukuran" prefWidth="63.0" text="ukuran" />
-            <TableColumn fx:id="lokasi" prefWidth="71.0" text="Lokasi" />
-            <TableColumn fx:id="quantity" prefWidth="64.0" text="Quantity" />
-            <TableColumn fx:id="harga" prefWidth="66.0" text="Harga" />
-            <TableColumn fx:id="carapanen" prefWidth="71.0" text="Metode" />
+            <TableColumn fx:id="lokasi" prefWidth="100.66673278808594" text="Lokasi" />
+            <TableColumn fx:id="quantity" prefWidth="60.0" text="Quantity" />
+            <TableColumn fx:id="harga" prefWidth="56.0" text="Harga" />
+            <TableColumn fx:id="carapanen" prefWidth="99.33334350585938" text="Metode" />
         </columns>
       </TableView>
-      <Button fx:id="btn_create" layoutX="278.0" layoutY="396.0" mnemonicParsing="false" onAction="#create" prefHeight="32.0" prefWidth="97.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Create" textFill="WHITE">
+      <Button fx:id="btn_create" layoutX="277.0" layoutY="478.0" mnemonicParsing="false" onAction="#create" prefHeight="32.0" prefWidth="97.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Create" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button fx:id="btn_update" layoutX="593.0" layoutY="396.0" mnemonicParsing="false" onAction="#update" prefHeight="32.0" prefWidth="97.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Update" textFill="WHITE">
+      <Button fx:id="btn_update" layoutX="748.0" layoutY="478.0" mnemonicParsing="false" onAction="#update" prefHeight="32.0" prefWidth="97.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button fx:id="btn_delete" layoutX="407.0" layoutY="397.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="97.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Delete" textFill="WHITE">
+      <Button fx:id="btn_delete" layoutX="640.0" layoutY="478.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="97.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <TextField fx:id="update_jenis" layoutX="550.0" layoutY="154.0" />
-      <TextField fx:id="update_ukuran" layoutX="550.0" layoutY="186.0" />
-      <TextField fx:id="update_lokasi" layoutX="551.0" layoutY="216.0" />
-      <TextField fx:id="update_quantity" layoutX="550.0" layoutY="250.0" />
-      <TextField fx:id="update_harga" layoutX="550.0" layoutY="287.0" />
-      <TextField fx:id="update_metode" layoutX="551.0" layoutY="321.0" />
-      <ImageView fitHeight="110.0" fitWidth="152.0" layoutX="693.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="update_jenis" layoutX="639.0" layoutY="207.0" prefWidth="205.0" />
+      <TextField fx:id="update_ukuran" layoutX="639.0" layoutY="253.0" prefWidth="205.0" />
+      <TextField fx:id="update_lokasi" layoutX="640.0" layoutY="299.0" prefWidth="205.0" />
+      <TextField fx:id="update_quantity" layoutX="639.0" layoutY="343.0" prefWidth="205.0" />
+      <TextField fx:id="update_harga" layoutX="639.0" layoutY="390.0" prefWidth="205.0" />
+      <TextField fx:id="update_metode" layoutX="639.0" layoutY="435.0" prefHeight="26.0" prefWidth="205.0" />
+      <ImageView fitHeight="74.0" fitWidth="181.0" layoutX="646.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="640.0" layoutY="192.0" text="update jenis">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="641.0" layoutY="238.0" text="update ukuran">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="641.0" layoutY="284.0" text="update lokasi">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="641.0" layoutY="330.0" text="update quantity">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="641.0" layoutY="374.0" text="update harga">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="639.0" layoutY="420.0" text="update metode">
+         <font>
+            <Font name="System Italic" size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

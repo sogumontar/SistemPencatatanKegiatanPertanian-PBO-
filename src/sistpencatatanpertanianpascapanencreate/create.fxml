@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="layout" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpascapanencreate.CreateController">
@@ -19,18 +20,18 @@
             <URL value="@../sistpencatatanpertanianpenanamancreate/create.css" />
          </stylesheets>
          <children>
-            <Label layoutX="110.0" layoutY="110.0" text="Nama Produk" />
-            <Label layoutX="109.0" layoutY="140.0" text="Jumlah" />
-            <Label layoutX="110.0" layoutY="173.0" text="Harga" />
-            <Label layoutX="115.0" layoutY="234.0" text="Deskripsi" />
-            <TextArea fx:id="deskripsi" layoutX="262.0" layoutY="223.0" prefHeight="89.0" prefWidth="201.0" />
-            <TextField fx:id="harga" layoutX="262.0" layoutY="170.0" />
-            <TextField fx:id="jumlah" layoutX="262.0" layoutY="136.0" />
-            <TextField fx:id="nama" layoutX="262.0" layoutY="106.0" />
-            <Button layoutX="394.0" layoutY="343.0" mnemonicParsing="false" onAction="#create" text="Simpan" />
-            <Button fx:id="choose" layoutX="262.0" layoutY="343.0" mnemonicParsing="false" onAction="#choose" text="Choose" />
-            <Label layoutX="113.0" layoutY="340.0" text="Gambar" />
-            <Pane layoutY="497.0" prefHeight="69.0" prefWidth="900.0">
+            <Label layoutX="274.0" layoutY="172.0" text="Nama Produk" />
+            <Label layoutX="273.0" layoutY="202.0" text="Jumlah" />
+            <Label layoutX="274.0" layoutY="235.0" text="Harga" />
+            <Label layoutX="274.0" layoutY="290.0" text="Deskripsi" />
+            <TextArea fx:id="deskripsi" layoutX="426.0" layoutY="278.0" prefHeight="89.0" prefWidth="287.0" />
+            <TextField fx:id="harga" layoutX="426.0" layoutY="232.0" prefHeight="25.0" prefWidth="201.0" />
+            <TextField fx:id="jumlah" layoutX="426.0" layoutY="198.0" prefHeight="25.0" prefWidth="201.0" />
+            <TextField fx:id="nama" layoutX="426.0" layoutY="168.0" prefHeight="25.0" prefWidth="201.0" />
+            <Button layoutX="532.0" layoutY="392.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #c0392b; -fx-background-radius: 5;" text="Simpan" textFill="WHITE" />
+            <Button fx:id="choose" layoutX="426.0" layoutY="392.0" mnemonicParsing="false" onAction="#choose" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #c0392b; -fx-background-radius: 5;" text="Choose" textFill="WHITE" />
+            <Label layoutX="277.0" layoutY="396.0" text="Gambar" />
+            <Pane layoutY="522.0" prefHeight="69.0" prefWidth="900.0">
                <children>
                   <Button layoutX="23.0" layoutY="18.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="29.0" prefWidth="141.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
                      <font>
@@ -59,19 +60,20 @@
                   </Button>
                </children>
             </Pane>
-            <Button layoutX="493.0" layoutY="14.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="54.0" layoutX="-7.0" stroke="#c0392b" strokeType="INSIDE" width="940.0" />
+            <Button layoutX="723.0" layoutY="12.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="581.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+            <Button layoutX="811.0" layoutY="12.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Label layoutX="215.0" layoutY="73.0" text="Jual Produk">
+            <Label layoutX="412.0" layoutY="94.0" text="Jual Produk" textFill="#c0392b">
                <font>
-                  <Font size="14.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
          </children>

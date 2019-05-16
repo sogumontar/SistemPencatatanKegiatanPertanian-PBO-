@@ -26,21 +26,34 @@
             <Image url="@background.png" />
          </image>
       </ImageView>
-      <Button layoutX="411.0" layoutY="500.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="78.0" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-background-radius: 30;" text="Sign In" textFill="WHITE">
+      <Button layoutX="335.0" layoutY="474.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="89.0" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-background-radius: 30;" text="Sign In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TextField fx:id="username" layoutX="335.0" layoutY="376.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" />
-      <TextField fx:id="password" layoutX="335.0" layoutY="437.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" />
-      <Label layoutX="335.0" layoutY="359.0" text="Username" textFill="WHITE" />
-      <Label layoutX="335.0" layoutY="420.0" text="Password" textFill="WHITE" />
+      <TextField fx:id="username" layoutX="335.0" layoutY="337.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: transparent; -fx-border-color: #fff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <TextField fx:id="password" layoutX="335.0" layoutY="398.0" prefHeight="25.0" prefWidth="230.0" style="-fx-background-color: transparent; -fx-border-color: #fff;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+      <Label layoutX="335.0" layoutY="320.0" text="Username" textFill="WHITE" />
+      <Label layoutX="335.0" layoutY="381.0" text="Password" textFill="WHITE" />
       <Label fx:id="notif" layoutX="431.0" layoutY="527.0" prefHeight="26.0" prefWidth="37.0" textFill="#ff0404">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
+      <Button fx:id="reg" layoutX="468.0" layoutY="474.0" mnemonicParsing="false" onAction="#reg" prefHeight="27.0" prefWidth="89.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-background-radius: 30;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

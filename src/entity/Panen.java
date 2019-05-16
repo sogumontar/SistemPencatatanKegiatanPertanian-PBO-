@@ -8,7 +8,7 @@ package entity;
  */
 public class Panen  implements java.io.Serializable {
 
-
+    private Integer no;
      private Integer id;
      private Akun akun;
      private String createdAt;
@@ -24,6 +24,20 @@ public class Panen  implements java.io.Serializable {
      private String status;
      private String bookedStatus;
      private String gambar;
+
+    public Panen(Integer no,Double ukuranLalhan, String jenisTanaman, String deskripsiTanaman, String lokasi, String caraPanen, Integer harga, Integer quantity, String bookedStatus, String gambar) {
+        this.no=no;
+        this.ukuranLalhan = ukuranLalhan;
+        this.jenisTanaman = jenisTanaman;
+        this.deskripsiTanaman = deskripsiTanaman;
+        this.lokasi = lokasi;
+        this.caraPanen = caraPanen;
+        this.harga = harga;
+        this.quantity = quantity;
+        this.bookedStatus = bookedStatus;
+        this.gambar = gambar;
+    }
+     
 
     public Panen() {
     }

@@ -11,6 +11,7 @@ package sistpencatatanpertanianpemupukan;
  */
 public class model {
     public int no;
+    private int id;
     public Double ukuran;
     public String jenis;
     public String tanggalMulai;

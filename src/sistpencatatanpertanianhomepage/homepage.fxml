@@ -6,15 +6,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianhomepage.HomepageController">
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianhomepage.HomepageController">
     <stylesheets>
         <URL value="@homepage.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="39.0" layoutX="9.0" layoutY="7.0" stroke="#c0392b" strokeType="INSIDE" width="737.0" />
-      <Label layoutX="308.0" layoutY="13.0" text="RECORD LAHAN" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="53.0" stroke="#c0392b" strokeType="INSIDE" width="901.0" />
+      <Label layoutX="32.0" layoutY="12.0" text="RECORD LAHAN" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </children>

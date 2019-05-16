@@ -19,6 +19,9 @@ public class Akun  implements java.io.Serializable {
      private String noTelp;
      private String gambar;
      private String alamat;
+     private Integer status;
+     private int no;
+     
      private Set pembibitans = new HashSet(0);
      private Set bantuans = new HashSet(0);
      private Set tawarans = new HashSet(0);
@@ -33,10 +36,17 @@ public class Akun  implements java.io.Serializable {
      private Set penanamans = new HashSet(0);
      private Set pascaPanens = new HashSet(0);
 
-    public Akun() {
+    public Akun(int no,String username,String email, String nama, String noTelp, String alamat) {
+        this.no=no;
+        this.username = username;
+        this.email = email;
+        this.nama = nama;
+        this.noTelp = noTelp;
+        this.alamat = alamat;
     }
 
-    public Akun(String username, String password, String email, String nama, String noTelp, String gambar, String alamat, Set pembibitans, Set bantuans, Set tawarans, Set panens, Set panens_1, Set panens_2, Set panens_3, Set panens_4, Set pemupukans, Set transaksis, Set preorders, Set penanamans, Set pascaPanens) {
+
+    public Akun(String username, String password, String email, String nama, String noTelp, String gambar, String alamat,Integer status, Set pembibitans, Set bantuans, Set tawarans, Set panens, Set panens_1, Set panens_2, Set panens_3, Set panens_4, Set pemupukans, Set transaksis, Set preorders, Set penanamans, Set pascaPanens) {
        this.username = username;
        this.password = password;
        this.email = email;
@@ -44,6 +54,7 @@ public class Akun  implements java.io.Serializable {
        this.noTelp = noTelp;
        this.gambar = gambar;
        this.alamat = alamat;
+       this.status=status;
        this.pembibitans = pembibitans;
        this.bantuans = bantuans;
        this.tawarans = tawarans;
@@ -57,6 +68,14 @@ public class Akun  implements java.io.Serializable {
        this.preorders = preorders;
        this.penanamans = penanamans;
        this.pascaPanens = pascaPanens;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
    
     public Integer getId() {

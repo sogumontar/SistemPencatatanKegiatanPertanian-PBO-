@@ -10,13 +10,13 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpascapanen.PascapanenController">
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: ;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpascapanen.PascapanenController">
     <stylesheets>
         <URL value="@pascapanen.css" />
     </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="53.0" layoutX="-6.0" stroke="#c0392b" strokeType="INSIDE" width="907.0" />
-      <Label layoutX="309.0" layoutY="15.0" text="RECORD LAHAN" textFill="WHITE">
+      <Label layoutX="40.0" layoutY="13.0" text="RECORD LAHAN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -31,13 +31,13 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="186.0" layoutY="83.0" stroke="#f1c40f" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
-      <Label layoutX="342.0" layoutY="74.0" text="PASCA PANEN" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="250.0" layoutY="97.0" stroke="#f1c40f" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
+      <Label layoutX="406.0" layoutY="88.0" text="PASCA PANEN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Pane layoutY="485.0" prefHeight="78.0" prefWidth="900.0">
+      <Pane layoutX="-2.0" layoutY="515.0" prefHeight="78.0" prefWidth="900.0">
          <children>
             <Button fx:id="btn_pembibitan" layoutX="18.0" layoutY="21.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="29.0" prefWidth="163.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
                <font>
@@ -66,7 +66,7 @@
             </Button>
          </children>
       </Pane>
-      <TableView fx:id="table" layoutX="14.0" layoutY="165.0" prefHeight="200.0" prefWidth="649.0">
+      <TableView fx:id="table" layoutX="84.0" layoutY="142.0" prefHeight="262.0" prefWidth="733.0">
         <columns>
             <TableColumn fx:id="no" prefWidth="30.000001907348633" text="No" />
           <TableColumn fx:id="ukuran" prefWidth="47.33333969116211" text="Ukuran" />
@@ -74,14 +74,14 @@
             <TableColumn fx:id="selesai" prefWidth="107.0" text="Tanggal Selesai" />
             <TableColumn fx:id="deskripsi" prefWidth="64.0" text="Deskripsi" />
             <TableColumn fx:id="banyak" prefWidth="55.0" text="Jumlah" />
-            <TableColumn fx:id="lokasi" prefWidth="66.0" text="Lokasi" />
-            <TableColumn fx:id="carapanen" prefWidth="53.0" text="Metode" />
-            <TableColumn fx:id="harga" prefWidth="54.0" text="Harga" />
-            <TableColumn fx:id="quantity" prefWidth="55.0" text="Quantity" />
-            <TableColumn fx:id="status" prefWidth="62.0" text="Status" />
+            <TableColumn fx:id="lokasi" prefWidth="82.6666259765625" text="Lokasi" />
+            <TableColumn fx:id="carapanen" prefWidth="73.3333740234375" text="Metode" />
+            <TableColumn fx:id="harga" prefWidth="72.66668701171875" text="Harga" />
+            <TableColumn fx:id="quantity" prefWidth="78.00006103515625" text="Quantity" />
+            <TableColumn fx:id="status" prefWidth="67.3333740234375" text="Status" />
         </columns>
       </TableView>
-      <Button fx:id="btn_create" layoutX="531.0" layoutY="385.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="Create" textFill="WHITE">
+      <Button fx:id="btn_create" layoutX="386.0" layoutY="420.0" mnemonicParsing="false" onAction="#create" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="Create" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

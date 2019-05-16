@@ -10,7 +10,7 @@ package sistpencatatanpertanian;
  * @author DedekManisTasBiru
  */
 public class model {
-
+    
     private int no;
     private String jenis;
     private Double ukuran;

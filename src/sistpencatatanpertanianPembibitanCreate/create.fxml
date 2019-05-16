@@ -15,42 +15,42 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianPembibitanCreate.CreateController">
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianPembibitanCreate.CreateController">
     <stylesheets>
         <URL value="@create.css" />
     </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="53.0" stroke="#c0392b" strokeType="INSIDE" width="901.0" />
-      <Label layoutX="381.0" layoutY="12.0" text="RECORD LAHAN" textFill="WHITE">
+      <Label layoutX="32.0" layoutY="12.0" text="RECORD LAHAN" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="ukuran" layoutX="279.0" layoutY="99.0" prefHeight="25.0" prefWidth="354.0" />
-      <Button fx:id="btn_submit" alignment="CENTER" layoutX="542.0" layoutY="435.0" mnemonicParsing="false" onAction="#insert" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #c0392b#D35400; -fx-background-radius: 5;" text="Submit" textFill="WHITE">
+      <TextField fx:id="ukuran" layoutX="283.0" layoutY="133.0" prefHeight="25.0" prefWidth="354.0" />
+      <Button fx:id="btn_submit" alignment="CENTER" layoutX="546.0" layoutY="469.0" mnemonicParsing="false" onAction="#insert" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #c0392b#D35400; -fx-background-radius: 5;" text="Submit" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextField fx:id="jenis" layoutX="279.0" layoutY="137.0" prefHeight="25.0" prefWidth="354.0" />
-      <TextField fx:id="lokasi" layoutX="279.0" layoutY="278.0" prefHeight="25.0" prefWidth="354.0" />
-      <Label layoutX="146.0" layoutY="103.0" text="Ukuran Lahan" />
-      <Label layoutX="146.0" layoutY="139.0" text="Jenis Tanaman" />
-      <Label layoutX="145.0" layoutY="178.0" text="Tanggal Penanaman" />
-      <Label layoutX="146.0" layoutY="211.0" text="Selesai Penanaman" />
-      <Label layoutX="146.0" layoutY="329.0" text="Deskripsi Tanaman" />
-      <Label layoutX="147.0" layoutY="282.0" text="Lokasi" />
+      <TextField fx:id="jenis" layoutX="283.0" layoutY="171.0" prefHeight="25.0" prefWidth="354.0" />
+      <TextField fx:id="lokasi" layoutX="283.0" layoutY="312.0" prefHeight="25.0" prefWidth="354.0" />
+      <Label layoutX="150.0" layoutY="137.0" text="Ukuran Lahan" />
+      <Label layoutX="150.0" layoutY="173.0" text="Jenis Tanaman" />
+      <Label layoutX="149.0" layoutY="212.0" text="Tanggal Penyemaian" />
+      <Label layoutX="150.0" layoutY="245.0" text="Selesai Penyemaian" />
+      <Label layoutX="150.0" layoutY="363.0" text="Deskripsi Tanaman" />
+      <Label layoutX="151.0" layoutY="316.0" text="Lokasi" />
       <StackPane layoutX="212.0" layoutY="255.0" />
-      <TextArea fx:id="deskripsi" layoutX="279.0" layoutY="329.0" prefHeight="81.0" prefWidth="354.0">
+      <TextArea fx:id="deskripsi" layoutX="283.0" layoutY="363.0" prefHeight="81.0" prefWidth="354.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextArea>
-      <Label layoutX="147.0" layoutY="246.0" text="Metode Penanaman" />
-      <DatePicker fx:id="tglPenanaman" layoutX="279.0" layoutY="174.0" prefHeight="25.0" prefWidth="354.0" />
-      <DatePicker fx:id="tgl_selesai" layoutX="279.0" layoutY="207.0" prefHeight="25.0" prefWidth="354.0" />
-      <MenuButton fx:id="metode" layoutX="279.0" layoutY="242.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="354.0">
+      <Label layoutX="151.0" layoutY="280.0" text="Metode Penanaman" />
+      <DatePicker fx:id="tglPenanaman" layoutX="283.0" layoutY="208.0" prefHeight="25.0" prefWidth="354.0" />
+      <DatePicker fx:id="tgl_selesai" layoutX="283.0" layoutY="241.0" prefHeight="25.0" prefWidth="354.0" />
+      <MenuButton fx:id="metode" layoutX="283.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="354.0">
         <items>
           <MenuItem mnemonicParsing="false" text="Manual" />
           <MenuItem mnemonicParsing="false" text="Mesin" />
@@ -117,17 +117,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="393.0" layoutY="63.0" text="Pembibitan" textFill="#c0392b">
+      <Label layoutX="405.0" layoutY="84.0" text="Pembibitan" textFill="#c0392b">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button fx:id="btn_bantuan" alignment="CENTER" layoutX="271.0" layoutY="433.0" mnemonicParsing="false" onAction="#bantuan" prefHeight="29.0" prefWidth="126.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Bantuan" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>

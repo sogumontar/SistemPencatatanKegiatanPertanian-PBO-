@@ -30,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.FormLoginController;
 import sistpencatatanpertanianpanen.DetailController;
 
 /**
@@ -75,13 +76,30 @@ public class ProdukController implements Initializable {
     private Button btn_create1;
     @FXML
     private TextField harga_tawaran;
+    @FXML
+    private Button log;
+
     /**
      * Initializes the controller class.
      */
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btn_update.setVisible(false);
+        btn_delete.setVisible(false);
+        btn_create1.setVisible(false);
+        btn_create.setVisible(false);
+
+        if (FormLoginController.login == false) {
+            log.setText("LOGIN");
+        } else {
+            if (FormLoginController.role != "admin") {
+                btn_create.setVisible(true);
+            } else {
+                btn_create.setVisible(false);
+            }
+            log.setText("LOGOUT");
+        }
         harga_tawaran.setVisible(false);
         Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
@@ -95,11 +113,11 @@ public class ProdukController implements Initializable {
             Produk prod = (Produk) obj;
             String nama = prod.getNamaProduk();
             int jumlah = prod.getJumlah();
-            int harga=prod.getHarga();
-            String deskripsi=prod.getDeskripsi();
+            int harga = prod.getHarga();
+            String deskripsi = prod.getDeskripsi();
             String status = prod.getStatus();
-            
-            oo.add(new jualproduk.model(i,nama, jumlah, harga, deskripsi, status));
+
+            oo.add(new jualproduk.model(i, nama, jumlah, harga, deskripsi, status));
 
             i++;
         }
@@ -113,13 +131,20 @@ public class ProdukController implements Initializable {
         table.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
+
                 if (table.getSelectionModel().getSelectedItem() != null) {
-                  
+
                     mod = (model) table.getSelectionModel().getSelectedItem();
+                    if (FormLoginController.login == false) {
+                        btn_update.setVisible(true);
+                        btn_delete.setVisible(true);
+                        btn_create1.setVisible(true);
+                        btn_create.setVisible(true);
+                    }
                 }
             }
         });
-    }    
+    }
 
     @FXML
     private void pembibitan(ActionEvent event) throws IOException {
@@ -189,6 +214,7 @@ public class ProdukController implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
+        FormLoginController.login = false;
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FormLogin.fxml"));
@@ -201,12 +227,12 @@ public class ProdukController implements Initializable {
 
     @FXML
     private void create(ActionEvent event) throws IOException {
-        AnchorPane root=FXMLLoader.load(getClass().getResource("/jualprodukcreate/create.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/jualprodukcreate/create.fxml"));
         layout.getChildren().setAll(root);
     }
 
     private void detail(ActionEvent event) throws IOException {
-         AnchorPane root=FXMLLoader.load(getClass().getResource("detail.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("detail.fxml"));
         layout.getChildren().setAll(root);
     }
 
@@ -217,11 +243,13 @@ public class ProdukController implements Initializable {
     @FXML
     private void delete(ActionEvent event) {
     }
-    private void tawar(ActionEvent event){
+
+    private void tawar(ActionEvent event) {
         harga_tawaran.setVisible(true);
     }
-    private void menawar(ActionEvent event){
+
+    private void menawar(ActionEvent event) {
         System.out.println("tawar");
     }
-    
+
 }

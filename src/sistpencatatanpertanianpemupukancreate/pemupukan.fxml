@@ -11,48 +11,47 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpemupukancreate.PemupukanController">
+<AnchorPane id="AnchorPane" fx:id="layout" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #fff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistpencatatanpertanianpemupukancreate.PemupukanController">
     <stylesheets>
         <URL value="@pemupukan.css" />
     </stylesheets>
    <children>
       <ImageView fx:id="layout" fitHeight="96.0" fitWidth="200.0" layoutX="380.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="choose" layoutX="408.0" layoutY="255.0" mnemonicParsing="false" onAction="#choose" text="Choose..." />
-      <Button layoutX="115.0" layoutY="456.0" mnemonicParsing="false" onAction="#save" text="Simpan" />
-      <TextField fx:id="ukuran" layoutX="115.0" layoutY="111.0" />
-      <TextField fx:id="jenis" layoutX="115.0" layoutY="155.0" />
-      <DatePicker fx:id="mulai" layoutX="115.0" layoutY="195.0" />
-      <DatePicker fx:id="selesai" layoutX="115.0" layoutY="234.0" />
-      <TextField fx:id="lokasi" layoutX="114.0" layoutY="280.0" />
-      <TextField fx:id="jenisPupuk" layoutX="115.0" layoutY="363.0" />
-      <TextField fx:id="banyakPupuk" layoutX="115.0" layoutY="405.0" />
-      <TextArea fx:id="deskripsi" layoutX="380.0" layoutY="107.0" prefHeight="96.0" prefWidth="200.0" />
-      <Label layoutX="31.0" layoutY="112.0" text="Ukuran" />
-      <Label layoutX="31.0" layoutY="159.0" text="Jenis" />
-      <Label layoutX="32.0" layoutY="199.0" text="Mulai" />
-      <Label layoutX="32.0" layoutY="238.0" text="Selesai" />
-      <Label layoutX="307.0" layoutY="103.0" text="Deskripsi" />
-      <Label layoutX="318.0" layoutY="259.0" text="Gambar" />
-      <Label layoutX="31.0" layoutY="327.0" text="Metode" />
-      <Label layoutX="33.0" layoutY="284.0" text="Lokasi" />
-      <Label layoutX="30.0" layoutY="367.0" text="Jenis pupuk" />
-      <Label fx:id="metode" layoutX="28.0" layoutY="409.0" text="Banyak Pupuk" />
-      <MenuButton layoutX="116.0" layoutY="323.0" mnemonicParsing="false" text="MenuButton">
+      <Button fx:id="choose" layoutX="236.0" layoutY="410.0" mnemonicParsing="false" onAction="#choose" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #c0392b; -fx-background-radius: 5;" text="Choose..." textFill="WHITE" />
+      <Button layoutX="403.0" layoutY="474.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #c0392b;" text="Simpan" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="ukuran" layoutX="236.0" layoutY="125.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="jenis" layoutX="236.0" layoutY="169.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="mulai" layoutX="236.0" layoutY="209.0" />
+      <DatePicker fx:id="selesai" layoutX="236.0" layoutY="248.0" />
+      <TextField fx:id="lokasi" layoutX="578.0" layoutY="131.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="jenisPupuk" layoutX="579.0" layoutY="214.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="banyakPupuk" layoutX="579.0" layoutY="256.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextArea fx:id="deskripsi" layoutX="236.0" layoutY="299.0" prefHeight="96.0" prefWidth="518.0" />
+      <Label layoutX="152.0" layoutY="126.0" text="Ukuran" />
+      <Label layoutX="152.0" layoutY="173.0" text="Jenis" />
+      <Label layoutX="153.0" layoutY="213.0" text="Mulai" />
+      <Label layoutX="153.0" layoutY="252.0" text="Selesai" />
+      <Label layoutX="154.0" layoutY="306.0" text="Deskripsi" />
+      <Label layoutX="155.0" layoutY="406.0" text="Gambar" />
+      <Label layoutX="495.0" layoutY="178.0" text="Metode" />
+      <Label layoutX="497.0" layoutY="135.0" text="Lokasi" />
+      <Label layoutX="494.0" layoutY="218.0" text="Jenis pupuk" />
+      <Label fx:id="metode" layoutX="492.0" layoutY="260.0" text="Banyak Pupuk" />
+      <MenuButton layoutX="580.0" layoutY="174.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" text="MenuButton">
         <items>
           <MenuItem mnemonicParsing="false" text="Action 1" />
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <Pane layoutY="499.0" prefHeight="70.0" prefWidth="900.0">
+      <Pane layoutX="3.0" layoutY="530.0" prefHeight="70.0" prefWidth="900.0">
          <children>
             <Button layoutX="72.0" layoutY="22.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="226.0" layoutY="23.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
@@ -72,21 +71,27 @@
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
+            <Button layoutX="235.0" layoutY="23.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
-      <Button layoutX="711.0" layoutY="25.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="49.0" layoutX="-5.0" stroke="#c0392b" strokeType="INSIDE" width="914.0" />
+      <Button layoutX="734.0" layoutY="10.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="785.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+      <Button layoutX="808.0" layoutY="10.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="116.0" layoutY="40.0" text="Pemupukan">
+      <Label layoutX="407.0" layoutY="61.0" text="Pemupukan" textFill="#c0392b">
          <font>
-            <Font name="Arial Unicode MS" size="14.0" />
+            <Font name="Arial Unicode MS" size="20.0" />
          </font></Label>
    </children>
 </AnchorPane>

@@ -40,8 +40,6 @@ public class CreateController implements Initializable {
     @FXML
     private TextField lokasi;
     @FXML
-    private Button submit;
-    @FXML
     private TextArea deskripsi;
     @FXML
     private DatePicker tglPenanaman;
@@ -51,6 +49,18 @@ public class CreateController implements Initializable {
     private MenuButton metode;
     @FXML
     private AnchorPane layout;
+    @FXML
+    private Button btn_submit;
+    @FXML
+    private Button btn_pembibitan;
+    @FXML
+    private Button btn_penanaman;
+    @FXML
+    private Button btn_pemupukan;
+    @FXML
+    private Button btn_panen;
+    @FXML
+    private Button btn_pascaPanen;
 
     /**
      * Initializes the controller class.
@@ -135,7 +145,6 @@ public class CreateController implements Initializable {
         layout.getChildren().setAll(root);
     }
 
-    @FXML
     private void bantuan(ActionEvent event) throws IOException {
          AnchorPane root = FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
         layout.getChildren().setAll(root);

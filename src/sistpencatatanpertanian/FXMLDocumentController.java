@@ -8,7 +8,10 @@ package sistpencatatanpertanian;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import db.util.NewHibernateUtil;
 import entity.Panen;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -25,7 +28,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -58,6 +63,26 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<model, Integer> harga;
     @FXML
     private TableColumn<model, String> carapanen;
+    @FXML
+    private Button log;
+    @FXML
+    private Button btn_create;
+    @FXML
+    private Button btn_update;
+    @FXML
+    private Button btn_delete;
+    @FXML
+    private TextField update_jenis;
+    @FXML
+    private TextField update_ukuran;
+    @FXML
+    private TextField update_lokasi;
+    @FXML
+    private TextField update_quantity;
+    @FXML
+    private TextField update_harga;
+    @FXML
+    private ImageView img;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -66,6 +91,25 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btn_update.setVisible(false);
+        btn_delete.setVisible(false);
+        btn_create.setVisible(false);
+        update_jenis.setVisible(false);
+        update_ukuran.setVisible(false);
+        update_lokasi.setVisible(false);
+        update_quantity.setVisible(false);
+        update_harga.setVisible(false);
+        if (FormLoginController.login == false) {
+            log.setText("LOGIN");
+        } else {
+            if (FormLoginController.role != "admin") {
+                btn_create.setVisible(true);
+            } else {
+                btn_create.setVisible(false);
+            }
+            log.setText("LOGOUT");
+        }
+
         Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
         oo = FXCollections.observableArrayList();
@@ -82,7 +126,7 @@ public class FXMLDocumentController implements Initializable {
             Integer quantity = panen.getQuantity();
             Integer harga = panen.getHarga();
             String caraPanen = panen.getCaraPanen();
-            oo.add(new model(i,panen.getId(), jenis, ukuran, lokasi, caraPanen, quantity, harga));
+            oo.add(new model(i, panen.getId(), jenis, ukuran, lokasi, caraPanen, quantity, harga));
 
             i++;
         }
@@ -100,7 +144,27 @@ public class FXMLDocumentController implements Initializable {
             public void handle(javafx.scene.input.MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
                     mod = table.getSelectionModel().getSelectedItem();
-                    System.out.println(mod.getNo());
+                    if (FormLoginController.login == true) {
+//                        String one = "src/images/test.PNG";
+//                        ImageView img=Toolkit.getDefaultToolkit().getImage(one);
+//                        Image img = Toolkit.getDefaultToolkit().getImage(one);
+                        btn_delete.setVisible(true);
+                        btn_update.setVisible(true);
+
+                    }
+                    update_jenis.setVisible(true);
+                    update_ukuran.setVisible(true);
+                    update_lokasi.setVisible(true);
+                    update_quantity.setVisible(true);
+                    update_harga.setVisible(true);
+
+                    update_jenis.setText(mod.getJenis().toString());
+                    update_ukuran.setText(mod.getUkuran().toString());
+                    update_lokasi.setText(mod.getLokasi().toString());
+                    update_quantity.setText(mod.getQuantity().toString());
+                    update_harga.setText(mod.getHarga().toString());
+
+                    System.out.println(mod.getId());
                 }
             }
         });
@@ -138,11 +202,13 @@ public class FXMLDocumentController implements Initializable {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
         layout.getChildren().setAll(root);
     }
+
     @FXML
     public void panen() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
         layout.getChildren().setAll(root);
     }
+
     @FXML
     public void pascaPanen() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
@@ -150,8 +216,22 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public void bantuan() throws IOException{
-         AnchorPane root = FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
+    public void bantuan() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
         layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    private void create(ActionEvent event) {
+    }
+
+    @FXML
+    private void update(ActionEvent event) {
+
+    }
+
+    @FXML
+    private void delete(ActionEvent event) {
+
     }
 }

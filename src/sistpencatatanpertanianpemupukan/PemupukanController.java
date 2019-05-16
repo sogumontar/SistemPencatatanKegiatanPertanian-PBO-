@@ -149,9 +149,7 @@ public class PemupukanController implements Initializable {
     @FXML
     private void penanaman(ActionEvent event) throws IOException  {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
-
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
@@ -162,11 +160,8 @@ public class PemupukanController implements Initializable {
     @FXML
     private void pemupukan(ActionEvent event) throws IOException  {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
-
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
     }
@@ -174,11 +169,8 @@ public class PemupukanController implements Initializable {
     @FXML
     private void panen(ActionEvent event) throws IOException  {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
-
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
     }
@@ -186,11 +178,8 @@ public class PemupukanController implements Initializable {
     @FXML
     private void pascaPanen(ActionEvent event) throws IOException  {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
-
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
     }
@@ -207,11 +196,8 @@ public class PemupukanController implements Initializable {
     @FXML
     private void logout(ActionEvent event) throws IOException  {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FormLogin.fxml"));
-
         Scene scene = new Scene(root);
-
         stage.setScene(scene);
         stage.show();
     }

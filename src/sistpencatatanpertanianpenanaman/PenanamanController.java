@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;  
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,14 +20,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.FormLoginController;
 
 /**
  * FXML Controller class
@@ -35,6 +40,8 @@ import org.hibernate.Session;
  * @author DedekManisTasBiru
  */
 public class PenanamanController implements Initializable {
+
+    int id=0;
     ObservableList obv;
     List list;
     @FXML
@@ -43,30 +50,61 @@ public class PenanamanController implements Initializable {
     private TableView<model> table;
     @FXML
     private TableColumn<model, Integer> no;
-    @FXML
     private TableColumn<model, Double> ukuran;
-    @FXML
     private TableColumn<model, String> jenis;
-    @FXML
     private TableColumn<model, String> bibit;
-    @FXML
     private TableColumn<model, String> mulai;
-    @FXML
     private TableColumn<model, String> target;
-    @FXML
     private TableColumn<model, String> deskripsi;
-    @FXML
     private TableColumn<model, String> lokasi;
-    @FXML
     private TableColumn<model, String> metode;
-    @FXML
     private TableColumn<model, String> status;
+    private Button btn_create;
+    @FXML
+    private Button log;
+    private Button btn_update;
+    private Button btn_delete;
+    private TextField update_jenis;
+    private TextField update_ukuran;
+    private TextField update_lokasi;
+    private TextField update_bibit;
+    @FXML
+    private TableColumn<?, ?> username;
+    @FXML
+    private TableColumn<?, ?> email;
+    @FXML
+    private TableColumn<?, ?> nama;
+    @FXML
+    private TableColumn<?, ?> alamat;
+    @FXML
+    private TableColumn<?, ?> notelp;
+    @FXML
+    private Button btn_approve;
+    @FXML
+    private ImageView img;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btn_update.setVisible(false);
+        btn_delete.setVisible(false);
+        btn_create.setVisible(false);
+        update_jenis.setVisible(false);
+        update_ukuran.setVisible(false);
+        update_lokasi.setVisible(false);
+        update_ukuran.setVisible(false);
+        if (FormLoginController.login == false) {
+            log.setText("LOGIN");
+        } else {
+            if (FormLoginController.role != "admin") {
+                btn_create.setVisible(true);
+            } else {
+                btn_create.setVisible(false);
+            }
+            log.setText("LOGOUT");
+        }
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         obv = FXCollections.observableArrayList();
@@ -86,10 +124,10 @@ public class PenanamanController implements Initializable {
             Double ukuran = objek.getUkuranLahan();
             String deskripsi = objek.getDeskripsiTanaman();
             String bookedStatus = objek.getBookedStatus();
-            String jenisBibit=objek.getJenisBibit();
+            String jenisBibit = objek.getJenisBibit();
             indikator++;
 
-            obv.add(new sistpencatatanpertanianpenanaman.model(indikator, ukuran, jenis,jenisBibit ,tanggalMulai, tanggalSelesai, deskripsi, lokasi, metode, status));
+            obv.add(new sistpencatatanpertanianpenanaman.model(objek.getId(),indikator, ukuran, jenis, jenisBibit, tanggalMulai, tanggalSelesai, deskripsi, lokasi, metode, status));
         }
         no.setCellValueFactory(new PropertyValueFactory<>("no"));
         ukuran.setCellValueFactory(new PropertyValueFactory<>("Ukuran"));
@@ -110,19 +148,36 @@ public class PenanamanController implements Initializable {
                 if (table.getSelectionModel().getSelectedItem() != null) {
                     model = table.getSelectionModel().getSelectedItem();
                     System.out.println(model.getCaraPenanaman());
+                    id=model.getId();
+                    if (FormLoginController.login == true) {
+//                        String one = "src/images/test.PNG";
+//                        ImageView img=Toolkit.getDefaultToolkit().getImage(one);
+//                        Image img = Toolkit.getDefaultToolkit().getImage(one);
+                        btn_delete.setVisible(true);
+                        btn_update.setVisible(true);
+
+                    }
+                    update_jenis.setVisible(true);
+                    update_ukuran.setVisible(true);
+                    update_lokasi.setVisible(true);
+                    update_bibit.setVisible(true);
+
+                    update_jenis.setText(model.getJenisTanaman().toString());
+                    update_ukuran.setText(model.getUkuranLahan().toString());
+                    update_lokasi.setText(model.getLokasi().toString());
+                    update_bibit.setText(model.getJenisBibit().toString());
                 }
             }
         });
     }
 
-    @FXML
     private void tambah(ActionEvent event) throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanamancreate/create.fxml"));
         layout.getChildren().setAll(root);
     }
 
     @FXML
-    private void pembibitan(ActionEvent event) throws IOException{
+    private void pembibitan(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpembibitan/pembibitan.fxml"));
         Scene scene = new Scene(root);
@@ -131,7 +186,7 @@ public class PenanamanController implements Initializable {
     }
 
     @FXML
-    private void penanaman(ActionEvent event) throws IOException{
+    private void penanaman(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
@@ -143,7 +198,7 @@ public class PenanamanController implements Initializable {
     }
 
     @FXML
-    private void pemupukan(ActionEvent event) throws IOException{
+    private void pemupukan(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
@@ -155,7 +210,7 @@ public class PenanamanController implements Initializable {
     }
 
     @FXML
-    private void panen(ActionEvent event) throws IOException{
+    private void panen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
@@ -167,7 +222,7 @@ public class PenanamanController implements Initializable {
     }
 
     @FXML
-    private void pascaPanen(ActionEvent event) throws IOException{
+    private void pascaPanen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
@@ -179,7 +234,7 @@ public class PenanamanController implements Initializable {
     }
 
     @FXML
-    private void home(ActionEvent event) throws IOException{
+    private void home(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         Scene scene = new Scene(root);
@@ -188,7 +243,7 @@ public class PenanamanController implements Initializable {
     }
 
     @FXML
-    private void logout(ActionEvent event) throws IOException{
+    private void logout(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FormLogin.fxml"));
@@ -198,9 +253,27 @@ public class PenanamanController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void bantuan(ActionEvent event) throws IOException{
-        AnchorPane root=FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
-       layout.getChildren().setAll(root);
+
+    public void bantuan(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+
+    private void delete(ActionEvent event) throws IOException {
+          Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("Delete Penanaman where id =" + id + "");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        
+      AnchorPane root = FXMLLoader.load(getClass().getResource("penanaman.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    private void approve(ActionEvent event) {
     }
 
 }

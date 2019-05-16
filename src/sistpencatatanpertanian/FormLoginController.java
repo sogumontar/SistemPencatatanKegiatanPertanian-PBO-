@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -43,6 +44,8 @@ public class FormLoginController implements Initializable {
     private TextField password;
     @FXML
     private Label notif;
+    @FXML
+    private Button reg;
 
     /**
      * Initializes the controller class.
@@ -61,7 +64,7 @@ public class FormLoginController implements Initializable {
     public void login(ActionEvent event) throws IOException {
         Session ses = NewHibernateUtil.getSessionFactory().openSession();
         ses.beginTransaction();
-        Query q = ses.createQuery("from Akun where username = '" + username.getText() + "' AND password='" + password.getText() + "' ");
+        Query q = ses.createQuery("from Akun where username = '" + username.getText() + "' AND password='" + password.getText() + "' AND status!=0 ");
         List list = q.list();
 //        q.setParameter("username", username.getText());
 //        q.setParameter("password", password.getText());
@@ -88,6 +91,12 @@ public class FormLoginController implements Initializable {
         } else {
             notif.setText("wrong Username/Password");
         }
+    }
+
+    @FXML
+    private void reg(ActionEvent event) throws IOException {
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/register/register.fxml"));
+        layout.getChildren().setAll(root);
     }
     
 
