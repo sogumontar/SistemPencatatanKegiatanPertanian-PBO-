@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -64,6 +65,18 @@ public class PascapanenController implements Initializable {
     private TableColumn<model, String> status;
     @FXML
     private TableView<model> table;
+    @FXML
+    private Button btn_pembibitan;
+    @FXML
+    private Button btn_penanaman;
+    @FXML
+    private Button btn_pemupukan;
+    @FXML
+    private Button btn_panen;
+    @FXML
+    private Button btn_pascaPanen;
+    @FXML
+    private Button btn_create;
 
     /**
      * Initializes the controller class.
@@ -195,6 +208,7 @@ public class PascapanenController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
     public void create(ActionEvent event) throws IOException{
         AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanencreate/create.fxml"));
         layout.getChildren().setAll(root);

@@ -24,8 +24,8 @@
             <Label layoutX="113.0" layoutY="148.0" text="Ukuran" />
             <Label layoutX="112.0" layoutY="178.0" text="Jenis Tanaman" />
             <Label layoutX="112.0" layoutY="209.0" text="Banyak Hasil" />
-            <Label layoutX="112.0" layoutY="240.0" text="Tanggal Mulai Penanaman" />
-            <Label layoutX="497.0" layoutY="145.0" text="Target Selesai Penanaman" />
+            <Label layoutX="112.0" layoutY="240.0" text="Tanggal Mulai Panen" />
+            <Label layoutX="497.0" layoutY="145.0" text="Target Selesai Panen" />
             <Label layoutX="114.0" layoutY="296.0" text="Deskripsi" />
             <Label layoutX="497.0" layoutY="176.0" text="Lokasi" />
             <Label layoutX="498.0" layoutY="207.0" text="Metode" />
@@ -92,6 +92,11 @@
                </font></Label>
             <TextField fx:id="harga" layoutX="652.0" layoutY="235.0" prefHeight="25.0" prefWidth="174.0" />
             <Label layoutX="499.0" layoutY="239.0" text="Harga" />
+            <Label fx:id="notiff" layoutX="502.0" layoutY="404.0" textFill="RED">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

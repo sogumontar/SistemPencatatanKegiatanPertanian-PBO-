@@ -83,6 +83,12 @@ public class FXMLDocumentController implements Initializable {
     private TextField update_harga;
     @FXML
     private ImageView img;
+    @FXML
+    private Button regist;
+    @FXML
+    private Button btn_create1;
+    int idAkun = 0;
+    int idd = 1;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -91,9 +97,16 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println(FormLoginController.role);
+        if (FormLoginController.role.equals("admin")) {
+            regist.setVisible(true);
+        } else {
+            regist.setVisible(false);
+        }
         btn_update.setVisible(false);
         btn_delete.setVisible(false);
         btn_create.setVisible(false);
+        btn_create1.setVisible(false);
         update_jenis.setVisible(false);
         update_ukuran.setVisible(false);
         update_lokasi.setVisible(false);
@@ -113,13 +126,13 @@ public class FXMLDocumentController implements Initializable {
         Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
         oo = FXCollections.observableArrayList();
-        Query query = ss.createQuery("FROM Panen ");
+        Query query = ss.createQuery("FROM Panen WHERE booked_status='normal' ");
         List list = query.list();
         ss.getTransaction().commit();
         ss.close();
         int i = 1;
         for (Object obj : list) {
-            Panen panen = (Panen) obj;
+            entity.Panen panen = (entity.Panen) obj;
             String jenis = panen.getJenisTanaman();
             Double ukuran = panen.getUkuranLalhan();
             String lokasi = panen.getLokasi();
@@ -150,13 +163,33 @@ public class FXMLDocumentController implements Initializable {
 //                        Image img = Toolkit.getDefaultToolkit().getImage(one);
                         btn_delete.setVisible(true);
                         btn_update.setVisible(true);
+                        btn_create1.setVisible(true);
+                        btn_create.setVisible(true);
 
                     }
-                    update_jenis.setVisible(true);
-                    update_ukuran.setVisible(true);
-                    update_lokasi.setVisible(true);
-                    update_quantity.setVisible(true);
-                    update_harga.setVisible(true);
+                    if (FormLoginController.login == false) {
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(true);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(true);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(true);
+                        update_quantity.setVisible(true);
+                        update_quantity.setDisable(true);
+                        update_harga.setVisible(true);
+                        update_harga.setDisable(true);
+                    } else {
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(false);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(false);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(false);
+                        update_quantity.setVisible(true);
+                        update_quantity.setDisable(false);
+                        update_harga.setVisible(true);
+                        update_harga.setDisable(false);
+                    }
 
                     update_jenis.setText(mod.getJenis().toString());
                     update_ukuran.setText(mod.getUkuran().toString());
@@ -165,6 +198,7 @@ public class FXMLDocumentController implements Initializable {
                     update_harga.setText(mod.getHarga().toString());
 
                     System.out.println(mod.getId());
+                    idd = mod.getId();
                 }
             }
         });
@@ -222,16 +256,53 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void create(ActionEvent event) {
+    private void create(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanencreate/create.fxml"));
+        layout.getChildren().setAll(root);
     }
 
     @FXML
-    private void update(ActionEvent event) {
+    private void update(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("UPDATE Panen SET ukuran_lalhan='" + update_ukuran.getText() + "',jenis_tanaman='" + update_jenis.getText() + "',quantity='" + update_quantity.getText() + "',lokasi='" + update_lokasi.getText() + "',harga='" + update_harga.getText() + "' WHERE id= '" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        layout.getChildren().setAll(root);
 
     }
 
     @FXML
-    private void delete(ActionEvent event) {
+    private void delete(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("DELETE Panen  WHERE id= '" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        layout.getChildren().setAll(root);
 
+    }
+
+    @FXML
+    private void regist(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/registerrequest/request.fxml"));
+        layout.getChildren().setAll(root);
+
+    }
+
+    @FXML
+    private void preorder(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("UPDATE Panen SET booked_status ='booked'  WHERE id= '" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        layout.getChildren().setAll(root);
     }
 }

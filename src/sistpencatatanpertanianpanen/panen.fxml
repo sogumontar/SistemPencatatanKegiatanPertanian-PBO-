@@ -52,16 +52,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="715.0" layoutY="8.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <Button layoutX="787.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="1.0" layoutX="251.0" layoutY="79.0" stroke="#f39c12" strokeLineJoin="ROUND" strokeWidth="30.0" width="401.0" />
       <Label layoutX="429.0" layoutY="69.0" text="PANEN" textFill="WHITE">
          <font>
@@ -131,5 +121,15 @@
             <Font name="System Italic" size="10.0" />
          </font>
       </Label>
+      <Button layoutX="715.0" layoutY="8.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: transparent;" text="HOME" textFill="#c0392b">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="log" layoutX="787.0" layoutY="8.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="LOGOUT" textFill="#c0392b">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

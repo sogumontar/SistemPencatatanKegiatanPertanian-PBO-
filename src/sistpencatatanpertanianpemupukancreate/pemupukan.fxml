@@ -4,11 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -19,12 +16,6 @@
         <URL value="@pemupukan.css" />
     </stylesheets>
    <children>
-      <ImageView fx:id="layout" fitHeight="96.0" fitWidth="200.0" layoutX="380.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="choose" layoutX="236.0" layoutY="410.0" mnemonicParsing="false" onAction="#choose" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #c0392b; -fx-background-radius: 5;" text="Choose..." textFill="WHITE" />
-      <Button layoutX="403.0" layoutY="474.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="115.0" style="-fx-background-color: #c0392b;" text="Simpan" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
       <TextField fx:id="ukuran" layoutX="236.0" layoutY="125.0" prefHeight="25.0" prefWidth="174.0" />
       <TextField fx:id="jenis" layoutX="236.0" layoutY="169.0" prefHeight="25.0" prefWidth="174.0" />
       <DatePicker fx:id="mulai" layoutX="236.0" layoutY="209.0" />
@@ -43,12 +34,6 @@
       <Label layoutX="497.0" layoutY="135.0" text="Lokasi" />
       <Label layoutX="494.0" layoutY="218.0" text="Jenis pupuk" />
       <Label fx:id="metode" layoutX="492.0" layoutY="260.0" text="Banyak Pupuk" />
-      <MenuButton layoutX="580.0" layoutY="174.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" text="MenuButton">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
       <Pane layoutX="3.0" layoutY="530.0" prefHeight="70.0" prefWidth="900.0">
          <children>
             <Button layoutX="72.0" layoutY="22.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
@@ -93,5 +78,21 @@
          <font>
             <Font name="Arial Unicode MS" size="20.0" />
          </font></Label>
+      <Button layoutX="236.0" layoutY="415.0" mnemonicParsing="false" onAction="#choose" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Choose" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="630.0" layoutY="413.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+      <TextField fx:id="method" layoutX="579.0" layoutY="177.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label fx:id="notiff" layoutX="236.0" layoutY="462.0" textFill="#ff0c0c">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

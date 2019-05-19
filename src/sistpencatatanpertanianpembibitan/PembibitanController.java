@@ -41,8 +41,8 @@ import sistpencatatanpertanian.FormLoginController;
  * @author DedekManisTasBiru
  */
 public class PembibitanController implements Initializable {
-
-    int id = 0;
+    model mod;
+    String idd = "";
     ObservableList ov;
     List list;
     @FXML
@@ -54,9 +54,9 @@ public class PembibitanController implements Initializable {
     @FXML
     private TableColumn<model, String> jenis;
     @FXML
-    private TableColumn<model, Date> tanggalmulai;
+    private TableColumn<model, String> tanggalmulai;
     @FXML
-    private TableColumn<model, Date> tanggalselesai;
+    private TableColumn<model, String> tanggalselesai;
     @FXML
     private TableColumn<model, String> lokasi;
     @FXML
@@ -72,10 +72,6 @@ public class PembibitanController implements Initializable {
     private TextField update_lokasi;
     @FXML
     private TextField update_metode;
-    @FXML
-    private TextField update_tanggalMulai;
-    @FXML
-    private TextField update_tanggalSelesai;
     @FXML
     private TextField update_ukuran;
     @FXML
@@ -94,87 +90,97 @@ public class PembibitanController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         btn_update.setVisible(false);
+        if (FormLoginController.login == true) {
+            btn_tambah.setVisible(true);
+        } else {
+            btn_tambah.setVisible(false);
+        }
+        btn_update.setVisible(false);
         btn_delete.setVisible(false);
-        btn_tambah.setVisible(false);
         update_jenis.setVisible(false);
         update_ukuran.setVisible(false);
         update_lokasi.setVisible(false);
         update_metode.setVisible(false);
-        update_ukuran.setVisible(false);
+
         if (FormLoginController.login == false) {
             log.setText("LOGIN");
         } else {
-            if (FormLoginController.role != "admin") {
-                btn_tambah.setVisible(true);
-            } else {
-                btn_tambah.setVisible(false);
-            }
+
             log.setText("LOGOUT");
         }
-        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+
+        Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        ss.beginTransaction();
         ov = FXCollections.observableArrayList();
-        Query query = session.createQuery("from Pembibitan");
-        list = query.list();
-        session.getTransaction().commit();
-        session.close();
-        int indikator = 1;
-        for (Object i : list) {
-            Pembibitan objek = (Pembibitan) i;
-            String jenis = objek.getJenisTanaman();
-            String now = objek.getCreatedAt();
-            String tanggalMulai = objek.getTanggalMulaiPembibitan();
-            String tanggalSelesai = objek.getTanggalSelesaiPembibitan();
-            String lokasi = objek.getLokasi();
-            String metode = objek.getCaraPembibitan();
-            String status = objek.getBookedStatus();
-            Double ukuran = objek.getUkuranLahan();
-            String deskripsi = objek.getDeskripsiTanaman();
-            String bookedStatus = objek.getBookedStatus();
-            int id = objek.getId();
-            indikator++;
-            System.out.println(tanggalMulai);
-            ov.add(new model(id, indikator, jenis, tanggalMulai, tanggalSelesai, lokasi, metode, status, ukuran));
+        Query query = ss.createQuery("FROM Pembibitan WHERE booked_status='normal' ");
+        List list = query.list();
+        ss.getTransaction().commit();
+        ss.close();
+        int i = 1;
+        for (Object obj : list) {
+            entity.Pembibitan panen = (entity.Pembibitan) obj;
+            String jenis = panen.getJenisTanaman();
+            Double ukuran = panen.getUkuranLahan();
+            String lokasi = panen.getLokasi();
+            String metode = panen.getCaraPembibitan();
+            String tglM = panen.getTanggalMulaiPembibitan();
+            String tglS = panen.getTanggalSelesaiPembibitan();
+            String status = panen.getStatus();
+            ov.add(new model(i, panen.getId(), jenis, tglM, tglS, lokasi, metode, status, ukuran));
+
+            i++;
         }
-        no.setCellValueFactory(new PropertyValueFactory<>("no"));
-        jenis.setCellValueFactory(new PropertyValueFactory<>("jenis"));
-        tanggalmulai.setCellValueFactory(new PropertyValueFactory<>("tanggal mulai"));
-        tanggalselesai.setCellValueFactory(new PropertyValueFactory<>("tanggal selesai"));
-        lokasi.setCellValueFactory(new PropertyValueFactory<>("lokasi"));
-        metode.setCellValueFactory(new PropertyValueFactory<>("metode"));
+        no.setCellValueFactory(new PropertyValueFactory<>("No"));
+        jenis.setCellValueFactory(new PropertyValueFactory<>("Jenis"));
+        tanggalmulai.setCellValueFactory(new PropertyValueFactory<>("Tanggal Mulai"));
+        tanggalselesai.setCellValueFactory(new PropertyValueFactory<>("Tanggal Selesai"));
+        lokasi.setCellValueFactory(new PropertyValueFactory<>("Lokasi"));
+        metode.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
         status.setCellValueFactory(new PropertyValueFactory<>("Status"));
-        ukuran.setCellValueFactory(new PropertyValueFactory<>("ukuran"));
+        ukuran.setCellValueFactory(new PropertyValueFactory<>("Ukuran"));
+
         table.setItems(ov);
         table.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            model model;
-
             @Override
-            public void handle(MouseEvent event) {
-
+            public void handle(javafx.scene.input.MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
-                    
-                    model = table.getSelectionModel().getSelectedItem();
-                    id = model.getId();
+                    mod = table.getSelectionModel().getSelectedItem();
                     if (FormLoginController.login == true) {
 //                        String one = "src/images/test.PNG";
 //                        ImageView img=Toolkit.getDefaultToolkit().getImage(one);
 //                        Image img = Toolkit.getDefaultToolkit().getImage(one);
                         btn_delete.setVisible(true);
                         btn_update.setVisible(true);
+                       
 
                     }
-                    update_jenis.setVisible(true);
-                    update_ukuran.setVisible(true);
-                    update_lokasi.setVisible(true);
-                    update_metode.setVisible(true);
+                    if (FormLoginController.login == false) {
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(true);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(true);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(true);
+                        update_metode.setVisible(true);
+                        update_metode.setDisable(true);
+                    } else {
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(false);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(false);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(false);
+                        update_metode.setVisible(true);
+                        update_metode.setDisable(false);
+                    }
 
-                    update_jenis.setText(model.getJenis().toString());
-                    update_ukuran.setText(model.getUkuran().toString());
-                    update_lokasi.setText(model.getLokasi().toString());
-                    update_metode.setText(model.getMetode().toString());
+                    update_jenis.setText(mod.getJenis().toString());
+                    update_ukuran.setText(mod.getUkuran().toString());
+                    update_lokasi.setText(mod.getLokasi().toString());
+                    update_metode.setText(mod.getMetode().toString());  
 
-                    System.out.println(model.getId());
+                    System.out.println(mod.getJenis());
+                    idd = mod.getJenis();
                 }
             }
         });
@@ -188,7 +194,7 @@ public class PembibitanController implements Initializable {
     }
 
     @FXML
-    public void home(ActionEvent event) throws IOException{
+    public void home(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         Scene scene = new Scene(root);
@@ -228,20 +234,31 @@ public class PembibitanController implements Initializable {
         stage.show();
     }
 
-
-
     @FXML
     private void delete(ActionEvent event) throws IOException {
-        
+
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         ov = FXCollections.observableArrayList();
-        Query query = session.createSQLQuery("Delete Pembibitan where id =" + id + "");
+        System.out.println(idd);
+        Query query = session.createSQLQuery("Delete Pembibitan where jenis_tanaman ='" + idd + "'");
         query.executeUpdate();
         session.getTransaction().commit();
         session.close();
-        
-      AnchorPane root = FXMLLoader.load(getClass().getResource("pembibitan.fxml"));
+
+        AnchorPane root = FXMLLoader.load(getClass().getResource("pembibitan.fxml"));
+        layout.getChildren().setAll(root);
+
+    }
+    @FXML
+    private void update(ActionEvent event) throws IOException {
+          Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("UPDATE Pembibitan SET ukuran_lahan='"+update_ukuran.getText()+"', jenis_tanaman='"+update_jenis.getText()+"',lokasi='"+update_lokasi.getText()+"',cara_pembibitan='"+update_metode.getText()+"' WHERE jenis_tanaman= '" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("pembibitan.fxml"));
         layout.getChildren().setAll(root);
 
     }

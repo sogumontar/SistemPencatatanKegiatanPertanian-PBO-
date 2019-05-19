@@ -48,31 +48,43 @@ public class PemupukanController implements Initializable {
 
     private Path copy;
     private Path files;
-    @FXML
-    private Button choose;
+
     private FileChooser fileChooser;
     private File file;
     private String gambar;
     @FXML
+    private AnchorPane layout;
+
+    @FXML
     private TextField ukuran;
+
     @FXML
     private TextField jenis;
+
     @FXML
     private DatePicker mulai;
+
     @FXML
     private DatePicker selesai;
+
     @FXML
     private TextField lokasi;
+
+    @FXML
+    private TextField jenisPupuk;
+
+    @FXML
+    private TextField banyakPupuk;
+
     @FXML
     private TextArea deskripsi;
+
     @FXML
     private Label metode;
     @FXML
-    private AnchorPane layout;
+    private TextField method;
     @FXML
-    private TextField jenisPupuk;
-    @FXML
-    private TextField banyakPupuk;
+    private Label notiff;
 
     /**
      * Initializes the controller class.
@@ -104,50 +116,62 @@ public class PemupukanController implements Initializable {
 
     @FXML
     private void save() throws IOException {
-        
-        
-        
+
         if (gambar != null) {
-                File dir = new File(System.getProperty("user.dir"));
-                copy = Paths.get(dir + "\\src\\images\\" + gambar);
-                CopyOption[] options = new CopyOption[]{
-                    StandardCopyOption.REPLACE_EXISTING,
-                    StandardCopyOption.COPY_ATTRIBUTES
-                };
-                Files.copy(files, copy,options);
-            
+            File dir = new File(System.getProperty("user.dir"));
+            copy = Paths.get(dir + "\\src\\images\\" + gambar);
+            CopyOption[] options = new CopyOption[]{
+                StandardCopyOption.REPLACE_EXISTING,
+                StandardCopyOption.COPY_ATTRIBUTES
+            };
+            Files.copy(files, copy, options);
+
         }
-        
-        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Date date=new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-        System.out.println(formatter.format(date));
-        String created=formatter.format(date).toString();
-        String banyak=banyakPupuk.getText().toString();
-        int bany=Integer.parseInt(banyak);
-        Query query = session.createSQLQuery("INSERT INTO pemupukan (created_at,ukuran_lahan,jenis_tanaman,tanggal_mulai_pemupukan,tanggal_selesai_pemupukan,deskripsi_tanaman,lokasi,cara_pemupukan,pupuk,banyak_pupuk,status,booked_status,gambar)VALUES(:created, :ukuran, :jenis, :tanggalM, :tanggalS, :deskripsi, :lokasi, :cara, :pupuk, :banyak, :status, :booked, :gambar)");
-        query.setParameter("created", created);
-        query.setParameter("ukuran", ukuran.getText().toString());
-        query.setParameter("jenis", jenis.getText().toString());
-        query.setParameter("tanggalM", mulai.getValue().toString());
-        query.setParameter("tanggalS", selesai.getValue().toString());
+        if (ukuran.getText().equals("") 
+                || jenis.getText().equals("") 
+                || mulai.getValue().equals("") 
+                || selesai.getValue().equals("") 
+                || lokasi.getText().equals("") 
+                || jenisPupuk.getText().equals("") 
+                || banyakPupuk.getText().equals("") 
+                || deskripsi.getText().equals("") 
+                || method.getText().equals("")) {
+            notiff.setText("SEMUA FIELD HARUS DI ISI");
+        } else {
+
+            Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            System.out.println(formatter.format(date));
+            String created = formatter.format(date).toString();
+            String banyak = banyakPupuk.getText().toString();
+            int bany = Integer.parseInt(banyak);
+            Query query = session.createSQLQuery("INSERT INTO pemupukan (created_at,ukuran_lahan,jenis_tanaman,tanggal_mulai_pemupukan,tanggal_selesai_pemupukan,deskripsi_tanaman,lokasi,cara_pemupukan,pupuk,banyak_pupuk,status,booked_status,gambar)VALUES(:created, :ukuran, :jenis, :tanggalM, :tanggalS, :deskripsi, :lokasi, :cara, :pupuk, :banyak, :status, :booked, :gambar)");
+            query.setParameter("created", created);
+            query.setParameter("ukuran", ukuran.getText().toString());
+            query.setParameter("jenis", jenis.getText().toString());
+            query.setParameter("tanggalM", mulai.getValue().toString());
+            query.setParameter("tanggalS", selesai.getValue().toString());
 //        query.setParameter("deskripsi", deskripsi.getText().toString());
-        query.setParameter("lokasi", lokasi.getText().toString());
-        query.setParameter("deskripsi", deskripsi.getText().toString());
-        query.setParameter("cara", metode.getText().toString());
-        query.setParameter("pupuk", jenisPupuk.getText().toString());
-        query.setParameter("banyak", bany);
-        query.setParameter("status", "normal");
-        query.setParameter("booked", "normal");
-        query.setParameter("gambar", gambar);
-        query.executeUpdate();
-        session.getTransaction().commit();
-        session.close();
-        System.out.println("Sukses");
-        
+            query.setParameter("lokasi", lokasi.getText().toString());
+            query.setParameter("deskripsi", deskripsi.getText().toString());
+            query.setParameter("cara", metode.getText().toString());
+            query.setParameter("pupuk", jenisPupuk.getText().toString());
+            query.setParameter("banyak", bany);
+            query.setParameter("status", "normal");
+            query.setParameter("booked", "normal");
+            query.setParameter("gambar", gambar);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            System.out.println("Sukses");
+            AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpemcatatanpertanianpemupukan/pemupukan.fxml"));
+            layout.getChildren().setAll(root);
+        }
+
     }
-    
+
     @FXML
     public void home() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -171,11 +195,13 @@ public class PemupukanController implements Initializable {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
         layout.getChildren().setAll(root);
     }
+
     @FXML
     public void panen() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
         layout.getChildren().setAll(root);
     }
+
     public void pascapanen() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
         layout.getChildren().setAll(root);

@@ -41,7 +41,7 @@ import sistpencatatanpertanian.FormLoginController;
  */
 public class PenanamanController implements Initializable {
 
-    int id=0;
+    int id = 0;
     ObservableList obv;
     List list;
     @FXML
@@ -50,38 +50,44 @@ public class PenanamanController implements Initializable {
     private TableView<model> table;
     @FXML
     private TableColumn<model, Integer> no;
+    @FXML
     private TableColumn<model, Double> ukuran;
+    @FXML
     private TableColumn<model, String> jenis;
+    @FXML
     private TableColumn<model, String> bibit;
+    @FXML
     private TableColumn<model, String> mulai;
+    @FXML
     private TableColumn<model, String> target;
+    @FXML
     private TableColumn<model, String> deskripsi;
+    @FXML
     private TableColumn<model, String> lokasi;
+    @FXML
     private TableColumn<model, String> metode;
+    @FXML
     private TableColumn<model, String> status;
+    @FXML
     private Button btn_create;
     @FXML
     private Button log;
+    @FXML
     private Button btn_update;
+    @FXML
     private Button btn_delete;
+    @FXML
     private TextField update_jenis;
+    @FXML
     private TextField update_ukuran;
+    @FXML
     private TextField update_lokasi;
+    @FXML
     private TextField update_bibit;
     @FXML
-    private TableColumn<?, ?> username;
-    @FXML
-    private TableColumn<?, ?> email;
-    @FXML
-    private TableColumn<?, ?> nama;
-    @FXML
-    private TableColumn<?, ?> alamat;
-    @FXML
-    private TableColumn<?, ?> notelp;
-    @FXML
-    private Button btn_approve;
-    @FXML
     private ImageView img;
+    @FXML
+    private TextField update_deskripsi;
 
     /**
      * Initializes the controller class.
@@ -95,6 +101,9 @@ public class PenanamanController implements Initializable {
         update_ukuran.setVisible(false);
         update_lokasi.setVisible(false);
         update_ukuran.setVisible(false);
+        update_bibit.setVisible(false);
+        update_deskripsi.setVisible(false);
+
         if (FormLoginController.login == false) {
             log.setText("LOGIN");
         } else {
@@ -127,7 +136,7 @@ public class PenanamanController implements Initializable {
             String jenisBibit = objek.getJenisBibit();
             indikator++;
 
-            obv.add(new sistpencatatanpertanianpenanaman.model(objek.getId(),indikator, ukuran, jenis, jenisBibit, tanggalMulai, tanggalSelesai, deskripsi, lokasi, metode, status));
+            obv.add(new sistpencatatanpertanianpenanaman.model(objek.getId(), indikator, ukuran, jenis, jenisBibit, tanggalMulai, tanggalSelesai, deskripsi, lokasi, metode, status));
         }
         no.setCellValueFactory(new PropertyValueFactory<>("no"));
         ukuran.setCellValueFactory(new PropertyValueFactory<>("Ukuran"));
@@ -148,7 +157,7 @@ public class PenanamanController implements Initializable {
                 if (table.getSelectionModel().getSelectedItem() != null) {
                     model = table.getSelectionModel().getSelectedItem();
                     System.out.println(model.getCaraPenanaman());
-                    id=model.getId();
+                    id = model.getId();
                     if (FormLoginController.login == true) {
 //                        String one = "src/images/test.PNG";
 //                        ImageView img=Toolkit.getDefaultToolkit().getImage(one);
@@ -161,16 +170,27 @@ public class PenanamanController implements Initializable {
                     update_ukuran.setVisible(true);
                     update_lokasi.setVisible(true);
                     update_bibit.setVisible(true);
+                    update_bibit.setVisible(true);
+                    update_deskripsi.setVisible(true);
+                    if (FormLoginController.login == false) {
+                        update_jenis.setDisable(true);
+                        update_ukuran.setDisable(true);
+                        update_lokasi.setDisable(true);
+                        update_bibit.setDisable(true);
+                        update_deskripsi.setDisable(true);
+                    }
 
                     update_jenis.setText(model.getJenisTanaman().toString());
                     update_ukuran.setText(model.getUkuranLahan().toString());
                     update_lokasi.setText(model.getLokasi().toString());
                     update_bibit.setText(model.getJenisBibit().toString());
+                    update_deskripsi.setText(model.getDeskripsiTanaman());
                 }
             }
         });
     }
 
+    @FXML
     private void tambah(ActionEvent event) throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanamancreate/create.fxml"));
         layout.getChildren().setAll(root);
@@ -259,21 +279,29 @@ public class PenanamanController implements Initializable {
         layout.getChildren().setAll(root);
     }
 
-
+    @FXML
     private void delete(ActionEvent event) throws IOException {
-          Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Query query = session.createSQLQuery("Delete Penanaman where id =" + id + "");
         query.executeUpdate();
         session.getTransaction().commit();
         session.close();
-        
-      AnchorPane root = FXMLLoader.load(getClass().getResource("penanaman.fxml"));
+
+        AnchorPane root = FXMLLoader.load(getClass().getResource("penanaman.fxml"));
         layout.getChildren().setAll(root);
     }
 
     @FXML
-    private void approve(ActionEvent event) {
+    private void update(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("UPDATE Penanaman SET  ukuran_lahan='"+update_ukuran.getText()+"',jenis_tanaman='"+update_jenis.getText()+"',jenis_bibit='"+update_bibit.getText()+"',deskripsi_tanaman='"+update_deskripsi.getText()+"',lokasi='"+update_lokasi.getText()+"' WHERE id= '" + id + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("penanaman.fxml"));
+        layout.getChildren().setAll(root);
     }
 
 }

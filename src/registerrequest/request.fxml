@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -26,35 +25,6 @@
             <TableColumn fx:id="alamat" prefWidth="104.66665649414062" text="Alamat" />
          </columns>
       </TableView>
-      <Pane layoutX="-4.0" layoutY="527.0" prefHeight="73.0" prefWidth="900.0">
-         <children>
-            <Button layoutX="32.0" layoutY="23.0" mnemonicParsing="false" onAction="#pembibitan" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #c0392b; -fx-background-radius: 30;" text="PEMBIBITAN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="201.0" layoutY="23.0" mnemonicParsing="false" onAction="#penanaman" prefHeight="27.0" prefWidth="139.0" style="-fx-background-color: #D35400; -fx-background-radius: 30;" text="PENANAMAN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="372.0" layoutY="23.0" mnemonicParsing="false" onAction="#pemupukan" prefHeight="27.0" prefWidth="139.0" style="-fx-background-color: #E67E22; -fx-background-radius: 30;" text="PEMUPUKAN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="551.0" layoutY="23.0" mnemonicParsing="false" onAction="#panen" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #F39C12; -fx-background-radius: 30;" text="PANEN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Button>
-            <Button layoutX="733.0" layoutY="23.0" mnemonicParsing="false" onAction="#pascaPanen" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #F1C40F; -fx-background-radius: 30;" text="PASCA PANEN" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0392b" height="55.0" stroke="#c0392b" strokeType="INSIDE" width="900.0" />
       <Label layoutX="32.0" layoutY="13.0" text="RECORD LAHAN" textFill="WHITE">
          <font>

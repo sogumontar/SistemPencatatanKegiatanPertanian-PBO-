@@ -45,17 +45,11 @@ public class CreateController implements Initializable {
     private AnchorPane layout;
     @FXML
     private TextArea deskripsi;
-    @FXML
     private TextField metode;
-    @FXML
     private TextField lokasi;
-    @FXML
     private TextField jenis;
-    @FXML
     private TextField ukuran;
-    @FXML
     private DatePicker tanggalMulai;
-    @FXML
     private DatePicker tanggalSelesai;
     private Path copy;
     private Path files;
@@ -64,10 +58,13 @@ public class CreateController implements Initializable {
     private FileChooser fileChooser;
     private File file;
     private String gambar;
-    @FXML
     private TextField banyak;
     @FXML
     private TextField harga;
+    @FXML
+    private TextField jumlah;
+    @FXML
+    private TextField nama;
 
     /**
      * Initializes the controller class.
@@ -170,6 +167,7 @@ public class CreateController implements Initializable {
         layout.getChildren().setAll(root);
     }
 
+    @FXML
     public void pascaPanen() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
         layout.getChildren().setAll(root);

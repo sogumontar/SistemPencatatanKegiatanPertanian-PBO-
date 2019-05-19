@@ -7,6 +7,7 @@ package registerrequest;
 
 import entity.Akun;
 import entity.Penanaman;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -15,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -33,7 +35,9 @@ import sistpencatatanpertanian.FormLoginController;
  * @author DedekManisTasBiru
  */
 public class RequestController implements Initializable {
-    int idd=0;
+    entity.Akun model;
+    int idd = 0;
+    String iddd="";
     @FXML
     private AnchorPane layout;
     @FXML
@@ -68,22 +72,22 @@ public class RequestController implements Initializable {
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         obv = FXCollections.observableArrayList();
-        Query query = session.createQuery("from Akun WHERE gambar!=1");
+        Query query = session.createQuery("from Akun WHERE status="+0);
         list = query.list();
         session.getTransaction().commit();
         session.close();
         int indikator = 1;
         for (Object i : list) {
             Akun objek = (Akun) i;
-            String username= objek.getUsername();
+            String username = objek.getUsername();
             String email = objek.getEmail();
             String nama = objek.getNama();
             String notelp = objek.getNoTelp();
             String alamat = objek.getAlamat();
-          
+
             indikator++;
 
-            obv.add(new Akun(indikator,username,email, nama, notelp, alamat));
+            obv.add(new Akun(indikator, username, email, nama, notelp, alamat));
         }
         no.setCellValueFactory(new PropertyValueFactory<>("no"));
         username.setCellValueFactory(new PropertyValueFactory<>("Username"));
@@ -93,52 +97,45 @@ public class RequestController implements Initializable {
         alamat.setCellValueFactory(new PropertyValueFactory<>("Alamat"));
         table.setItems(obv);
         table.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            Akun model;
+          
 
             @Override
             public void handle(MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
                     btn_approve.setVisible(true);
                     model = table.getSelectionModel().getSelectedItem();
-                    System.out.println(model.getId());
-                    idd=model.getId();
-                    
+                    System.out.println(model.getNama());
+                    iddd = model.getNama();
 
                 }
             }
         });
     }
 
+
     @FXML
-    private void pembibitan(ActionEvent event) {
+    private void home(ActionEvent event) throws IOException {
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
+        layout.getChildren().setAll(root);
     }
 
     @FXML
-    private void penanaman(ActionEvent event) {
+    private void logout(ActionEvent event) throws IOException {
+        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FormLogin.fxml"));
+        layout.getChildren().setAll(root);
     }
 
     @FXML
-    private void pemupukan(ActionEvent event) {
-    }
+    private void approve(ActionEvent event) throws IOException {
+         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("UPDATE Akun SET status = '"+1+"' WHERE nama= '" + iddd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root=FXMLLoader.load(getClass().getResource("request.fxml"));
+        layout.getChildren().setAll(root);
 
-    @FXML
-    private void panen(ActionEvent event) {
-    }
-
-    @FXML
-    private void pascaPanen(ActionEvent event) {
-    }
-
-    @FXML
-    private void home(ActionEvent event) {
-    }
-
-    @FXML
-    private void logout(ActionEvent event) {
-    }
-
-    @FXML
-    private void approve(ActionEvent event) {
     }
 
 }

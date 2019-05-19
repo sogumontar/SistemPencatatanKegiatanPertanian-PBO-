@@ -21,8 +21,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.FormLoginController;
 
 /**
  * FXML Controller class
@@ -38,6 +41,8 @@ import org.hibernate.Session;
  */
 public class PemupukanController implements Initializable {
 
+    int id = 0;
+    String idd = "";
     ObservableList obv;
     List list;
     @FXML
@@ -60,19 +65,61 @@ public class PemupukanController implements Initializable {
     private TableColumn<model, String> jenisPupuk;
     @FXML
     private TableColumn<model, Integer> banyakPupuk;
-    @FXML
     private TableColumn<model, String> mulai;
-    @FXML
     private TableColumn<model, String> selesai;
-    @FXML
     private ImageView img_pemupukan;
+    @FXML
+    private Button btn_create;
+    @FXML
+    private TextField update_jenis;
+    @FXML
+    private TextField update_ukuran;
+    @FXML
+    private TextField update_lokasi;
+    @FXML
+    private TextField update_quantity;
+    @FXML
+    private TextField update_harga;
+    @FXML
+    private Button btn_update;
+    @FXML
+    private Button btn_delete;
+    @FXML
+    private Button btn_preOrder;
+    @FXML
+    private Button log;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        img_pemupukan.setVisible(false);
+        if (FormLoginController.role.equals("admin")) {
+            btn_create.setVisible(true);
+        } else {
+            btn_create.setVisible(false);
+        }
+        btn_update.setVisible(false);
+        btn_delete.setVisible(false);
+        btn_create.setVisible(false);
+        btn_preOrder.setVisible(false);
+        update_jenis.setVisible(false);
+        update_ukuran.setVisible(false);
+        update_lokasi.setVisible(false);
+        update_quantity.setVisible(false);
+        update_harga.setVisible(false);
+        if (FormLoginController.login == false) {
+            log.setText("LOGIN");
+        } else {
+            if (FormLoginController.role != "admin") {
+                btn_create.setVisible(true);
+            } else {
+                btn_create.setVisible(false);
+            }
+            log.setText("LOGOUT");
+        }
+
+//        img_pemupukan.setVisible(false);
         Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         obv = FXCollections.observableArrayList();
@@ -80,7 +127,7 @@ public class PemupukanController implements Initializable {
         list = query.list();
         session.getTransaction().commit();
         session.close();
-        int indikator = 1;
+        int indikator = 0;
         for (Object i : list) {
             Pemupukan objek = (Pemupukan) i;
             String jenis = objek.getJenisTanaman();
@@ -103,8 +150,6 @@ public class PemupukanController implements Initializable {
         ukuran.setCellValueFactory(new PropertyValueFactory<>("Ukuran"));
         jenis.setCellValueFactory(new PropertyValueFactory<>("jenis"));
         deskripsi.setCellValueFactory(new PropertyValueFactory<>("Deskripsi"));
-        mulai.setCellValueFactory(new PropertyValueFactory<>("tanggal mulai"));
-        selesai.setCellValueFactory(new PropertyValueFactory<>("tanggal selesai"));
         lokasi.setCellValueFactory(new PropertyValueFactory<>("lokasi"));
         metode.setCellValueFactory(new PropertyValueFactory<>("metode"));
         jenisPupuk.setCellValueFactory(new PropertyValueFactory<>("pupuk"));
@@ -116,12 +161,55 @@ public class PemupukanController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
-                    
+
                     model = table.getSelectionModel().getSelectedItem();
-                    img_pemupukan.setVisible(true);
-                    img_pemupukan=new ImageView();
-                   
+
                     System.out.println(model.getJenis());
+
+//                    if (FormLoginController.login == true) {
+////                        String one = "src/images/test.PNG";
+////                        ImageView img=Toolkit.getDefaultToolkit().getImage(one);
+////                        Image img = Toolkit.getDefaultToolkit().getImage(one);
+//                        btn_delete.setVisible(true);
+//                        btn_update.setVisible(true);
+//                        btn_preOrder.setVisible(true);
+//                        btn_create.setVisible(true);
+//
+//                    }
+                    if (FormLoginController.login == false) {
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(true);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(true);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(true);
+                        update_quantity.setVisible(true);
+                        update_quantity.setDisable(true);
+                        update_harga.setVisible(true);
+                        update_harga.setDisable(true);
+                    } else {
+                        
+                        btn_delete.setVisible(true);
+                        btn_update.setVisible(true);
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(false);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(false);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(false);
+                        update_quantity.setVisible(true);
+                        update_quantity.setDisable(false);
+                        update_harga.setVisible(true);
+                        update_harga.setDisable(false);
+                    }
+
+                    update_jenis.setText(model.getJenis().toString());
+                    update_ukuran.setText(model.getUkuran().toString());
+                    update_lokasi.setText(model.getLokasi().toString());
+                    update_quantity.setText(Integer.toString(model.getBanyak()));
+                    update_harga.setText(model.getPupuk().toString());
+
+                    idd = model.getJenis();
                 }
             }
         });
@@ -147,18 +235,18 @@ public class PemupukanController implements Initializable {
     }
 
     @FXML
-    private void penanaman(ActionEvent event) throws IOException  {
+    private void penanaman(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpenanaman/penanaman.fxml"));
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
         stage.show();
-        
+
     }
 
     @FXML
-    private void pemupukan(ActionEvent event) throws IOException  {
+    private void pemupukan(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpemupukan/pemupukan.fxml"));
         Scene scene = new Scene(root);
@@ -167,7 +255,7 @@ public class PemupukanController implements Initializable {
     }
 
     @FXML
-    private void panen(ActionEvent event) throws IOException  {
+    private void panen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
         Scene scene = new Scene(root);
@@ -176,7 +264,7 @@ public class PemupukanController implements Initializable {
     }
 
     @FXML
-    private void pascaPanen(ActionEvent event) throws IOException  {
+    private void pascaPanen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
         Scene scene = new Scene(root);
@@ -185,7 +273,7 @@ public class PemupukanController implements Initializable {
     }
 
     @FXML
-    private void home(ActionEvent event) throws IOException  {
+    private void home(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         Scene scene = new Scene(root);
@@ -194,12 +282,42 @@ public class PemupukanController implements Initializable {
     }
 
     @FXML
-    private void logout(ActionEvent event) throws IOException  {
+    private void logout(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FormLogin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void preorder(ActionEvent event) {
+    }
+
+    @FXML
+    private void update(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("UPDATE Pemupukan SET ukuran_lahan='" + update_ukuran.getText() + "',jenis_tanaman='" + update_jenis.getText() + "',banyak_pupuk='" + update_quantity.getText() + "',lokasi='" + update_lokasi.getText() + "',pupuk='" + update_harga.getText() + "' WHERE jenis_tanaman= '" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("pemupukan.fxml"));
+        layout.getChildren().setAll(root);
+
+    }
+
+    @FXML
+    private void delete(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("DELETE Pemupukan WHERE jenis_tanaman= '" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("pemupukan.fxml"));
+        layout.getChildren().setAll(root);
+
     }
 
 }

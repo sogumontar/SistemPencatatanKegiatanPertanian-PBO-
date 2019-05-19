@@ -29,6 +29,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.FormLoginController;
 
 /**
  * FXML Controller class
@@ -36,6 +37,7 @@ import org.hibernate.Session;
  * @author DedekManisTasBiru
  */
 public class PanenController implements Initializable {
+
     ObservableList oo;
     List list;
     entity.Panen mod;
@@ -76,12 +78,31 @@ public class PanenController implements Initializable {
     private TextField update_harga;
     @FXML
     private TextField update_metode;
-
+    @FXML
+    private Button log;
+    Panen model;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btn_update.setVisible(false);
+        btn_delete.setVisible(false);
+        btn_create.setVisible(false);
+        update_jenis.setVisible(false);
+        update_ukuran.setVisible(false);
+        update_lokasi.setVisible(false);
+        update_ukuran.setVisible(false);
+        update_quantity.setVisible(false);
+        update_harga.setVisible(false);
+        update_metode.setVisible(false);
+
+        if (FormLoginController.login == false) {
+            log.setText("LOGIN");
+        } else {
+            btn_create.setVisible(false);
+            log.setText("LOGOUT");
+        }
         Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
         oo = FXCollections.observableArrayList();
@@ -98,7 +119,7 @@ public class PanenController implements Initializable {
             Integer quantity = panen.getQuantity();
             Integer harga = panen.getHarga();
             String caraPanen = panen.getCaraPanen();
-            oo.add(new entity.Panen(i,ukuran, jenis,panen.getDeskripsiTanaman(), lokasi, caraPanen,harga, quantity, panen.getBookedStatus(),panen.getGambar()));
+            oo.add(new entity.Panen(i, ukuran, jenis, panen.getDeskripsiTanaman(), lokasi, caraPanen, harga, quantity, panen.getBookedStatus(), panen.getGambar()));
 
             i++;
         }
@@ -114,13 +135,37 @@ public class PanenController implements Initializable {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
-                    DetailController.id=mod.getId();
+//                    DetailController.id=mod.getId();
                     mod = table.getSelectionModel().getSelectedItem();
                     System.out.println(mod.getId());
+                    if (FormLoginController.login == true) {
+                        btn_update.setVisible(true);
+                        btn_delete.setVisible(true);
+                        btn_create.setVisible(true);
+                    }
+                    update_jenis.setText(model.getJenisTanaman().toString());
+                    update_ukuran.setText(model.getUkuranLalhan().toString());
+                    update_lokasi.setText(model.getLokasi().toString());
+                    update_quantity.setText(model.getQuantity().toString());
+                    update_harga.setText(model.getHarga().toString());
+                    update_metode.setText(model.getCaraPanen().toString());
+                    update_jenis.setVisible(true);
+                    update_jenis.setDisable(true);
+                    update_ukuran.setVisible(true);
+                    update_ukuran.setDisable(true);
+                    update_lokasi.setVisible(true);
+                    update_lokasi.setDisable(true);
+                    update_quantity.setVisible(true);
+                    update_quantity.setDisable(true);
+                    update_harga.setVisible(true);
+                    update_harga.setDisable(true);
+                    update_metode.setVisible(true);
+                    update_metode.setDisable(true);
+                    
                 }
             }
         });
-    }    
+    }
 
     @FXML
     private void pembibitan(ActionEvent event) throws IOException {
@@ -202,12 +247,12 @@ public class PanenController implements Initializable {
 
     @FXML
     private void create(ActionEvent event) throws IOException {
-        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanencreate/create.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanencreate/create.fxml"));
         layout.getChildren().setAll(root);
     }
 
     private void detail(ActionEvent event) throws IOException {
-         AnchorPane root=FXMLLoader.load(getClass().getResource("detail.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("detail.fxml"));
         layout.getChildren().setAll(root);
     }
 
@@ -218,5 +263,5 @@ public class PanenController implements Initializable {
     @FXML
     private void delete(ActionEvent event) {
     }
-    
+
 }

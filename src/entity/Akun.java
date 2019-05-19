@@ -44,6 +44,9 @@ public class Akun  implements java.io.Serializable {
         this.noTelp = noTelp;
         this.alamat = alamat;
     }
+    public Akun(){
+        
+    }
 
 
     public Akun(String username, String password, String email, String nama, String noTelp, String gambar, String alamat,Integer status, Set pembibitans, Set bantuans, Set tawarans, Set panens, Set panens_1, Set panens_2, Set panens_3, Set panens_4, Set pemupukans, Set transaksis, Set preorders, Set penanamans, Set pascaPanens) {

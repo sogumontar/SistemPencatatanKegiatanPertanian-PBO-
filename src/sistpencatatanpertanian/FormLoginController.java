@@ -61,7 +61,7 @@ public class FormLoginController implements Initializable {
     }
 
     @FXML
-    public void login(ActionEvent event) throws IOException {
+    public void login(ActionEvent event) throws IOException, InterruptedException {
         Session ses = NewHibernateUtil.getSessionFactory().openSession();
         ses.beginTransaction();
         Query q = ses.createQuery("from Akun where username = '" + username.getText() + "' AND password='" + password.getText() + "' AND status!=0 ");
@@ -83,6 +83,7 @@ public class FormLoginController implements Initializable {
         }
             FormLoginController.login=true;
             notif.setText("Sukses");
+            Thread.sleep(2000);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
             Scene scene = new Scene(root);

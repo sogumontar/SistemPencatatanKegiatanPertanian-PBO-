@@ -50,6 +50,16 @@ public class CreateController implements Initializable {
     model mod;
     @FXML
     private Button btn_create;
+    @FXML
+    private Button btn_pembibitan;
+    @FXML
+    private Button btn_penanaman;
+    @FXML
+    private Button btn_pemupukan;
+    @FXML
+    private Button btn_panen;
+    @FXML
+    private Button btn_pascaPanen;
 
     /**
      * Initializes the controller class.
@@ -94,6 +104,7 @@ public class CreateController implements Initializable {
         });
     }
 
+    @FXML
     public void home() throws IOException {
         AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
@@ -129,6 +140,7 @@ public class CreateController implements Initializable {
         layout.getChildren().setAll(root);
     }
 
+    @FXML
     private void logout(ActionEvent event) throws IOException {
         FormLoginController.login = false;
         AnchorPane root = FXMLLoader.load(getClass().getResource("FormLogin .fxml"));

@@ -35,11 +35,21 @@ public class BantuanController implements Initializable {
     @FXML
     private TextField jenisTanaman;
     @FXML
-    private Button submit;
-    @FXML
     private TextField jenisBantuan;
     @FXML
     private TextArea deskripsi;
+    @FXML
+    private Button btn_submit;
+    @FXML
+    private Button btn_pembibitan;
+    @FXML
+    private Button btn_penanaman;
+    @FXML
+    private Button btn_pemupukan;
+    @FXML
+    private Button btn_panen;
+    @FXML
+    private Button btn_pascaPanen;
 
     /**
      * Initializes the controller class.
@@ -122,7 +132,6 @@ public class BantuanController implements Initializable {
         layout.getChildren().setAll(root);
     }
 
-    @FXML
     private void bantuan(ActionEvent event) throws IOException {
          AnchorPane root = FXMLLoader.load(getClass().getResource("/bantuan/create.fxml"));
         layout.getChildren().setAll(root);

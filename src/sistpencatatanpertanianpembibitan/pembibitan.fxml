@@ -27,12 +27,10 @@
         </columns>
       </TableView>
       <TextField fx:id="update_jenis" layoutX="649.0" layoutY="210.0" prefHeight="25.0" prefWidth="185.0" />
-      <TextField fx:id="update_lokasi" layoutX="649.0" layoutY="330.0" prefHeight="26.0" prefWidth="185.0" />
-      <TextField fx:id="update_metode" layoutX="649.0" layoutY="371.0" prefHeight="26.0" prefWidth="185.0" />
-      <TextField fx:id="update_tanggalMulai" layoutX="649.0" layoutY="251.0" prefHeight="26.0" prefWidth="185.0" />
-      <TextField fx:id="update_tanggalSelesai" layoutX="649.0" layoutY="289.0" prefHeight="26.0" prefWidth="185.0" />
-      <TextField fx:id="update_ukuran" layoutX="649.0" layoutY="414.0" prefHeight="26.0" prefWidth="185.0" />
-      <Button fx:id="btn_update" layoutX="762.0" layoutY="459.0" mnemonicParsing="false" onAction="#delete" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: #c0392b; -fx-background-radius: 5;" text="Update" textFill="WHITE">
+      <TextField fx:id="update_lokasi" layoutX="649.0" layoutY="259.0" prefHeight="26.0" prefWidth="185.0" />
+      <TextField fx:id="update_metode" layoutX="649.0" layoutY="300.0" prefHeight="26.0" prefWidth="185.0" />
+      <TextField fx:id="update_ukuran" layoutX="649.0" layoutY="343.0" prefHeight="26.0" prefWidth="185.0" />
+      <Button fx:id="btn_update" layoutX="762.0" layoutY="459.0" mnemonicParsing="false" onAction="#update" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: #c0392b; -fx-background-radius: 5;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -131,27 +129,17 @@
             <Font name="System Italic" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="649.0" layoutY="239.0" text="update tanggal mulai">
+      <Label layoutX="649.0" layoutY="248.0" text="update lokasi">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="649.0" layoutY="279.0" text="update tanggal selesai">
+      <Label layoutX="649.0" layoutY="289.0" text="update metode">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="649.0" layoutY="319.0" text="update lokasi">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </Label>
-      <Label layoutX="649.0" layoutY="360.0" text="update metode">
-         <font>
-            <Font name="System Italic" size="10.0" />
-         </font>
-      </Label>
-      <Label layoutX="649.0" layoutY="402.0" text="update ukuran">
+      <Label layoutX="649.0" layoutY="331.0" text="update ukuran">
          <font>
             <Font name="System Italic" size="10.0" />
          </font>

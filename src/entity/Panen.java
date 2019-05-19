@@ -24,6 +24,7 @@ public class Panen  implements java.io.Serializable {
      private String status;
      private String bookedStatus;
      private String gambar;
+    
 
     public Panen(Integer no,Double ukuranLalhan, String jenisTanaman, String deskripsiTanaman, String lokasi, String caraPanen, Integer harga, Integer quantity, String bookedStatus, String gambar) {
         this.no=no;
