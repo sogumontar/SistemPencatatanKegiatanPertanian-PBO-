@@ -81,6 +81,7 @@ public class PanenController implements Initializable {
     @FXML
     private Button log;
     Panen model;
+
     /**
      * Initializes the controller class.
      */
@@ -135,6 +136,7 @@ public class PanenController implements Initializable {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
                 if (table.getSelectionModel().getSelectedItem() != null) {
+                    System.out.println("Ada Data");
 //                    DetailController.id=mod.getId();
                     mod = table.getSelectionModel().getSelectedItem();
                     System.out.println(mod.getId());
@@ -142,26 +144,39 @@ public class PanenController implements Initializable {
                         btn_update.setVisible(true);
                         btn_delete.setVisible(true);
                         btn_create.setVisible(true);
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(false);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(false);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(false);
+                        update_quantity.setVisible(true);
+                        update_quantity.setDisable(false);
+                        update_harga.setVisible(true);
+                        update_harga.setDisable(false);
+                        update_metode.setVisible(true);
+                        update_metode.setDisable(false);
+                    } else {
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(true);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(true);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(true);
+                        update_quantity.setVisible(true);
+                        update_quantity.setDisable(true);
+                        update_harga.setVisible(true);
+                        update_harga.setDisable(true);
+                        update_metode.setVisible(true);
+                        update_metode.setDisable(true);
                     }
-                    update_jenis.setText(model.getJenisTanaman().toString());
-                    update_ukuran.setText(model.getUkuranLalhan().toString());
-                    update_lokasi.setText(model.getLokasi().toString());
-                    update_quantity.setText(model.getQuantity().toString());
-                    update_harga.setText(model.getHarga().toString());
-                    update_metode.setText(model.getCaraPanen().toString());
-                    update_jenis.setVisible(true);
-                    update_jenis.setDisable(true);
-                    update_ukuran.setVisible(true);
-                    update_ukuran.setDisable(true);
-                    update_lokasi.setVisible(true);
-                    update_lokasi.setDisable(true);
-                    update_quantity.setVisible(true);
-                    update_quantity.setDisable(true);
-                    update_harga.setVisible(true);
-                    update_harga.setDisable(true);
-                    update_metode.setVisible(true);
-                    update_metode.setDisable(true);
-                    
+
+                    update_jenis.setText(mod.getJenisTanaman().toString());
+                    update_ukuran.setText(mod.getUkuranLalhan().toString());
+                    update_lokasi.setText(mod.getLokasi().toString());
+                    update_quantity.setText(mod.getQuantity().toString());
+                    update_harga.setText(mod.getHarga().toString());
+                    update_metode.setText(mod.getCaraPanen().toString());
                 }
             }
         });
@@ -204,7 +219,7 @@ public class PanenController implements Initializable {
     private void panen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
 
         Scene scene = new Scene(root);
 

@@ -180,7 +180,7 @@ public class CreateController implements Initializable {
 
     @FXML
     public void panen() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
     }
 

@@ -177,7 +177,7 @@ public class CreateController implements Initializable {
     }
 
     public void pascapanen() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
     }
 

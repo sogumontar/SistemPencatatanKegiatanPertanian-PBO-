@@ -24,6 +24,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
@@ -45,11 +46,17 @@ public class CreateController implements Initializable {
     private AnchorPane layout;
     @FXML
     private TextArea deskripsi;
+    @FXML
     private TextField metode;
+    @FXML
     private TextField lokasi;
+    @FXML
     private TextField jenis;
+    @FXML
     private TextField ukuran;
+    @FXML
     private DatePicker tanggalMulai;
+    @FXML
     private DatePicker tanggalSelesai;
     private Path copy;
     private Path files;
@@ -58,13 +65,16 @@ public class CreateController implements Initializable {
     private FileChooser fileChooser;
     private File file;
     private String gambar;
+    @FXML
     private TextField banyak;
     @FXML
     private TextField harga;
-    @FXML
     private TextField jumlah;
-    @FXML
     private TextField nama;
+    @FXML
+    private Button log;
+    @FXML
+    private Label notiff;
 
     /**
      * Initializes the controller class.
@@ -106,35 +116,38 @@ public class CreateController implements Initializable {
             Files.copy(files, copy, options);
 
         }
+        if (ukuran.getText().equals("")||jenis.getText().equals("")||banyak.getText().equals("")||tanggalMulai.getValue().equals("")||tanggalSelesai.getValue().equals("")||lokasi.getText().equals("")) {
+            notiff.setText("SEMUA FIELD HARUS DI ISI");
+        } else {
 
-        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-        System.out.println(formatter.format(date));
-        String created = formatter.format(date).toString();
-        int banyaks= Integer.parseInt(banyak.getText());
-        int hrg=Integer.parseInt(harga.getText());
-        Query query = session.createSQLQuery("INSERT INTO pasca_panen (created_at,ukuran_lalhan,jenis_tanaman,tanggal_mulai_panen,tanggal_selesai_panen,deskripsi_tanaman,banyak_hasil_panen,lokasi,cara_panen,harga,quantity,status,booked_status,gambar)VALUES(:created, :ukuran, :jenis, :tanggalM, :tanggalS, :deskripsi, :banyak, :lokasi, :cara, :harga, :quantity, :status, :booked, :gambar)");
-        query.setParameter("created", created);
-        query.setParameter("ukuran", ukuran.getText().toString());
-        query.setParameter("jenis", jenis.getText().toString());
-        query.setParameter("tanggalM", tanggalMulai.getValue().toString());
-        query.setParameter("tanggalS", tanggalSelesai.getValue().toString());
-        query.setParameter("lokasi", lokasi.getText().toString());
-        query.setParameter("deskripsi", deskripsi.getText().toString());
-        query.setParameter("cara", metode.getText().toString());
-        query.setParameter("harga", hrg);
-        query.setParameter("banyak", banyaks);
-        query.setParameter("quantity", banyaks);
-        query.setParameter("status", "normal");
-        query.setParameter("booked", "normal");
-        query.setParameter("gambar", gambar);
-        query.executeUpdate();
-        session.getTransaction().commit();
-        session.close();
-        System.out.println("Sukses");
-        pascaPanen();
+            Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            System.out.println(formatter.format(date));
+            String created = formatter.format(date).toString();
+            int hrg = Integer.parseInt(harga.getText());
+            Query query = session.createSQLQuery("INSERT INTO pasca_panen (created_at,ukuran_lalhan,jenis_tanaman,tanggal_mulai_panen,tanggal_selesai_panen,deskripsi_tanaman,banyak_hasil_panen,lokasi,cara_panen,harga,quantity,status,booked_status,gambar)VALUES(:created, :ukuran, :jenis, :tanggalM, :tanggalS, :deskripsi, :banyak, :lokasi, :cara, :harga, :quantity, :status, :booked, :gambar)");
+            query.setParameter("created", created);
+            query.setParameter("ukuran", ukuran.getText().toString());
+            query.setParameter("jenis", jenis.getText().toString());
+            query.setParameter("tanggalM", tanggalMulai.getValue().toString());
+            query.setParameter("tanggalS", tanggalSelesai.getValue().toString());
+            query.setParameter("lokasi", lokasi.getText().toString());
+            query.setParameter("deskripsi", deskripsi.getText().toString());
+            query.setParameter("cara", metode.getText().toString());
+            query.setParameter("harga", harga.getText());
+            query.setParameter("banyak", banyak.getText());
+            query.setParameter("quantity", banyak.getText());
+            query.setParameter("status", "normal");
+            query.setParameter("booked", "normal");
+            query.setParameter("gambar", gambar);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            System.out.println("Sukses");
+            pascaPanen();
+        }
     }
 
     @FXML
@@ -163,7 +176,7 @@ public class CreateController implements Initializable {
 
     @FXML
     public void panen() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
     }
 
@@ -173,11 +186,10 @@ public class CreateController implements Initializable {
         layout.getChildren().setAll(root);
     }
 
-
     @FXML
     private void logout(ActionEvent event) throws IOException {
-        FormLoginController.login=false;
-         AnchorPane root = FXMLLoader.load(getClass().getResource("FormLogin .fxml"));
+        FormLoginController.login = false;
+        AnchorPane root = FXMLLoader.load(getClass().getResource("FormLogin .fxml"));
         layout.getChildren().setAll(root);
     }
 

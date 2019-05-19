@@ -186,5 +186,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Button fx:id="profile" layoutX="634.0" layoutY="10.0" mnemonicParsing="false" onAction="#profile" style="-fx-background-color: transparent;" text="Profile" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
     </children>
 </AnchorPane>

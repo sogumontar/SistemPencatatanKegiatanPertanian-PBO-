@@ -605,3 +605,6 @@ UPDATE Pemupukan SET ukuran_lahan='123.0',jenis_tanaman='asd',quantity='123',lok
 2019-05-19 13:07:31 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "asd"; SQL statement:
 UPDATE Pemupukan SET ukuran_lahan='123.0',jenis_tanaman='asd',banyak_pupuk='123',lokasi='sad',pupuk='organik' WHERE id= 'asd' [22018-199]
+2019-05-19 20:42:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PASCAPANEN" not found; SQL statement:
+UPDATE PascaPanen SET jenis_tanaman='cabai', ukuran_lalhan='123.0',lokasi='sitoluama' WHERE jenis_tanaman= 'cabai' [42102-199]

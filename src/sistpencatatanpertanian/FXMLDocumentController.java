@@ -89,6 +89,8 @@ public class FXMLDocumentController implements Initializable {
     private Button btn_create1;
     int idAkun = 0;
     int idd = 1;
+    @FXML
+    private Button profile;
 
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -97,10 +99,14 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(FormLoginController.role);
+        if(FormLoginController.login==false){
+            profile.setVisible(false);
+        }
         if (FormLoginController.role.equals("admin")) {
             regist.setVisible(true);
+            profile.setVisible(false);
         } else {
+            profile.setVisible(true);
             regist.setVisible(false);
         }
         btn_update.setVisible(false);
@@ -239,13 +245,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     public void panen() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
         layout.getChildren().setAll(root);
     }
 
     @FXML
     public void pascaPanen() throws IOException {
-        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanen/pascapanen.fxml"));
         layout.getChildren().setAll(root);
     }
 
@@ -303,6 +309,12 @@ public class FXMLDocumentController implements Initializable {
         session.getTransaction().commit();
         session.close();
         AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    private void profile(ActionEvent event) throws IOException {
+         AnchorPane root = FXMLLoader.load(getClass().getResource("/profile/profile.fxml"));
         layout.getChildren().setAll(root);
     }
 }

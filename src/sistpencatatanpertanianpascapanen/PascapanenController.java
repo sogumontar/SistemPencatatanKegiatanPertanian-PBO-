@@ -24,11 +24,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import sistpencatatanpertanian.FormLoginController;
 
 /**
  * FXML Controller class
@@ -36,8 +38,9 @@ import org.hibernate.Session;
  * @author DedekManisTasBiru
  */
 public class PascapanenController implements Initializable {
+
     ObservableList oo;
-    List list ;
+    List list;
     model mod;
     @FXML
     private AnchorPane layout;
@@ -47,7 +50,6 @@ public class PascapanenController implements Initializable {
     private TableColumn<model, Double> ukuran;
     @FXML
     private TableColumn<model, String> jenis;
-    @FXML
     private TableColumn<model, String> selesai;
     @FXML
     private TableColumn<model, String> deskripsi;
@@ -77,13 +79,43 @@ public class PascapanenController implements Initializable {
     private Button btn_pascaPanen;
     @FXML
     private Button btn_create;
+    @FXML
+    private TextField update_jenis;
+    @FXML
+    private TextField update_ukuran;
+    @FXML
+    private TextField update_lokasi;
+    @FXML
+    private Button btn_delete;
+    @FXML
+    private Button btn_update;
+    @FXML
+    private Button log;
+    String idd;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        if (FormLoginController.login == true) {
+            btn_create.setVisible(true);
+        } else {
+            btn_create.setVisible(false);
+        }
+        btn_update.setVisible(false);
+        btn_delete.setVisible(false);
+        update_jenis.setVisible(false);
+        update_ukuran.setVisible(false);
+        update_lokasi.setVisible(false);
+
+        if (FormLoginController.login == false) {
+            log.setText("LOGIN");
+        } else {
+
+            log.setText("LOGOUT");
+        }
+        Session ss = db.util.NewHibernateUtil.getSessionFactory().openSession();
         ss.beginTransaction();
         oo = FXCollections.observableArrayList();
         Query query = ss.createQuery("FROM PascaPanen ");
@@ -99,18 +131,17 @@ public class PascapanenController implements Initializable {
             Integer quantity = panen.getQuantity();
             Integer harga = panen.getHarga();
             String caraPanen = panen.getCaraPanen();
-            String selesai=panen.getTanggalSelesaiPanen();
-            Integer banyak=panen.getBanyakHasilPanen();
-            String deskripsi=panen.getDeskripsiTanaman();
-            String status=panen.getBookedStatus();
-            oo.add(new sistpencatatanpertanianpascapanen.model(i, ukuran , jenis, selesai, deskripsi,banyak , lokasi, caraPanen,harga, quantity, status));
+            String selesai = panen.getTanggalSelesaiPanen();
+            Integer banyak = panen.getBanyakHasilPanen();
+            String deskripsi = panen.getDeskripsiTanaman();
+            String status = panen.getBookedStatus();
+            oo.add(new sistpencatatanpertanianpascapanen.model(i, ukuran, jenis, selesai, deskripsi, banyak, lokasi, caraPanen, harga, quantity, status));
 
             i++;
         }
         no.setCellValueFactory(new PropertyValueFactory<>("No"));
         ukuran.setCellValueFactory(new PropertyValueFactory<>("Ukuran"));
         jenis.setCellValueFactory(new PropertyValueFactory<>("Jenis"));
-        selesai.setCellValueFactory(new PropertyValueFactory<>("Selesai"));
         deskripsi.setCellValueFactory(new PropertyValueFactory<>("Deskripsi"));
         banyak.setCellValueFactory(new PropertyValueFactory<>("Banyak"));
         lokasi.setCellValueFactory(new PropertyValueFactory<>("Lokasi"));
@@ -125,11 +156,38 @@ public class PascapanenController implements Initializable {
                 if (table.getSelectionModel().getSelectedItem() != null) {
                     mod = table.getSelectionModel().getSelectedItem();
                     System.out.println(mod.getNo());
+                    idd = mod.getJenis().toString();
+                    if (FormLoginController.login == true) {
+                        btn_delete.setVisible(true);
+                        btn_update.setVisible(true);
+                    }
+                    if (FormLoginController.login == false) {
+                        update_jenis.setVisible(false);
+                        update_ukuran.setVisible(false);
+                        update_lokasi.setVisible(false);
+
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(true);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(true);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(true);
+                    } else {
+                        update_jenis.setVisible(true);
+                        update_jenis.setDisable(false);
+                        update_ukuran.setVisible(true);
+                        update_ukuran.setDisable(false);
+                        update_lokasi.setVisible(true);
+                        update_lokasi.setDisable(false);
+                    }
+
+                    update_jenis.setText(mod.getJenis().toString());
+                    update_ukuran.setText(mod.getUkuran().toString());
+                    update_lokasi.setText(mod.getLokasi().toString());
                 }
             }
         });
-    }    
-    
+    }
 
     @FXML
     private void home(ActionEvent event) throws IOException {
@@ -189,7 +247,7 @@ public class PascapanenController implements Initializable {
     private void panen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpanen/panen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanian/FXMLDocument.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -208,10 +266,36 @@ public class PascapanenController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    public void create(ActionEvent event) throws IOException{
-        AnchorPane root=FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanencreate/create.fxml"));
+    public void create(ActionEvent event) throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("/sistpencatatanpertanianpascapanencreate/create.fxml"));
         layout.getChildren().setAll(root);
     }
-    
+
+    @FXML
+    private void delete(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("Delete Pasca_Panen where jenis_tanaman ='" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+
+        AnchorPane root = FXMLLoader.load(getClass().getResource("pascapanen.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
+    @FXML
+    private void update(ActionEvent event) throws IOException {
+        Session session = db.util.NewHibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createSQLQuery("UPDATE Pasca_Panen SET jenis_tanaman='" + update_jenis.getText() + "', ukuran_lalhan='" + update_ukuran.getText() + "',lokasi='" + update_lokasi.getText() + "' WHERE jenis_tanaman= '" + idd + "'");
+        query.executeUpdate();
+        session.getTransaction().commit();
+        session.close();
+        AnchorPane root = FXMLLoader.load(getClass().getResource("pascapanen.fxml"));
+        layout.getChildren().setAll(root);
+    }
+
 }
